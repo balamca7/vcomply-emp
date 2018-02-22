@@ -1,0 +1,84 @@
+ <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && addStatedetails(stateInfo)" novalidate>
+<div class="modal-header">
+      <span>{{ modalHeader }}</span>
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+      <div class="col-sm-12">
+	
+      
+
+      <div class="row">
+      	<div class="col-sm-12 row">
+      	<div class="col-sm-6 form-group">
+           State
+          </div>
+          <div class="col-sm-3 form-group">
+           <select class="form-control">
+              <option>Alabama (AK)</option>
+             
+              </select>
+          </div>
+          
+     	 </div>
+
+   			<div class="col-sm-12 row">
+        <div class="col-sm-6 form-group">
+          
+          </div>
+          <div class="col-sm-3 form-group">
+           Date of entry
+          </div>
+           <div class="col-sm-3 form-group">
+           Date of exit 
+           </div>
+     	 </div>
+     	 <div class="col-sm-12 row">
+        <div class="col-sm-6 form-group">
+           Taxpayer
+          </div>
+          <div class="col-sm-3 form-group">
+           <input type="date" name="t_entry"  class="form-control" [(ngModel)]="stateInfo.t_entry" #t_entry="ngModel" required [ngClass]="{ 'has-error': f.submitted && !t_entry.valid }" />
+            <div *ngIf="f.submitted && !t_entry.valid" class=" text-danger">Required</div>
+          </div>
+           <div class="col-sm-3 form-group">
+           <input type="date"   class="form-control"/>
+           </div>
+     	 </div>
+     	  <div class="col-sm-12 row">
+        <div class="col-sm-6 form-group">
+           Spouse
+          </div>
+          <div class="col-sm-3 form-group">
+           <input type="date"   class="form-control"/>
+          </div>
+           <div class="col-sm-3 form-group">
+           <input type="date"   class="form-control"/>
+           </div>
+     	 </div>
+     	  <div class="col-sm-12 row">
+     	 <div class="col-sm-6 form-group">
+           Depandant(s)
+          </div>
+          <div class="col-sm-3 form-group">
+           <input type="date"   class="form-control"/>
+          </div>
+           <div class="col-sm-3 form-group">
+           <input type="date"   class="form-control"/>
+           </div>
+     	 </div>
+     	</div>
+
+       
+        </div>
+       
+ 		
+  </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-md btn-primary">Add</button>
+    </div>
+</form>

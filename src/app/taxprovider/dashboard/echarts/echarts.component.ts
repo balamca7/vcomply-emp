@@ -1,0 +1,11 @@
+import { Component, OnInit,Input, Output, EventEmitter, ViewChild } from '@angular/core';
+
+@Component({
+  selector: 'ngx-echarts',
+  styleUrls: ['./echarts.component.scss'],
+  templateUrl: './echarts.component.html',
+})
+export class EchartsComponent {
+	 
+
+}

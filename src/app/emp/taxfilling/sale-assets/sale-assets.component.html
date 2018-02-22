@@ -1,0 +1,319 @@
+
+<div class="col-sm-12"  *ngIf="editMode == true">
+   <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveAssetsInfoDetails(assetsInfo, file.files)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>CAPITAL GAINS</nb-card-header>
+      <nb-card-body>
+        <!--  <pre>{{assetsInfo | json}}</pre> -->
+<div class="row">
+ 
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 1 Please ignore filling the below fields if you are enclosing respective transaction sheets.
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+          Note: 2 The amount should be in the currency in which the deal took place. Please specify the currency.
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 2 Please attach the documents issued by the banks or companies supporting INTEREST or DIVIDEND
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">Sale of US Assets (1099-B) (1099-S)</div>
+   
+      	<div class="table-responsive">
+           <form  name="af"  #af="ngForm" (ngSubmit)="addUSAssets(USAssets)" novalidate>
+          <table class="table table-bordered table-striped">
+           <tr >
+                <th>Sl.No</th>
+                <th>Description</th>
+                <th>Date Purchased</th>
+                <th>Date Sold</th>
+                <th>Sales Price</th>
+                <th>Purchase Price</th>
+                <th>State of Sale</th>
+                <th>Action</th>
+              </tr>
+                <tbody>
+              <tr>
+                <th></th>
+                <td><input type="text" name="description"  class="form-control" [(ngModel)]="USAssets.description"  #description="ngModel" required [ngClass]="{ 'has-error': af.submitted && !description.valid }" />
+            <div *ngIf="af.submitted && !description.valid" class=" text-danger">Required</div></td>
+                <td><input type="date" name="purchased_date"  class="form-control" [(ngModel)]="USAssets.purchased_date"  #purchased_date="ngModel" required [ngClass]="{ 'has-error': af.submitted && !purchased_date.valid }" />
+            <div *ngIf="af.submitted && !purchased_date.valid" class=" text-danger">Required</div></td>
+                <td><input type="date" name="sold_date"  class="form-control" [(ngModel)]="USAssets.sold_date"  #sold_date="ngModel" required [ngClass]="{ 'has-error': af.submitted && !sold_date.valid }" />
+            <div *ngIf="af.submitted && !sold_date.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="sales_price"  class="form-control" [(ngModel)]="USAssets.sales_price"  #sales_price="ngModel" required [ngClass]="{ 'has-error': af.submitted && !sales_price.valid }" />
+            <div *ngIf="af.submitted && !sales_price.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="purchase_price"  class="form-control" [(ngModel)]="USAssets.purchase_price"  #purchase_price="ngModel" required [ngClass]="{ 'has-error': af.submitted && !purchase_price.valid }" />
+            <div *ngIf="af.submitted && !purchase_price.valid" class=" text-danger">Required</div></td>
+                <td><select class="form-control" name="d_state" (change)="onStateSelect($event.target.value)" [ngModel]="USAssets.state?.id" #d_state="ngModel" required [ngClass]="{ 'has-error': af.submitted && !d_state.valid }">
+                  <option value=""></option>
+                  <option *ngFor="let product of StatesList" [value]="product.id">{{product.name}}</option>
+                </select>
+                
+           
+              <div *ngIf="af.submitted && !d_state.valid" class=" text-danger">Required</div></td>
+                <td><button type = "submit" class="btn btn-info btn-sm" [disabled]="af.invalid || af.pending">Add <i class="nb-plus"></i></button></td>
+              </tr>
+            
+                <tr *ngFor="let itemrow of assetsInfo.USAssets; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.description}}</td>
+                <td>{{itemrow.purchased_date}}</td>
+                <td>{{itemrow.sold_date}}</td>
+                <td>{{itemrow.sales_price}}</td>
+                <td>{{itemrow.purchase_price}}</td>
+                 <td>{{itemrow.state?.name}}</td>
+                  <td> <button (click)="deleteAssests(i, assetsInfo.USAssets);$event.stopPropagation()" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+                </tr>
+     
+        </tbody>
+      </table>
+    </form>
+    </div>
+
+     <div class="col-sm-12 headTitle center">Sale of Foreign Assets (Foreign Stock Trade, Mutual Funds, Etc.)</div>
+      <div class="table-responsive">
+         <form  name="bf"  #bf="ngForm" (ngSubmit)="addForeignAssets(ForeignAssets)" novalidate>
+          <table class="table table-bordered table-striped">
+         
+
+           <tr>
+                <th>Sl.No</th>
+                <th>Description</th>
+                <th>Date Purchased</th>
+                <th>Date Sold</th>
+                <th>Sales Price</th>
+                <th>Purchase Price</th>
+                <th>Country of Sale</th>
+                <th>Action</th>
+              </tr>
+                <tbody>
+             <tr>
+                <th></th>
+                <td><input type="text" name="description1"  class="form-control" [(ngModel)]="ForeignAssets.description"  #description1="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !description1.valid }" />
+            <div *ngIf="bf.submitted && !description1.valid" class=" text-danger">Required</div></td>
+                <td><input type="date" name="purchased_date"  class="form-control" [(ngModel)]="ForeignAssets.purchased_date"  #purchased_date="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !purchased_date.valid }" />
+            <div *ngIf="bf.submitted && !purchased_date.valid" class=" text-danger">Required</div></td>
+                <td><input type="date" name="sold_date1"  class="form-control" [(ngModel)]="ForeignAssets.sold_date"  #sold_date1="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !sold_date1.valid }" />
+            <div *ngIf="bf.submitted && !sold_date1.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="sales_price1"  class="form-control" [(ngModel)]="ForeignAssets.sales_price"  #sales_price1="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !sales_price1.valid }" />
+            <div *ngIf="bf.submitted && !sales_price1.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="purchase_price1"  class="form-control" [(ngModel)]="ForeignAssets.purchase_price"  #purchase_price1="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !purchase_price1.valid }" />
+            <div *ngIf="bf.submitted && !purchase_price1.valid" class=" text-danger">Required</div></td>
+                <td><select class="form-control" name="d_state1" (change)="onCountrySelect($event.target.value)" [ngModel]="ForeignAssets.country?.id" #d_state1="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !d_state1.valid }">
+                  <option value=""></option>
+                  <option *ngFor="let product of CountryList" [value]="product.id">{{product.name}}</option>
+                </select>
+                
+           
+              <div *ngIf="bf.submitted && !d_state1.valid" class=" text-danger">Required</div></td>
+                <td><button type = "submit" class="btn btn-info btn-sm" [disabled]="bf.invalid || bf.pending">Add <i class="nb-plus"></i></button></td>
+              </tr>
+            
+                <tr *ngFor="let itemrow of assetsInfo.ForeignAssets; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.description}}</td>
+                <td>{{itemrow.purchased_date}}</td>
+                <td>{{itemrow.sold_date}}</td>
+                <td>{{itemrow.sales_price}}</td>
+                <td>{{itemrow.purchase_price}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                  <td> <button (click)="deleteAssests(i, assetsInfo.ForeignAssets);$event.stopPropagation()" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+                </tr>
+     
+			
+            </tbody>
+          </table>
+        </form>
+         </div>
+       </div>
+       <div class="row">
+   <div class="col-sm-12 form-group headTitle">Upload Document</div>
+    <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+     
+
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+          </div>
+           </div>
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of assetsInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="assetsInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        
+   </nb-card-body>
+    <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+          
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/itemized-deductions']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+
+        </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+ <!-- Non editable -->
+
+ <div class="col-sm-12"  *ngIf="editMode == false">
+  
+   <nb-card  size="normal">
+      <nb-card-header>CAPITAL GAINS</nb-card-header>
+      <nb-card-body>
+        <!--  <pre>{{assetsInfo | json}}</pre> -->
+<div class="row">
+ 
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 1 Please ignore filling the below fields if you are enclosing respective transaction sheets.
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+          Note: 2 The amount should be in the currency in which the deal took place. Please specify the currency.
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 2 Please attach the documents issued by the banks or companies supporting INTEREST or DIVIDEND
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">Sale of US Assets (1099-B) (1099-S)</div>
+   
+        <div class="table-responsive">
+         
+          <table class="table table-bordered table-striped">
+           <tr >
+                <th>Sl.No</th>
+                <th>Description</th>
+                <th>Date Purchased</th>
+                <th>Date Sold</th>
+                <th>Sales Price</th>
+                <th>Purchase Price</th>
+                <th>State of Sale</th>
+               
+              </tr>
+                <tbody>
+             
+            
+                <tr *ngFor="let itemrow of assetsInfo.USAssets; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.description}}</td>
+                <td>{{itemrow.purchased_date}}</td>
+                <td>{{itemrow.sold_date}}</td>
+                <td>{{itemrow.sales_price}}</td>
+                <td>{{itemrow.purchase_price}}</td>
+                 <td>{{itemrow.state?.name}}</td>
+               
+                </tr>
+     
+        </tbody>
+      </table>
+  
+    </div>
+
+     <div class="col-sm-12 headTitle center">Sale of Foreign Assets (Foreign Stock Trade, Mutual Funds, Etc.)</div>
+      <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+         
+
+           <tr>
+                <th>Sl.No</th>
+                <th>Description</th>
+                <th>Date Purchased</th>
+                <th>Date Sold</th>
+                <th>Sales Price</th>
+                <th>Purchase Price</th>
+                <th>Country of Sale</th>
+              </tr>
+                <tbody>
+          
+            
+                <tr *ngFor="let itemrow of assetsInfo.ForeignAssets; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.description}}</td>
+                <td>{{itemrow.purchased_date}}</td>
+                <td>{{itemrow.sold_date}}</td>
+                <td>{{itemrow.sales_price}}</td>
+                <td>{{itemrow.purchase_price}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                 
+                </tr>
+     
+      
+            </tbody>
+          </table>
+       
+         </div>
+       </div>
+       <div class="row">
+   <div class="col-sm-12 form-group headTitle">Upload Document</div>
+   
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of assetsInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="assetsInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        
+   </nb-card-body>
+      <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/itemized-deductions']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+
+  </div>
+
+ 

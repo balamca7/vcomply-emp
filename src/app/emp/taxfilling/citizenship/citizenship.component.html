@@ -1,0 +1,1243 @@
+
+<div class="col-sm-12" *ngIf="editMode == true">
+  <form  name="f"  #f="ngForm" (ngSubmit)="f.form.valid && saveCitizenshipDetails(getCommonDetails,file.files)"  novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>CITIZENSHIP STATUS</nb-card-header>
+      <nb-card-body>
+        <!-- <pre>{{getCommonDetails.status | json}}</pre>  -->
+       <div class="row">
+         <div class="col-sm-12 alert alert-warning" role="alert">
+          <strong>Warning!</strong> Please add taxpayer, spouse & depentant details. <!-- <a href="#" class="alert-link">not looking too good</a>. -->
+        </div>
+       
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-9 form-group input-group-sm">
+            <label for="input-password" class="label">Are you a green Card holder or US Citizen</label>
+          </div>
+          <div class="col-sm-3 form-group input-group-sm">
+            <select class="form-control" name="greenCard_holder" [ngModelOptions]="{standalone: true}" #greenCard_holder="ngModel" [(ngModel)]="getCommonDetails.greenCard_holder" [ngClass]="{ 'has-error': f.submitted && !greenCard_holder.valid }" required >
+           
+              <option>Yes</option>
+              <option>No</option>
+              <option>Not Applicable</option>
+              </select>
+             <div *ngIf="f.submitted && !greenCard_holder.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">TRAVEL HISTORY</div>
+     
+      <div class="col-sm-12  headTitle">
+          <div class="row">
+          
+          <div class="col-sm-4">
+            Name
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+         </div> 
+
+      <div class="row">
+        <div class="col-sm-12 form-group" style="padding-top:5px;">Please indicate the number of days physically present in USA during  {{today-4}}, {{today-3}}, {{today-2}} & {{today-1}}</div>
+        <div class="col-sm-12 row ">
+          
+          
+          <div class="col-sm-4 form-group">
+            <label >Taxpayer - {{getCommonDetails.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="number" min="0"  class="form-control" name="year_1" [ngModel]="getCommonDetails.year_1?.no_of_days" (ngModelChange)="getCommonDetails.year_1.no_of_days = $event"  #year_1="ngModel" [ngClass]="{ 'has-error': f.submitted && !year_1.valid }" required />
+            <div *ngIf="f.submitted && !year_1.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="number" min="0"  class="form-control" name="currentyear_2" [ngModel]="getCommonDetails.year_2?.no_of_days" (ngModelChange)="getCommonDetails.year_2.no_of_days = $event" />
+          <!--  <label >{{getCommonDetails.year_2?.no_of_days==""?'-':getCommonDetails.year_2?.no_of_days}}</label> -->
+          </div>
+          <div class="col-sm-2 form-group">
+           <input type="number" min="0"  class="form-control" name="currentyear_3" [ngModel]="getCommonDetails.year_3?.no_of_days" (ngModelChange)="getCommonDetails.year_3.no_of_days = $event" />
+          <!--  <label >{{getCommonDetails.year_3?.no_of_days==""?'-':getCommonDetails.year_3?.no_of_days}}</label> -->
+          </div>
+          <div class="col-sm-2 form-group">
+           <input type="number" min="0"  class="form-control" name="currentyear_4" [ngModel]="getCommonDetails.year_4?.no_of_days" (ngModelChange)="getCommonDetails.year_4.no_of_days = $event" />
+          <!--  <label >{{getCommonDetails.year_4?.no_of_days==""?'-':getCommonDetails.year_4?.no_of_days}}</label> -->
+          </div>
+        </div>
+        
+     
+        <div class="col-sm-12 row" >
+          
+         
+          <div class="col-sm-4 form-group">
+            <label >Spouse - {{getCommonDetails.spouse?.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+
+            <input type="number" min="0"  class="form-control" name="s_year_1" [ngModel]="getCommonDetails.spouse?.year_1?.no_of_days" (ngModelChange)="getCommonDetails.spouse?.year_1.no_of_days = $event"  #s_year_1="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_year_1.valid }" required />
+            <div *ngIf="f.submitted && !s_year_1.valid" class=" text-danger">Required</div>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+            <!-- <label >{{getCommonDetails.spouse?.year_2?.no_of_days==""?'-':getCommonDetails.spouse?.year_2?.no_of_days}}</label> -->
+            <input type="number" min="0"  class="form-control" name="s_currentyear_2" [ngModel]="getCommonDetails.spouse?.year_2?.no_of_days" (ngModelChange)="getCommonDetails.spouse.year_2.no_of_days = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <!-- <label >{{getCommonDetails.spouse?.year_3?.no_of_days==""?'-':getCommonDetails.spouse?.year_3?.no_of_days}}</label> -->
+           <input type="number" min="0"  class="form-control" name="s_currentyear_3" [ngModel]="getCommonDetails.spouse?.year_3?.no_of_days" (ngModelChange)="getCommonDetails.spouse.year_3.no_of_days = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+           <!-- <label > {{getCommonDetails.spouse?.year_4?.no_of_days==""?'-':getCommonDetails.spouse?.year_4?.no_of_days}}</label> -->
+           <input type="number" min="0"  class="form-control" name="s_currentyear_4" [ngModel]="getCommonDetails.spouse?.year_4?.no_of_days" (ngModelChange)="getCommonDetails.spouse.year_4.no_of_days = $event" />
+          </div>
+        </div>
+
+         <div class="col-sm-12 row" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+          
+          
+          <div class="col-sm-4 form-group">
+            <label >Dependent : {{i+1}} - {{dependents.name}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+             <input type="number"  min="0" class="form-control" [ngModelOptions]="{standalone: true}" attr.name="{{i}}"  [ngModel]="dependents.year_1?.no_of_days" min="0" (ngModelChange)="dependents.year_1.no_of_days = $event" #name="ngModel" [ngClass]="{ 'has-error': f.submitted && !name.valid }" required />
+              <div *ngIf="f.submitted && !name.valid" class=" text-danger">Required</div>
+
+          </div>
+          <div class="col-sm-2 form-group">
+           <!-- <label > {{dependents.year_2?.no_of_days==""?'-':dependents.year_2?.no_of_days}}</label>  -->
+            <input type="number"  min="0" class="form-control" [ngModelOptions]="{standalone: true}" attr.name="d_year_2{{i}}"  [ngModel]="dependents.year_2?.no_of_days" min="0" (ngModelChange)="dependents.year_2.no_of_days = $event" />
+              
+         
+          </div>
+          <div class="col-sm-2 form-group">
+           <!--   <label > {{dependents.year_3?.no_of_days==""?'-':dependents.year_3?.no_of_days}}</label> -->
+            <input type="number"  min="0" class="form-control" [ngModelOptions]="{standalone: true}" attr.name="d_year_3{{i}}"  [ngModel]="dependents.year_3?.no_of_days" min="0" (ngModelChange)="dependents.year_3.no_of_days = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+             <!-- <label >{{dependents.year_4?.no_of_days==""?'-':dependents.year_4?.no_of_days}}</label> -->
+            <input type="number"  min="0" class="form-control" [ngModelOptions]="{standalone: true}" attr.name="d_year_4{{i}}"  [ngModel]="dependents.year_4?.no_of_days" min="0" (ngModelChange)="dependents.year_4.no_of_days = $event" />
+          </div>
+        </div>
+ <div class="col-sm-12 form-group" style="padding-top:5px;">Please indicate Visa type, number and date of issue</div>
+        <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Taxpayer - {{getCommonDetails.name}}</div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+            <label >Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="aadharcard" [(ngModel)]="getCommonDetails.aadharcard" #aadharcard="ngModel" [ngClass]="{ 'has-error': f.submitted && !aadharcard.valid }" required />
+            <div *ngIf="f.submitted && !aadharcard.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="visa" [(ngModel)]="getCommonDetails.visa" #visa="ngModel" [ngClass]="{ 'has-error': f.submitted && !visa.valid }" required />
+            <div *ngIf="f.submitted && !visa.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="visaType" [(ngModel)]="getCommonDetails.visaType" #visaType="ngModel" [ngClass]="{ 'has-error': f.submitted && !visaType.valid }" required />
+            <div *ngIf="f.submitted && !visaType.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+          <label > Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="issuedDate" [(ngModel)]="getCommonDetails.issuedDate" #issuedDate="ngModel" [ngClass]="{ 'has-error': f.submitted && !issuedDate.valid }" required />
+            <div *ngIf="f.submitted && !issuedDate.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="passport_no" [(ngModel)]="getCommonDetails.passport_no" #passport_no="ngModel" [ngClass]="{ 'has-error': f.submitted && !passport_no.valid }" required />
+            <div *ngIf="f.submitted && !passport_no.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="expiry_date" [(ngModel)]="getCommonDetails.expiry_date" #expiry_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !expiry_date.valid }" required />
+            <div *ngIf="f.submitted && !expiry_date.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Spouse - {{getCommonDetails.spouse?.name}}</div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+           <label > Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="s_aadharcard" [ngModel]="getCommonDetails.spouse?.aadharcard" (ngModelChange)="getCommonDetails.spouse.aadharcard = $event" #s_aadharcard="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_aadharcard.valid }" required />
+            <div *ngIf="f.submitted && !s_aadharcard.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="s_visa" [ngModel]="getCommonDetails.spouse?.visa" (ngModelChange)="getCommonDetails.spouse.visa = $event" #s_visa="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_visa.valid }" required />
+            <div *ngIf="f.submitted && !s_visa.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="s_visaType" [ngModel]="getCommonDetails.spouse?.visaType" (ngModelChange)="getCommonDetails.spouse.visaType = $event" #s_visaType="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_visaType.valid }" required />
+            <div *ngIf="f.submitted && !s_visaType.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+           <label >Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="s_issued_date" [ngModel]="getCommonDetails.spouse?.issuedDate" (ngModelChange)="getCommonDetails.spouse.issuedDate = $event" #s_issued_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_issued_date.valid }" required />
+            <div *ngIf="f.submitted && !s_issued_date.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="s_passport_no" [ngModel]="getCommonDetails.spouse?.passport_no" (ngModelChange)="getCommonDetails.spouse.passport_no = $event" #s_passport_no="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_passport_no.valid }" required />
+            <div *ngIf="f.submitted && !s_passport_no.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="s_expiry_date" [ngModel]="getCommonDetails.spouse?.expiry_date" (ngModelChange)="getCommonDetails.spouse.expiry_date = $event" #s_expiry_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_expiry_date.valid }" required />
+            <div *ngIf="f.submitted && !s_expiry_date.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-12 row" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+      <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Dependent : {{i+1}}- {{dependents.name}}</div>
+
+       <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+            <label >Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="d_aadharcard"                            [(ngModel)]="dependents.aadharcard" #d_aadharcard="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_aadharcard.valid }" required />
+            <div *ngIf="f.submitted && !d_aadharcard.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="d_visa" [(ngModel)]="dependents.visa" #d_visa="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_visa.valid }" required />
+            <div *ngIf="f.submitted && !d_visa.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="d_visaType" [(ngModel)]="dependents.visaType" #d_visaType="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_visaType.valid }" required />
+            <div *ngIf="f.submitted && !d_visaType.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+          <label > Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_issuedDate" [(ngModel)]="dependents.issuedDate" #d_issuedDate="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_issuedDate.valid }" required />
+            <div *ngIf="f.submitted && !d_issuedDate.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="text"   class="form-control" name="d_passport_no" [(ngModel)]="dependents.passport_no" #d_passport_no="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_passport_no.valid }" required />
+            <div *ngIf="f.submitted && !d_passport_no.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_expiry_date" [(ngModel)]="dependents.expiry_date" #d_expiry_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_expiry_date.valid }" required />
+            <div *ngIf="f.submitted && !d_expiry_date.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        
+      </div>
+
+           <div class="col-sm-12 headTitle center" >FEDERAL</div>
+     
+      <div class="col-sm-12  headTitle">
+          <div class="row">
+          
+          <div class="col-sm-4">
+           
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+        <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Taxpayer  - {{getCommonDetails.name}}</div>
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+ 
+
+            <input type="date"   class="form-control" name="f_entry_date" [ngModel]="getCommonDetails.year_1?.entry_date" (ngModelChange)="getCommonDetails.year_1.entry_date = $event" #f_entry_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !f_entry_date.valid }" required />
+              <div *ngIf="f.submitted && !f_entry_date.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="f_entry_date1" [ngModel]="getCommonDetails.year_2?.entry_date" (ngModelChange)="getCommonDetails.year_2.entry_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="f_entry_date2" [ngModel]="getCommonDetails.year_3?.entry_date" (ngModelChange)="getCommonDetails.year_3.entry_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="f_entry_date3" [ngModel]="getCommonDetails.year_4?.entry_date" (ngModelChange)="getCommonDetails.year_4.entry_date = $event" />
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+             
+            <input type="date"   class="form-control" name="f_exit_date"  [ngModel]="getCommonDetails.year_1?.exit_date" (ngModelChange)="getCommonDetails.year_1.exit_date = $event" #f_exit_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !f_exit_date.valid }" required />
+             <div *ngIf="f.submitted && !f_exit_date.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+             <input type="date"   class="form-control" name="f_exit_date1"  [ngModel]="getCommonDetails.year_2?.exit_date" (ngModelChange)="getCommonDetails.year_2.exit_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+             <input type="date"   class="form-control" name="f_exit_date2"  [ngModel]="getCommonDetails.year_3?.exit_date" (ngModelChange)="getCommonDetails.year_3.exit_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="f_exit_date3"  [ngModel]="getCommonDetails.year_4?.exit_date" (ngModelChange)="getCommonDetails.year_4.exit_date = $event" />
+          </div>
+        </div>
+
+         <div class="col-sm-12 headTitle form-group"  style="margin-bottom: 5px;">Spouse - {{getCommonDetails.spouse?.name}}</div>
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+
+           <input type="date"   class="form-control" name="s_entry_date" [ngModel]="getCommonDetails.spouse?.year_1?.entry_date" (ngModelChange)="getCommonDetails.spouse.year_1.entry_date = $event"  #s_entry_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_entry_date.valid }" required />
+             <div *ngIf="f.submitted && !s_entry_date.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="s_entry_date1" [ngModel]="getCommonDetails.spouse?.year_2?.entry_date" (ngModelChange)="getCommonDetails.spouse.year_2.entry_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+           <input type="date"   class="form-control" name="s_entry_date2" [ngModel]="getCommonDetails.spouse?.year_3?.entry_date" (ngModelChange)="getCommonDetails.spouse.year_3.entry_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+           <input type="date"   class="form-control" name="s_entry_date3" [ngModel]="getCommonDetails.spouse?.year_4?.entry_date" (ngModelChange)="getCommonDetails.spouse.year_4.entry_date = $event" />
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <input type="date"   class="form-control" name="s_exit_date"  [ngModel]="getCommonDetails.spouse?.year_1?.exit_date" (ngModelChange)="getCommonDetails.spouse.year_1.exit_date = $event" #s_exit_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !s_exit_date.valid }" required />
+             <div *ngIf="f.submitted && !s_exit_date.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="s_exit_date1"  [ngModel]="getCommonDetails.spouse?.year_2?.exit_date" (ngModelChange)="getCommonDetails.spouse.year_2.exit_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="s_exit_date2"  [ngModel]="getCommonDetails.spouse?.year_3?.exit_date" (ngModelChange)="getCommonDetails.spouse.year_3.exit_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="s_exit_date3"  [ngModel]="getCommonDetails.spouse?.year_4?.exit_date" (ngModelChange)="getCommonDetails.spouse.year_4.exit_date = $event" />
+          </div>
+        </div>
+        <div class="col-sm-12 form-group" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+         <div class="col-sm-12 headTitle form-group"  style="margin-bottom: 5px;">Dependent : {{i+1}} - {{dependents.name}} </div>
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" [ngModelOptions]="{standalone: true}" name="d_entry_date" [ngModel]="dependents.year_1?.entry_date" (ngModelChange)="dependents.year_1.entry_date = $event" #d_entry_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_entry_date.valid }" required />
+             <div *ngIf="f.submitted && !d_entry_date.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_entry_date1" [ngModel]="dependents.year_2?.entry_date" (ngModelChange)="dependents.year_2.entry_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_entry_date2" [ngModel]="dependents.year_3?.entry_date" (ngModelChange)="dependents.year_3.entry_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+           <input type="date"   class="form-control" name="d_entry_date3" [ngModel]="dependents.year_4?.entry_date" (ngModelChange)="dependents.year_4.entry_date = $event" />
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_exit_date" [ngModel]="dependents.year_1?.exit_date" (ngModelChange)="dependents.year_1.exit_date = $event" #d_exit_date="ngModel" [ngClass]="{ 'has-error': f.submitted && !d_exit_date.valid }" required />
+             <div *ngIf="f.submitted && !d_exit_date.valid" class=" text-danger">Required</div>
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_exit_date1" [ngModel]="dependents.year_2?.exit_date" (ngModelChange)="dependents.year_2.exit_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_exit_date2" [ngModel]="dependents.year_3?.exit_date" (ngModelChange)="dependents.year_3.exit_date = $event" />
+          </div>
+          <div class="col-sm-2 form-group">
+            <input type="date"   class="form-control" name="d_exit_date3" [ngModel]="dependents.year_4?.exit_date" (ngModelChange)="dependents.year_4.exit_date = $event" />
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-12 form-group" style="padding-top:5px;">In case you travelled two or more states in US for the year 2016, Please provide your entry & exit dates between the states.</div>
+
+
+        <div class="col-sm-12 headTitle center" >State</div>
+        <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Taxpayer  - {{getCommonDetails.name}}</div>
+
+        <div class="table-responsive">
+ 
+   <form  name="tf"  #tf="ngForm" (submit)="addTaxpayerState(taxpayerInfo)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+                <th> Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td></td>
+                <td>
+             <select class="form-control" name="t_state" (change)="onSelect($event.target.value)" [ngModel]="taxpayerInfo.state?.id" #t_state="ngModel" required [ngClass]="{ 'has-error': tf.submitted && !t_state.valid }">
+                  <option *ngFor="let product of StatesList" [value]="product.id">{{product.name}}</option>
+                </select>
+    
+              <div *ngIf="tf.submitted && !t_state.valid" class=" text-danger">Required</div></td>
+              <td><input type="date" name="t_entry"  class="form-control" [(ngModel)]="taxpayerInfo.entry_date" #t_entry="ngModel" required [ngClass]="{ 'has-error': tf.submitted && !t_entry.valid }" />
+            <div *ngIf="tf.submitted && !t_entry.valid" class=" text-danger">Required</div></td>
+
+            <td> <input type="date" name="t_exit"  class="form-control" [(ngModel)]="taxpayerInfo.exit_date" #t_exit="ngModel" required [ngClass]="{ 'has-error': tf.submitted && !t_exit.valid }" />
+            <div *ngIf="tf.submitted && !t_exit.valid" class=" text-danger">Required</div></td>
+             <td><button type = "submit"  [disabled]="tf.invalid || tf.pending" class="btn btn-primary btn-sm">Add <i class="nb-plus"></i></button></td>
+              </tr>
+             
+               <tr *ngFor="let itemrow of getCommonDetails.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+                  <td> <!-- *ngIf="itemrow.id == null" --><button  (click)="deleteState(i, getCommonDetails.stateEntrydetails)" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+        </tr>  
+            </tbody>
+          </table>
+           </form>
+        </div>
+
+ <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Spouse  - {{getCommonDetails.spouse?.name}}</div>
+
+        <div class="table-responsive">
+ 
+   <form  name="sf"  #sf="ngForm" (submit)="addSpouseState(spouseInfo)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+                <th> Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td></td>
+                <td>
+                <select class="form-control" name="s_state" (change)="onSpouseSelect($event.target.value)" [ngModel]="spouseInfo.state?.id" #s_state="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !s_state.valid }">
+                  <option *ngFor="let product of StatesList" [value]="product.id">{{product.name}}</option>
+                </select>
+
+                 <!--  <select class="form-control" name="s_state" [(ngModel)]="spouseInfo.state" #s_state="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !s_state.valid }" >
+              <option></option>
+              <option>Alabama (AK)</option>
+             
+              </select> -->
+              <div *ngIf="sf.submitted && !s_state.valid" class=" text-danger">Required</div></td>
+              <td><input type="date" name="s_entry"  class="form-control" [(ngModel)]="spouseInfo.entry_date" #s_entry="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !s_entry.valid }" />
+            <div *ngIf="sf.submitted && !s_entry.valid" class=" text-danger">Required</div></td>
+            <td> <input type="date" name="s_exit"  class="form-control" [(ngModel)]="spouseInfo.exit_date" #s_exit="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !s_exit.valid }" />
+            <div *ngIf="sf.submitted && !s_exit.valid" class=" text-danger">Required</div></td>
+             <td><button type = "submit"  [disabled]="sf.invalid || sf.pending" class="btn btn-primary btn-sm">Add <i class="nb-plus"></i></button></td>
+              </tr>
+             
+               <tr *ngFor="let itemrow of getCommonDetails.spouse?.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+                  <td> <button (click)="deleteState(i, getCommonDetails.spouse?.stateEntrydetails)" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+        </tr>  
+            </tbody>
+          </table>
+           </form>
+        </div>
+
+<div class="col-sm-12 form-group" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+         <div class="col-sm-12 headTitle form-group"  style="margin-bottom: 5px;">Dependent : {{i+1}} - {{dependents.name}} </div>
+        <div class="table-responsive">
+ 
+   <form  name="sf"  #sf="ngForm" (submit)="addDepandantState(depandantInfo, dependents.stateEntrydetails)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+                <th> Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td></td>
+                <td>
+
+ <select class="form-control" name="d_state" (change)="onDepantantSelect($event.target.value)" [ngModel]="depandantInfo.state?.id" #d_state="ngModel" required [ngClass]="{ 'has-error': tf.submitted && !d_state.valid }">
+                  <option *ngFor="let product of StatesList" [value]="product.id">{{product.name}}</option>
+                </select>
+                
+               <!--    <select class="form-control" name="d_state" [(ngModel)]="depandantInfo.state"  [ngModelOptions]="{ standalone : true }" #d_state="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !d_state.valid }" >
+              <option></option>
+              <option>Alabama (AK)</option>
+             
+              </select> -->
+              <div *ngIf="sf.submitted && !d_state.valid" class=" text-danger">Required</div></td>
+              <td><input type="date" name="d_entry"  class="form-control" [(ngModel)]="depandantInfo.entry_date"  [ngModelOptions]="{ standalone : true }" #t_entry="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !t_entry.valid }" />
+            <div *ngIf="sf.submitted && !t_entry.valid" class=" text-danger">Required</div></td>
+            <td> <input type="date" name="t_exit"  class="form-control" [(ngModel)]="depandantInfo.exit_date" [ngModelOptions]="{ standalone : true }" #t_exit="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !t_exit.valid }" />
+            <div *ngIf="sf.submitted && !t_exit.valid" class=" text-danger">Required</div></td>
+             <td><button type = "submit"  [disabled]="sf.invalid || sf.pending" class="btn btn-primary btn-sm">Add <i class="nb-plus"></i></button></td>
+              </tr>
+             
+               <tr *ngFor="let itemrow of dependents.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+                  <td> <button (click)="deleteState(i, dependents.stateEntrydetails)" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+        </tr>  
+            </tbody>
+          </table>
+           </form>
+        </div>
+</div>
+
+
+
+      
+
+
+       </div> 
+    <div class="row">
+      	 <div class="col-sm-12 form-group headTitle">Upload Document</div>
+          <div class="col-sm-12 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+     
+
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+          
+           </div>
+         </div>
+    
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of getCommonDetails.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View" class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="getCommonDetails.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+          
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/income']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+ <!-- Non editable-->
+
+ <div class="col-sm-12" *ngIf="editMode == false">
+   <nb-card  size="normal">
+      <nb-card-header>CITIZENSHIP STATUS</nb-card-header>
+      <nb-card-body>
+       <div class="row">
+
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-9 form-group input-group-sm">
+            <label for="input-password" class="label">Are you a green Card holder or US Citizen</label>
+          </div>
+          <div class="col-sm-3 form-group input-group-sm">
+            {{getCommonDetails.greenCard_holder}}
+           
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">TRAVEL HISTORY</div>
+     
+      <div class="col-sm-12  headTitle">
+          <div class="row">
+          
+          <div class="col-sm-4">
+            Name
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+         </div> 
+
+      <div class="row">
+        <div class="col-sm-12 form-group" style="padding-top:5px;">Please indicate the number of days physically present in USA during  {{today-4}}, {{today-3}}, {{today-2}} & {{today-1}}</div>
+        <div class="col-sm-12 row ">
+          
+          
+          <div class="col-sm-4 form-group">
+            <label >TAX PAYER - {{getCommonDetails.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label >{{getCommonDetails.year_1?.no_of_days==""?'-':getCommonDetails.year_1?.no_of_days}}</label>
+          </div>
+          <div class="col-sm-2 form-group ">
+          
+           <label >{{getCommonDetails.year_2?.no_of_days==""?'-':getCommonDetails.year_2?.no_of_days}}</label>
+          </div>
+          <div class="col-sm-2 form-group ">
+          
+           <label >{{getCommonDetails.year_3?.no_of_days==""?'-':getCommonDetails.year_3?.no_of_days}}</label>
+          </div>
+          <div class="col-sm-2 form-group ">
+          
+           <label >{{getCommonDetails.year_4?.no_of_days==""?'-':getCommonDetails.year_4?.no_of_days}}</label>
+          </div>
+        </div>
+        
+     
+        <div class="col-sm-12 row" >
+          
+         
+          <div class="col-sm-4 form-group">
+            <label >Spouse - {{getCommonDetails.spouse?.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.year_1?.no_of_days==""?'-':getCommonDetails.spouse?.year_1?.no_of_days}}</label>
+            
+          </div>
+          <div class="col-sm-2 form-group "><label >{{getCommonDetails.spouse?.year_2?.no_of_days==""?'-':getCommonDetails.spouse?.year_2?.no_of_days}}</label>
+          
+          </div>
+          <div class="col-sm-2 form-group ">
+            <label >{{getCommonDetails.spouse?.year_3?.no_of_days==""?'-':getCommonDetails.spouse?.year_3?.no_of_days}}</label>
+          
+          </div>
+          <div class="col-sm-2 form-group ">
+           <label > {{getCommonDetails.spouse?.year_4?.no_of_days==""?'-':getCommonDetails.spouse?.year_4?.no_of_days}}</label>
+          
+          </div>
+        </div>
+
+         <div class="col-sm-12 row" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+          
+          
+          <div class="col-sm-4 form-group">
+            <label >Dependent : {{i+1}} - {{dependents.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label > {{dependents.year_1?.no_of_days==""?'-':dependents.year_1?.no_of_days}}</label> 
+            
+          </div>
+          <div class="col-sm-2 form-group ">
+           <label > {{dependents.year_2?.no_of_days==""?'-':dependents.year_2?.no_of_days}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group ">
+            <label > {{dependents.year_3?.no_of_days==""?'-':dependents.year_3?.no_of_days}}</label>
+        
+          </div>
+          <div class="col-sm-2 form-group ">
+             <label >{{dependents.year_4?.no_of_days==""?'-':dependents.year_4?.no_of_days}}</label>
+         
+          </div>
+        </div>
+ <div class="col-sm-12 form-group" style="padding-top:5px;">Please indicate Visa type, number and date of issue</div>
+        <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Taxpayer - {{getCommonDetails.name}}</div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+            <label >Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.aadharcard}}</label>
+            
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > {{getCommonDetails.visa}}</label>
+         
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.visaType}}</label>
+         
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+          <label > Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > {{getCommonDetails.issuedDate}}</label>
+            
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > {{getCommonDetails.passport_no}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.expiry_date}}</label>
+           
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Spouse - {{getCommonDetails.spouse?.name}}</div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+           <label > Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > {{getCommonDetails.spouse?.aadharcard}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.visa}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.visaType}}</label>
+           
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+           <label >Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.issuedDate}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.passport_no}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.expiry_date}}</label>
+            
+          </div>
+        </div>
+        <div class="col-sm-12 row" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+      <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Dependent : {{i+1}}- {{dependents.name}}</div>
+
+       <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+            <label >Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.aadharcard}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > {{dependents.visa}}</label>
+            
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.visaType}}</label>
+           
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+          <label > Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > {{dependents.issuedDate}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > {{dependents.passport_no}}</label>
+            
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.expiry_date}}</label>
+           
+          </div>
+        </div>
+
+        
+      </div>
+
+           <div class="col-sm-12 headTitle center" >FEDERAL</div>
+     
+      <div class="col-sm-12  headTitle">
+          <div class="row">
+          
+          <div class="col-sm-4">
+           Taxpayer  - {{getCommonDetails.name}}
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+       
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+              <label >{{getCommonDetails.year_1?.entry_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+              <label >{{getCommonDetails.year_2?.entry_date}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+             <label > {{getCommonDetails.year_3?.entry_date}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.year_4?.entry_date}}</label>
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+             
+            <label >{{getCommonDetails.year_1?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label > {{getCommonDetails.year_2?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+             <label >{{getCommonDetails.year_3?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.year_4?.exit_date}}</label>
+          </div>
+        </div>
+        <div class="col-sm-12  headTitle">
+          <div class="row">
+          
+          <div class="col-sm-4">
+           Taxpayer  - {{getCommonDetails.spouse?.name}}
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+         
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.year_1?.entry_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.year_2?.entry_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label >{{getCommonDetails.spouse?.year_3?.entry_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label >{{getCommonDetails.spouse?.year_4?.entry_date}}</label>
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label >{{getCommonDetails.spouse?.year_1?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.year_2?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.year_3?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{getCommonDetails.spouse?.year_4?.exit_date}}</label>
+          </div>
+        </div>
+        <div class="col-sm-12 form-group" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+           <div class="col-sm-12  headTitle">
+          <div class="row">
+          
+          <div class="col-sm-4">
+           Dependent : {{i+1}} - {{dependents.name}}
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+        
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.year_1?.entry_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.year_2?.entry_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.year_3?.entry_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+          <label >{{dependents.year_4?.entry_date}}</label>
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label >{{dependents.year_1?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.year_2?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.year_3?.exit_date}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >{{dependents.year_4?.exit_date}}</label>
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-12 form-group" style="padding-top:5px;">In case you travelled two or more states in US for the year 2016, Please provide your entry & exit dates between the states.</div>
+
+
+        <div class="col-sm-12 headTitle center" >State</div>
+        <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Taxpayer  - {{getCommonDetails.name}}</div>
+
+        <div class="table-responsive">
+ 
+   <form  name="tf"  #tf="ngForm" (submit)="addTaxpayerState(taxpayerInfo)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+              </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let itemrow of getCommonDetails.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+              </tr>  
+            </tbody>
+          </table>
+           </form>
+        </div>
+
+ <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Spouse  - {{getCommonDetails.spouse?.name}}</div>
+
+        <div class="table-responsive">
+ 
+   <form  name="sf"  #sf="ngForm" (submit)="addSpouseState(spouseInfo)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+             <tr *ngFor="let itemrow of getCommonDetails.spouse?.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+                 
+            </tr>  
+            </tbody>
+          </table>
+           </form>
+        </div>
+
+<div class="col-sm-12 form-group" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+         <div class="col-sm-12 headTitle form-group"  style="margin-bottom: 5px;">Dependent : {{i+1}} - {{dependents.name}} </div>
+        <div class="table-responsive">
+ 
+   <form  name="sf"  #sf="ngForm" (submit)="addDepandantState(depandantInfo, dependents.stateEntrydetails)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+             
+               <tr *ngFor="let itemrow of dependents.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+                 
+        </tr>  
+            </tbody>
+          </table>
+           </form>
+        </div>
+</div>
+
+
+
+      
+
+
+       </div> 
+    <div class="row">
+         <div class="col-sm-12 form-group headTitle">Upload Document</div>
+   
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of getCommonDetails.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View" class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="getCommonDetails.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+
+   </nb-card-body>
+    <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/income']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+  </div>
+
+ 

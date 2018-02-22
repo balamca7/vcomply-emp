@@ -1,0 +1,366 @@
+<div class="row">
+<div class="col-sm-3" >
+    <nb-card >
+      <nb-card-header>Profile </nb-card-header>
+      <nb-card-body>
+         <div class=" profile-pic">
+          <img [src]="profileImage"  alt=" " class="circle">
+              <div class="fileUpload overlay">
+
+                  <img src="assets/images/camera.png" />
+             <input type='file' class="upload" name="Profile"  (change)="readUrl($event)" style="border:1px solid bule;" >
+            
+          </div>
+          </div>
+      </nb-card-body>
+    </nb-card>
+</div>
+
+<div class="col-sm-9" >
+
+<div class=""  *ngIf="!editMode">
+
+ <nb-card >
+      <nb-card-header>Details </nb-card-header>
+      <nb-card-body>
+        
+ 
+        <div class="row">
+         <div class="col-sm-6 row">
+            <div class="col-sm-6 form-group input-group-sm">
+              <label  class="label">First name</label>
+            </div>
+            <div class="col-sm-6 form-group input-group-sm">
+               <label  class="label">{{userInfo.f_name}}</label>
+            </div>
+          </div>
+          <div class=" col-sm-6 row">
+            <div class="col-sm-6 form-group input-group-sm">
+              <label class="label">Middle name</label>
+            </div>
+            <div class="col-sm-6 form-group input-group-sm">
+               <label  class="label">{{userInfo.m_name}}</label>
+            </div>
+          </div>
+
+          <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.l_name}}</label>
+          </div>
+        </div>
+        <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Surname</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.surname}}</label>
+          </div>
+        </div>
+        <div class="row  col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Email ID</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.email_id}}</label>
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label  class="label">Age</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.age}}</label>
+           </div>
+           </div>
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label  class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.dob}}</label>
+           </div>
+           </div>
+           <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Gender</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.gender}}</label>
+          </div>
+        </div>
+            <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Address 1</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.address1}}</label>
+          </div>
+        </div>
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Address 2</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.address2}}</label>
+          </div>
+        </div>
+        
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Nationality</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.nationality}}</label>
+          </div>
+        </div>
+                
+        <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Nationality</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.state}}</label>
+          </div>
+        </div>
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Home Country</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.country}}</label>
+          </div>
+        </div>
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Telephone (Home)</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" >
+             <label  class="label">{{userInfo.telephone}}</label>
+          </div>
+        </div>
+        <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Mobile</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.mobile}}</label>
+          </div>
+        </div>
+         <div class="row  col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Employee id / Customer id /File number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <label  class="label">{{userInfo.number}}</label>
+          </div>
+        </div>
+         
+        
+        </div>
+      </nb-card-body>
+      <nb-card-footer>      
+        <button  (click)="editProfile()" class="btn btn-sm btn-success "> Edit</button>
+      </nb-card-footer>
+    </nb-card>
+ 
+  </div> 
+<div class=""  *ngIf="editMode">
+   <form name="form"  #f="ngForm" (ngSubmit)="f.form.valid && updateProfile(userInfo)" novalidate>
+   <nb-card >
+  
+      <nb-card-header>Edit Details </nb-card-header>
+      <nb-card-body>
+        
+        <div class="row">
+
+         <div class="col-sm-6 row">
+
+            <div class="col-sm-6 form-group input-group-sm">
+              <label  class="label">First name</label>
+            </div>
+            <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !f_name.valid }">
+         
+              <input type="text" name="f_name" placeholder="First name" class="form-control" [(ngModel)]="userInfo.f_name" #f_name="ngModel" required />
+              <div *ngIf="f.submitted && !f_name.valid" class=" text-danger">First name is required</div>
+            </div>
+          </div>
+          <div class=" col-sm-6 row">
+            <div class="col-sm-6 form-group input-group-sm">
+              <label class="label">Middle name</label>
+            </div>
+            <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !m_name.valid }">
+              <input type="text" name="m_name" placeholder="Middle name" class="form-control" [(ngModel)]="userInfo.m_name" #m_name="ngModel" />
+              <div *ngIf="f.submitted && !m_name.valid" class=" text-danger">middle name is required</div>
+            </div>
+          </div>
+
+          <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !l_name.valid }">
+            <input type="text" name="l_name" placeholder="Last name" class="form-control" [(ngModel)]="userInfo.l_name" #l_name="ngModel" required />
+            <div *ngIf="f.submitted && !l_name.valid" class=" text-danger">Last name is required</div>
+          </div>
+        </div>
+        <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Surname</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !surname.valid }">
+            <input type="text" name="surname" placeholder="Surname" class="form-control" [(ngModel)]="userInfo.surname" #surname="ngModel" required />
+             <div *ngIf="f.submitted && !surname.valid" class=" text-danger">Surname is required</div>
+          </div>
+        </div>
+        <div class="row  col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Email ID</label>
+
+
+
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !email_id.valid }">
+            <input type="email" name="email_id" placeholder="Email ID" class="form-control" [(ngModel)]="userInfo.email_id" #email_id="ngModel" required pattern=".+\@.+\..+" email />
+             <div *ngIf="f.submitted && !email_id.valid" class="form-text error text-danger">Email id is required</div>
+             <div *ngIf="f.submitted && !email_id.touched && !email_id.errors?.pattern" class="form-text error text-danger">Please enter the correct email, this email not valid.</div>
+
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label  class="label">Age</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !age.valid }">
+          <input type="number" name="age" value="" placeholder="Age" class="form-control form-control-line" [(ngModel)]="userInfo.age" #age="ngModel" required />
+             <div *ngIf="f.submitted && !age.valid" class=" text-danger">Age is required</div>
+           </div>
+           </div>
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label  class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !dob.valid }">
+          <input type="date" value="" name="dob" class="form-control form-control-line" [(ngModel)]="userInfo.dob" #dob="ngModel" required />
+             <div *ngIf="f.submitted && !dob.valid" class=" text-danger">Surname is required</div>
+           </div>
+           </div>
+           <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Gender</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !gender.valid }">
+             <select class="form-control" name="gender" placeholder="Gender" [(ngModel)]="userInfo.gender" #gender="ngModel" required >
+             
+             <option></option>
+            <option value='Male'>Male</option>
+            <option value='Female'>Female</option>
+            <option value="Others">Others</option>
+
+          </select>
+          <div *ngIf="f.submitted && !gender.valid" class=" text-danger">Gender is required</div>
+          </div>
+        </div>
+            <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Address 1</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !address1.valid }">
+            <input type="text" name="address1" placeholder="Address 1" class="form-control" [(ngModel)]="userInfo.address1" #address1="ngModel" required />
+             <div *ngIf="f.submitted && !address1.valid" class=" text-danger">Address is required</div>
+          </div>
+        </div>
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Address 2</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" >
+            <input type="text" name="address2" placeholder="Address 2" class="form-control" [(ngModel)]="userInfo.address2">
+          </div>
+        </div>
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Nationality</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !nationality.valid }">
+             <input type="text"   class="form-control" name="Nationality" placeholder="Nationality" [(ngModel)]="userInfo.nationality" #nationality="ngModel" required />
+             <div *ngIf="f.submitted && !nationality.valid" class=" text-danger">Nationality is required</div>
+               
+          </div>
+        </div>
+         
+                
+ <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">State</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !state_id.valid }">
+             <select class="form-control" name="state_id" placeholder="State" [(ngModel)]="userInfo.state_id" #state_id="ngModel" required >
+              <option></option>
+               <option *ngFor="let state of states" value= {{state.id}}>
+                  {{state.name}}
+                </option>
+               
+             </select>
+             <div *ngIf="f.submitted && !state_id.valid" class=" text-danger">State is required</div>
+          </div>
+        </div>
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Home Country</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !country_id.valid }">
+             <select class="form-control" name="country_id" placeholder="Home Country" [(ngModel)]="userInfo.country_id" #country_id="ngModel" required >
+              <option></option>
+                <option *ngFor="let country of countries" value= {{country.id}}>
+                  {{country.name}}
+                </option>
+              
+             </select>
+             <div *ngIf="f.submitted && !country_id.valid" class=" text-danger">Country is required</div>
+          </div>
+        </div>
+         <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Telephone (Home)</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !telephone.valid }">
+             <input type="tel" name="telephone"  class="form-control" placeholder="Telephone" [(ngModel)]="userInfo.telephone"  #telephone="ngModel" required />
+             <div *ngIf="f.submitted && !telephone.valid" class=" text-danger">Telephone is required</div>
+                
+          </div>
+        </div>
+        <div class="row col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Mobile</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !mobile.valid }">
+             <input type="Tel" name="mobile"  class="form-control" placeholder="Mobile" [(ngModel)]="userInfo.mobile"  #mobile="ngModel" required />
+             <div *ngIf="f.submitted && !mobile.valid" class=" text-danger">Mobile is required</div>
+                
+          </div>
+        </div>
+         <div class="row  col-sm-6">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label  class="label">Employee id / Customer id /File number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !number.valid }">
+            <input type="text" name="number" placeholder="Employee id / Customer id /File number" class="form-control" [(ngModel)]="userInfo.number"  #number="ngModel" required />
+             <div *ngIf="f.submitted && !number.valid" class=" text-danger">Employee id / Customer id /File number is required</div>
+          </div>
+        </div>
+        </div>
+      </nb-card-body>
+      <nb-card-footer>      
+          <button type = "submit"  *ngIf="editMode" [disabled]="loading"  class="btn btn-sm btn-success "> Update</button>
+          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <button *ngIf="editMode" (click)="editMode=false" class="btn btn-sm btn-warning "> Cancel</button>
+      </nb-card-footer>
+      
+    </nb-card>
+     </form>
+  </div >
+</div>
+</div>

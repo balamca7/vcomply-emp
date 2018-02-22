@@ -1,0 +1,527 @@
+<div class="col-sm-12">
+  
+	 <nb-card  size="normal">
+      <nb-card-header>GENERAL INFORMATION</nb-card-header>
+      <nb-card-body>
+    <!-- <pre>{{generalInfo | json}}</pre> -->
+    
+      <div class="row">
+        <div class="col-sm-12 form-group headTitle"> Taxpayer</div>
+      </div>
+      <div class="row">
+
+      <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">First name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.f_name}}
+          </div>
+        </div>
+           
+        <div class= "col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.l_name}}
+          
+        
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.dob}}
+          
+           </div>
+           </div>
+            
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Gender</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.gender}}
+         
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Pan Number</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.pan_no}}
+          
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">SSN / ITIN</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.ssn_itin_no}}
+       
+           </div>
+           </div>
+
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Official)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.email_official}}
+         
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Personal)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.email_personal}}
+         
+           </div>
+           </div>
+
+          <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (US) *</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.contact_usa}}
+         
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (India)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.contact_india}}
+          
+           </div>
+           </div>
+
+           
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Designation</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.designation}}
+       
+           </div>
+           </div>
+    </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group headTitle"> Spouse</div>
+      </div>
+      <div class="row">
+
+      <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">First name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.f_name}}
+            
+          </div>
+        </div>
+           
+        <div class= "col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.l_name}}
+            
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.dob}}
+          
+           </div>
+           </div>
+            
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Gender</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.gender}}
+         
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Pan Number</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.pan_no}}
+          
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">SSN / ITIN</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.ssn_itin_no}}
+        
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Official)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.email_official}}
+         
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Personal)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.email_personal}}
+         
+           </div>
+           </div>
+
+          <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (US)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.contact_usa}}
+         
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (India)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.contact_india}}
+         
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Designation</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.spouse.designation}}
+         
+           </div>
+           </div>
+    </div>
+    
+   
+   <div class="row">
+        <div class="col-sm-12 form-group headTitle">Dependents</div>
+      </div>
+<div class="table-responsive">
+ 
+   
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr >
+                <th>Dependents</th>
+                <th> First name</th>
+                <th> Last name</th>
+                <th> Gender</th>
+                <th> Pan No</th>
+                 <th>SSN / ITIN</th>
+                <th> D.O.B <small>(MM/DD/YY)</small></th>
+              </tr>
+            </thead>
+            <tbody>
+             
+            
+              
+              <tr *ngFor="let itemrow of generalInfo.dependents; let i=index" >
+          <th class="text-nowrap" scope="row">{{ i + 1 }}</th>
+           
+                <td>{{itemrow.f_name}}</td>
+                <td>{{itemrow.l_name}}</td>
+                <td>{{itemrow.gender}}</td>
+                <td>{{itemrow.pan_no}}</td>
+                <td>{{itemrow.ssn_itin_no}}</td>
+                <td>{{itemrow.dob}}</td>
+        </tr> 
+            </tbody>
+          </table>
+      
+        </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Father's Name of Taxpayer</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.father_name}}
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Marital Status</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.marital_status}}
+          </div>
+        </div>
+
+         <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Filing Status Opted</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.filing_status}}
+          </div>
+        </div>
+
+
+         <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Permanent Home</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.permanent_home}}
+          </div>
+        </div>
+
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">INDIA ADDRESS</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.address_india}}
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">USA ADDRESS</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.address_usa}}
+          </div>
+        </div>
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            <label for="input-password" class="label">Preferred address for communication (US Address / India Address) (Mandatory)</label>
+          </div>
+         
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Perferred Country</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.perferred_country}}
+          </div>
+        </div>
+        </div>
+     
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Bank Account Details - USA</div>
+      </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Bank Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.bankname_usa}}
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Type</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.acctype_usa}}
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Account Number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.accno_usa}}
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Routing # / IFSC Code</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.ifsc_usa}}
+          </div>
+        </div>
+      </div>
+     
+
+      
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Bank Account Details - India</div>
+      </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Bank Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.bankname_india}}
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Type</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.acctype_india}}
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Account Number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.accno_india}}
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Routing # / IFSC Code</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.ifsc_india}}
+          </div>
+        </div>
+      </div>
+     
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Employment Details</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label">Details of employment with any previous employer in the year 2016</label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            {{generalInfo.prev_employment}}
+          </div>
+        </div>
+      </div>
+      <div class="row "></div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label">Payroll Type</label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            {{generalInfo.payroll_type}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-9 form-group input-group-sm">
+            <label for="input-password" class="label"><p>Payroll Conversion date 
+(Applicable if Converted from
+ Split to Full Pay / Shadow to Full Pay) 
+</p></label>
+          </div>
+          <div class="col-sm-3 form-group input-group-sm">
+            {{generalInfo.payroll_date}}
+          </div>
+        </div>
+      
+      
+          <div class="col-sm-12 row form-group" style="color: red;">Please note that all fields are required to be filled to the extent possible as it will aid in flawless processing of your Tax Return.</div>
+      <div class="col-sm-12  form-group headTitle">Upload Document</div>
+    <div class="col-sm-12  ">
+          
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> Action</th>
+            </tr>
+        <tr *ngFor="let fileList of generalInfo.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+              </table> 
+            </div>
+          </div>
+          </div>
+   </nb-card-body>
+  
+</nb-card>
+
+  </div>
+
+  

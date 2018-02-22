@@ -1,0 +1,95 @@
+<div class="">
+ <nb-card>
+      <nb-card-header class="row"><span class="col-sm-6">Work permit - Self</span> <span class="col-sm-6 right"><a [routerLink]="['/emp/workpermit/self/add']" class="btn btn-sm btn-success" title="Add"><i class="ion-plus"></i> Add</a></span> </nb-card-header>
+      <nb-card-body>
+       
+        <div class=" view third-effect" *ngFor="let wpInfo of WorkpermitInfo; let i = index">
+      	 <div class="alert alert-danger"><h6 class="">Workpermit {{i+1}} : Company name - {{wpInfo.employer}}, Valid From  {{wpInfo.validity_FD | date: 'dd/MM/yyyy'}} to {{wpInfo.validity_TD | date: 'dd/MM/yyyy'}}</h6></div>
+        <div class="row">
+          <div class=" col-sm-6 row " >
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Workpermit Type</label>
+           
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">{{wpInfo.wpType}}</label>
+          </div>
+        </div>
+        <div class=" col-sm-6 row " >
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Employer</label>
+           
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">{{wpInfo.employer}}</label>
+          </div>
+        </div>
+           <div class=" col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Case / Passport / Control Number</label>
+           
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">{{wpInfo.number}}</label>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Issue Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{wpInfo.issue_date | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div>
+        <!--  <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Validity From Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{wpInfo.validity_FD | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div>
+       <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Validity To Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+           <label class="label">{{wpInfo.validity_TD | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div> -->
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Place of Issue</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{wpInfo.place_issue}}</label>
+           </div>
+           </div>
+        </div>
+          <div class="mask">
+            <a [routerLink]="['/emp/workpermit/self/edit',wpInfo.id]" class="btn btn-sm btn-primary" title="Edit"><i class="ion-edit"></i></a>
+            <a [routerLink]="['/emp/workpermit/self/',wpInfo.id]" class="btn btn-sm btn-danger" title="Delete"><i class="ion-trash-a"></i></a>
+            
+<!-- 
+             <button (click)="editWorkpermit(wpInfo.id)" class="btn btn-sm btn-primary" title="Edit"><i class="ion-edit"></i></button>
+            <button (click)="deleteWorkpermit(wpInfo.id)" class="btn btn-sm btn-danger" title="Delete"><i class="ion-close-round"></i></button> -->
+          </div>
+
+        </div>
+
+        
+      </nb-card-body>
+     <!--  <nb-card-footer>      
+      </nb-card-footer> -->
+  </nb-card>
+</div>                           
+                                             
+                                            
+                                              
+                                              
+                                             
+                                            
+                                             
+                                             
+                                           
+                                           

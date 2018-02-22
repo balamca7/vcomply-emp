@@ -1,0 +1,264 @@
+<!-- <pre>{{businessInfo | json}}</pre> -->
+       <form name="f"  #f="ngForm" (ngSubmit)="f.form.valid && onPropertyFormSubmit()" novalidate>
+
+<div class="table-responsive">
+
+<button type="submit" class="btn btn-defualt btn-sm">Save</button>
+          <table class="table table-bordered table-striped">
+            <tr class="headTitle">
+                <th colspan="2">Particulars</th>
+                <th>Business </th>
+               
+              </tr>
+            	<tr >
+                <td colspan="3"><p>Note 1: This section needs to be completed if you have any self employed or business income. Please specify the currency in which such expense is incurred.</p></td>
+               
+          </tr>
+          <tr>
+                <td colspan="3"><p>Note 2: If your filing status is MFJ (Married Filing Joint), please mention the business income of your spouse also.</p></td>
+               
+          </tr>
+          <tr>
+                <td colspan="3">** Indicates mandatory field</td>
+               
+          </tr>
+
+          
+                <tbody>
+              <tr>
+                <th colspan="2">Name of proprietor</th>
+                <td><input type="text"   class="form-control" name="proprietor_name" [(ngModel)]="businessInfo.proprietor_name" #proprietor_name="ngModel"  [ngClass]="{ 'has-error': f.submitted && !proprietor_name.valid }" required /><div *ngIf="f.submitted && !proprietor_name.valid" class=" text-danger">Required</div></td>
+               
+              </tr>
+            
+          
+			<tr>              
+                <th colspan="2">Nature of Business/ profession, including services</th>
+                <td><input type="text"   class="form-control" name="business_nature" [(ngModel)]="businessInfo.business_nature"/></td>
+              
+            
+              </tr>
+              
+              <tr>
+               
+               <th colspan="2">Business Code</th>
+                <td><input type="text"   class="form-control" name="business_code" [(ngModel)]="businessInfo.business_code"/></td>
+              
+            
+              </tr>
+               <tr>
+              
+              <th colspan="2">Name of the Business</th>
+                <td><input type="text"   class="form-control" name="business_name" [(ngModel)]="businessInfo.business_name"/></td>
+            
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Address of the Business</th>
+                <td><input type="text"   class="form-control" name="business_address" [(ngModel)]="businessInfo.business_address"/></td>
+             
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Accounting Method</th>
+                <td><select class="form-control" name="accounting_method" [(ngModel)]="businessInfo.accounting_method">
+                	<option></option>
+              <option>Cash Method</option>
+              <option>Accrual Method</option>
+              </select></td>
+               
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2"><p>Did you "materially participate" in the operation of this business during this year? Note: If "No", the losses may be limited.</p></th>
+                <td><select class="form-control" name="materially_participate" [(ngModel)]="businessInfo.materially_participate">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select></td>
+             
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">Was the business started or acquired by you in the year?</th>
+                <td><select class="form-control" name="business_started" [(ngModel)]="businessInfo.business_started">
+             <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+              </select></td>
+               
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">Did you make any payments in year that would require you to file Form(s) 1099?</th>
+                <td><select class="form-control" name="forms1099_payments" [(ngModel)]="businessInfo.forms1099_payments">
+              <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+              </select></td>
+             
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">If "Yes," did you or will you file required Forms 1099?</th>
+                <td><select class="form-control" name="forms1099_required" [(ngModel)]="businessInfo.forms1099_required">
+              <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+              </select></td>
+             
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">For State Purposes, please let us know if this business is an LLC</th>
+                <td><select class="form-control" name="state_purposes" [(ngModel)]="businessInfo.state_purposes">
+              <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+              </select></td>
+              
+            
+              </tr>
+              <tr>
+                <th  colspan="4" class="text-nowrap" scope="row" style="color: red;">&nbsp;</th>
+              </tr>
+              
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Income</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+             
+            
+              </tr>
+              <tr>
+                <th colspan="2">Gross Receipts or Sales</th>
+                <td><input type="number" min="0"  class="form-control" name="gross_receipts_sales" [(ngModel)]="businessInfo.gross_receipts_sales"/></td>
+                
+              </tr>
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Expenses</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+               </tr>
+              <tr>
+                <th colspan="2">Advertising</th>
+                <td><input type="number" min="0"  class="form-control" name="advertising" [(ngModel)]="businessInfo.advertising"/></td>
+             
+                
+              </tr>
+               <tr>
+                <th colspan="2">Car & Truck Expenses</th>
+                <td><input type="number" min="0"  class="form-control" name="car_truck_expenses" [(ngModel)]="businessInfo.car_truck_expenses"/></td>
+               
+              </tr>
+               <tr>
+               <th colspan="2">Contract Labor</th>
+                <td><input type="number" min="0"  class="form-control" name="contract_labor" [(ngModel)]="businessInfo.contract_labor"/></td>
+             
+              </tr>
+               <tr>
+                <th colspan="2">Legal/professional fees</th>
+                <td><input type="number" min="0"  class="form-control" name="legal_professional_fees" [(ngModel)]="businessInfo.legal_professional_fees"/></td>
+                
+              </tr>
+               <tr>
+                <th colspan="2">Office Expenses</th>
+                <td><input type="number" min="0"  class="form-control" name="office_expenses" [(ngModel)]="businessInfo.office_expenses"/></td>
+                
+              </tr>
+               <tr>
+                <th colspan="2">Rent or Lease</th>
+                <td><input type="number" min="0"  class="form-control" name="rent_lease" [(ngModel)]="businessInfo.rent_lease"/></td>
+               
+              </tr>
+               <tr>
+                <th colspan="2">Meals and Entertainment</th>
+                <td><input type="number" min="0"  class="form-control" name="meals_entertainment" [(ngModel)]="businessInfo.meals_entertainment"/></td>
+               
+              </tr>
+               <tr>
+                <th colspan="2">Repairs and Maintenance</th>
+                <td><input type="number" min="0"  class="form-control" name="repairs_maintenance" [(ngModel)]="businessInfo.repairs_maintenance"/></td>
+              
+              </tr>
+               <tr>
+                <th colspan="2">Taxes & Licenses</th>
+                <td><input type="number" min="0"   class="form-control" name="taxes_licenses" [(ngModel)]="businessInfo.taxes_licenses"/></td>
+             
+              </tr>
+               <tr>
+                <th colspan="2">Utilities</th>
+                <td><input type="number" min="0"   class="form-control" name="utilities" [(ngModel)]="businessInfo.utilities"/></td>
+             
+              </tr>
+               <tr>
+                <th colspan="2">Wages</th>
+                <td><input type="number" min="0"   class="form-control" name="wages" [(ngModel)]="businessInfo.wages"/></td>
+             
+              </tr>
+              <tr>
+                <th colspan="2">Business Travel Miles (Using personal Vehicle)</th>
+                <td><input type="number" min="0"   class="form-control" name="business_travel_miles" [(ngModel)]="businessInfo.business_travel_miles"/></td>
+               
+              </tr>
+               <tr>
+                <th colspan="2">Others (Pl Specify)</th>
+                <td><input type="text"   class="form-control" name="others" [(ngModel)]="businessInfo.others"/></td>
+               
+              </tr>
+              
+             
+               <tr>
+                <td colspan="4">&nbsp;</td>
+              </tr>
+              <tr><td colspan="4"><div class="table-responsive">
+ <form  name="sf"  #sf="ngForm" (submit)="addFixedAssets(assetsInfo)" novalidate>
+                <table class="table table-striped table-bordered">
+              <tr class="header">
+                <th class="text-nowrap" scope="row" >Sl.No</th>
+               <th class="text-nowrap" scope="row">Description of Fixed Assets if any used for business</th>
+                <th class="text-nowrap" scope="row" >Date of Purchase</th>
+                <th class="text-nowrap" scope="row">Cost of Asset</th>
+                <th class="text-nowrap" scope="row" ></th>
+              </tr>
+
+               <tr>
+                <td></td>
+                <td><input type="text" name="description"  class="form-control" [(ngModel)]="assetsInfo.description"  #description="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !description.valid }" />
+            <div *ngIf="sf.submitted && !description.valid" class=" text-danger">Required</div></td>
+                <td><input type="date" min="0" name="purchase_date"  class="form-control" [(ngModel)]="assetsInfo.purchase_date"   #purchase_date="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !purchase_date.valid }" />
+            <div *ngIf="sf.submitted && !purchase_date.valid" class=" text-danger">Required</div>
+          </td>
+           <td><input type="number" min="0" name="asset_cost"  class="form-control" [(ngModel)]="assetsInfo.asset_cost"   #asset_cost="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !asset_cost.valid }" />
+            <div *ngIf="sf.submitted && !asset_cost.valid" class=" text-danger">Required</div>
+          </td>
+                <td><button type = "submit"  [disabled]="sf.invalid || sf.pending" class="btn btn-primary btn-sm">Add <i class="nb-plus"></i></button></td>
+              </tr>
+            <tr *ngFor="let itemrow of businessInfo.fixedAssets; let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{itemrow.description}}</td>
+                <td>{{itemrow.purchase_date}}</td>
+                <td>{{itemrow.asset_cost}}</td>
+                  <td><!-- <button  (click)="deleteState(i, getCommonDetails.stateEntrydetails)" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button> --></td>
+        </tr>  
+            </table>
+          </form>
+          </div>
+          
+          </td>
+        </tr>
+             
+            </tbody>
+          </table>
+         </div>
+     </form>

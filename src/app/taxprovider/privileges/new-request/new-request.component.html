@@ -1,0 +1,60 @@
+ <div class="col-sm-12">
+          <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && onPropertyFormSubmit()" novalidate>
+   <nb-card  >
+     
+      <nb-card-body>
+     
+      <div class="row col-sm-12" >
+
+         
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Client Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+           <select class="form-control" name="clinet_name" [(ngModel)]="privilegeInfo.client_id" #clinet_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !clinet_name.valid }">
+                    <option></option>
+               <option *ngFor="let list of clientInfo" value= "{{list.id}}">
+                  {{list.name}}- {{list.id}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !clinet_name.valid" class=" text-danger">Required</div>
+          </div>
+        
+        <div *ngIf="privilegeInfo.client_id != ''" class="col-sm-12">
+   
+       <div class="row headTitle" >
+             <div class="col-sm-6 " >Module Name</div>
+          <div class="col-sm-1 center">Edit</div>
+          <div class="col-sm-5">Description</div>
+        </div>
+
+
+      <div class="row " style="padding-top: 10px; " *ngFor="let menu of privilegeInfo.menuInfo">
+             <div class="col-sm-6 form-group input-group-sm" >
+            <label for="input-password" class="label">{{menu.name}}</label>
+          </div>
+          <div class="col-sm-1 form-group input-group-sm center">
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="general_info" [(ngModel)]="menu.selected">
+              <span class="custom-control-indicator"></span>
+            </label>
+          </div>
+          <div class="col-sm-5 form-group input-group-sm" *ngIf="menu.selected == true">
+           
+              <input type="text" class="form-control" name="description" [(ngModel)]="menu.description" [required]="menu.selected == true"  #description="ngModel" [ngClass]="{ 'has-error': f.submitted && !description.valid }">
+             <div *ngIf="f.submitted && !description.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        </div>
+    </div>
+ 
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"  [disabled]="f.invalid || f.pending"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+           
+        </nb-card-footer>
+</nb-card>
+</form>
+      </div>

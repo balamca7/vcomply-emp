@@ -1,0 +1,172 @@
+<!-- <input type="hidden" #focus> -->
+<div class="col-sm-8" *ngIf="editMode == true">
+   <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveForm8939Details(formInfo)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>Form 8938</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{formInfo|json}}</pre> -->
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+            <thead>
+            	<tr class="headTitle"><th colspan="3">REQUIREMENT TO FILE FORM 8938</th></tr>
+            	<tr class=""><th colspan="3">Form 8938 - Statement of Specified Foreign Financial Assets</th></tr>
+              
+              	</thead>
+            	
+            
+            <tbody>
+            	
+            	<tr>
+                <th colspan="3">Applicability:</th>
+               
+          		</tr>
+            	<tr>
+                <td colspan="3"><p>If you have foreign financial assets in excess of below specified threshold limit, you are required to file Form 8938 along with your tax return. This holds good if your are filing a Form 1040 or if you qualify as resident alien in the US but file Form 1040 NR due to DTAA tie breaker rules.</p>
+
+                </td>
+               
+          		</tr>
+          		<tr>
+                <td>Whether form 8938 is applicable to you</td>
+                <td colspan="2">
+
+        <div class="col-sm-12 row">
+            <label class="custom-control custom-radio col-sm-6">
+              <input type="radio" class="custom-control-input" name="form8938_applicable" value="Yes" [(ngModel)]="formInfo.form8938_applicable" #form8938_applicable="ngModel" required [ngClass]="{ 'has-error': f.submitted && !form8938_applicable.valid }">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Yes</span>
+            </label>
+                    
+            <label class="custom-control custom-radio col-sm-6">
+              <input type="radio" class="custom-control-input" name="form8938_applicable" value="No" [(ngModel)]="formInfo.form8938_applicable" #form8938_applicable="ngModel" required [ngClass]="{ 'has-error': f.submitted && !form8938_applicable.valid }">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">No</span>
+            </label>
+          </div>
+
+            <div *ngIf="f.submitted && !form8938_applicable.valid" class=" text-danger">Required</div></td>
+
+          		</tr>
+          		<tr>
+                <td colspan="3"><p>If yes, the requirements and details of this form will be mailed separately to you.</p></td>
+              
+          		</tr>
+          		<tr>
+				<td colspan="3"> Threshold Limits</td>
+                
+                </tr>
+                <tr>
+                <td colspan="3"><p>Note 1: Living in USA or outside USA will be determined based on your stay as on 31st Dec 2016.</p></td></tr>
+                <tr>	<td colspan="3"><p>Note 2: You have to check applicability of 8938 at two points i.e as on year end and during the year. If even one of the condition is satisfied you have to file Form 8938.</p></td></tr>
+                	<tr>	<td colspan="3"><p>Note 3: To calculate the balance during the year, please take the peak balance of every account during the year.</p></td></tr>
+                		<tr>	<td colspan="3"><p>Note 4: To calculate the balance as on year end, please take the closing balance all accounts as on 31st Dec 2016.</p>
+          				</td>
+          				</tr>
+          			
+          					
+            </tbody>
+          </table>
+         </div>
+
+   </nb-card-body>
+  <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/add-comment']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+
+ <!-- non editable -->
+ <div class="col-sm-8" *ngIf="editMode == false">
+   <nb-card  size="normal">
+      <nb-card-header>Form 8938</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{formInfo|json}}</pre> -->
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+             
+            <thead>
+              <tr class="headTitle"><th colspan="3">REQUIREMENT TO FILE FORM 8938</th></tr>
+              <tr class=""><th colspan="3">Form 8938 - Statement of Specified Foreign Financial Assets</th></tr>
+              
+                </thead>
+              
+            
+            <tbody>
+              
+              <tr>
+                <th colspan="3">Applicability:</th>
+               
+              </tr>
+              <tr>
+                <td colspan="3"><p>If you have foreign financial assets in excess of below specified threshold limit, you are required to file Form 8938 along with your tax return. This holds good if your are filing a Form 1040 or if you qualify as resident alien in the US but file Form 1040 NR due to DTAA tie breaker rules.</p>
+
+                </td>
+               
+              </tr>
+              <tr>
+                <td>Whether form 8938 is applicable to you</td>
+                <td colspan="2">
+
+        <div class="col-sm-12 row">
+            <label class="custom-control custom-radio col-sm-6">
+              <input type="radio" #focus class="custom-control-input" name="form8938_applicable" value="Yes" [(ngModel)]="formInfo.form8938_applicable" disabled="true" >
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Yes</span>
+            </label>
+                    
+            <label class="custom-control custom-radio col-sm-6">
+              <input type="radio" class="custom-control-input" name="form8938_applicable" value="No" [(ngModel)]="formInfo.form8938_applicable" disabled="true">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">No</span>
+            </label>
+          </div>
+
+           </td>
+
+              </tr>
+              <tr>
+                <td colspan="3"><p>If yes, the requirements and details of this form will be mailed separately to you.</p></td>
+              
+              </tr>
+              <tr>
+        <td colspan="3"> Threshold Limits</td>
+                
+                </tr>
+                <tr>
+                <td colspan="3"><p>Note 1: Living in USA or outside USA will be determined based on your stay as on 31st Dec 2016.</p></td></tr>
+                <tr>  <td colspan="3"><p>Note 2: You have to check applicability of 8938 at two points i.e as on year end and during the year. If even one of the condition is satisfied you have to file Form 8938.</p></td></tr>
+                  <tr>  <td colspan="3"><p>Note 3: To calculate the balance during the year, please take the peak balance of every account during the year.</p></td></tr>
+                    <tr>  <td colspan="3"><p>Note 4: To calculate the balance as on year end, please take the closing balance all accounts as on 31st Dec 2016.</p>
+                  </td>
+                  </tr>
+                
+                    
+            </tbody>
+          </table>
+         </div>
+
+   </nb-card-body>
+    <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/add-comment']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+
+  </div>
+
+
+ 

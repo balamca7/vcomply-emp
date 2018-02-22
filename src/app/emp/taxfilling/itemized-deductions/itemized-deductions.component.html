@@ -1,0 +1,583 @@
+
+<div class="col-sm-12" *ngIf="editMode == true">
+  <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveItemizedDetails(itemizedInfo, file.files)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>Itemized Deduction</nb-card-header>
+      <nb-card-body>
+     <!--  <pre>{{itemizedInfo | json}}</pre> -->
+      <div class="row">
+       
+	<div class="table-responsive col-sm-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+    	       	<tr class="headTitle">
+                <th colspan="2">US MEDICAL and DENTAL</th>
+	          	</tr>
+	          </thead>
+          <tr>
+          	<th>Year</th> 
+          	<td>
+              <input type="number" name="usmedical_year" min="2000" max="{{today}}"  class="form-control" [(ngModel)]="itemizedInfo.usmedical_year"  #usmedical_year="ngModel" required [ngClass]="{ 'has-error': f.submitted && !usmedical_year.valid }" />
+            <div *ngIf="f.submitted && !usmedical_year.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          <th>Health insurance premiums</th> 
+          	<td> <input type="text" name="health_insurance" class="form-control" [(ngModel)]="itemizedInfo.health_insurance"  #health_insurance="ngModel" required [ngClass]="{ 'has-error': f.submitted && !health_insurance.valid }" />
+            <div *ngIf="f.submitted && !health_insurance.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr>
+          	<th>Long term care premiums </th> 
+          	<td><input type="text" name="longterm_care" class="form-control" [(ngModel)]="itemizedInfo.longterm_care"  #longterm_care="ngModel" required [ngClass]="{ 'has-error': f.submitted && !longterm_care.valid }" />
+            <div *ngIf="f.submitted && !longterm_care.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr>
+          	<th>Medical miles traveled</th> 
+          	<td><input type="text" name="medical_miles" class="form-control" [(ngModel)]="itemizedInfo.medical_miles"  #medical_miles="ngModel" required [ngClass]="{ 'has-error': f.submitted && !medical_miles.valid }" />
+            <div *ngIf="f.submitted && !medical_miles.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr class="headTitle">
+          	<th colspan="2">Other US medical and dental expenses (list below): </th> 
+          </tr>
+ 		<tr>
+          	<th>Hospital</th> 
+          	<td><input type="text" name="hospital" class="form-control" [(ngModel)]="itemizedInfo.hospital"  #hospital="ngModel" required [ngClass]="{ 'has-error': f.submitted && !hospital.valid }" />
+            <div *ngIf="f.submitted && !hospital.valid" class=" text-danger">Required</div></td>
+          </tr>
+               <tr>
+          	<th>Contacts/ Glasses</th> 
+          	<td><input type="text" name="contacts_glasses" class="form-control" [(ngModel)]="itemizedInfo.contacts_glasses"  #contacts_glasses="ngModel" required [ngClass]="{ 'has-error': f.submitted && !contacts_glasses.valid }" />
+            <div *ngIf="f.submitted && !contacts_glasses.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr>
+          	<th>Laser eye surgery</th> 
+          	<td><input type="text" name="laser_eye_surgery" class="form-control" [(ngModel)]="itemizedInfo.laser_eye_surgery"  #laser_eye_surgery="ngModel" required [ngClass]="{ 'has-error': f.submitted && !laser_eye_surgery.valid }" />
+            <div *ngIf="f.submitted && !laser_eye_surgery.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr>
+          	<th>Prescriptions</th> 
+          	<td><input type="text" name="prescriptions" class="form-control" [(ngModel)]="itemizedInfo.prescriptions"  #prescriptions="ngModel" required [ngClass]="{ 'has-error': f.submitted && !prescriptions.valid }" />
+            <div *ngIf="f.submitted && !prescriptions.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr>
+          	<th>Co-pays</th> 
+          	<td><input type="text" name="co_pays" class="form-control" [(ngModel)]="itemizedInfo.co_pays"  #co_pays="ngModel" required [ngClass]="{ 'has-error': f.submitted && !co_pays.valid }" />
+            <div *ngIf="f.submitted && !co_pays.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr>
+          	<th>Physician/ Dentist/ Chiropractor</th> 
+          	<td><input type="text" name="physician_dentist_chiropractor" class="form-control" [(ngModel)]="itemizedInfo.physician_dentist_chiropractor"  #physician_dentist_chiropractor="ngModel" required [ngClass]="{ 'has-error': f.submitted && !physician_dentist_chiropractor.valid }" />
+            <div *ngIf="f.submitted && !physician_dentist_chiropractor.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr>
+          	<th>Lab Fees</th> 
+          	<td><input type="text" name="lab_fees" class="form-control" [(ngModel)]="itemizedInfo.lab_fees"  #lab_fees="ngModel" required [ngClass]="{ 'has-error': f.submitted && !lab_fees.valid }" />
+            <div *ngIf="f.submitted && !lab_fees.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr class="headTitle">
+          	<th colspan="2">TAXES paid in US </th> 
+          </tr>
+          <tr>
+          	<th>State and local income taxes </th> 
+          	<td><input type="text" name="state_local_income_taxes" class="form-control" [(ngModel)]="itemizedInfo.state_local_income_taxes"  #state_local_income_taxes="ngModel" required [ngClass]="{ 'has-error': f.submitted && !state_local_income_taxes.valid }" />
+            <div *ngIf="f.submitted && !state_local_income_taxes.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Sales tax paid on purchase of boat, automobile</th> 
+          	<td><input type="text" name="sales_tax" class="form-control" [(ngModel)]="itemizedInfo.sales_tax"  #sales_tax="ngModel" required [ngClass]="{ 'has-error': f.submitted && !sales_tax.valid }" />
+            <div *ngIf="f.submitted && !sales_tax.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Real estate taxes </th> 
+          	<td><input type="text" name="real_estate_taxes" class="form-control" [(ngModel)]="itemizedInfo.real_estate_taxes"  #real_estate_taxes="ngModel" required [ngClass]="{ 'has-error': f.submitted && !real_estate_taxes.valid }" />
+            <div *ngIf="f.submitted && !real_estate_taxes.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Personal property/ Vehicle Excise taxes </th> 
+          	<td><input type="text" name="property_vehicle_excise_taxes" class="form-control" [(ngModel)]="itemizedInfo.property_vehicle_excise_taxes"  #property_vehicle_excise_taxes="ngModel" required [ngClass]="{ 'has-error': f.submitted && !property_vehicle_excise_taxes.valid }" />
+            <div *ngIf="f.submitted && !property_vehicle_excise_taxes.valid" class=" text-danger">Required</div></td>
+          </tr>
+           <tr class="headTitle">
+          	<th colspan="2">Other taxes (list):  </th> 
+          </tr>
+          <tr>
+          	<th> </th> 
+          	<td><input type="text" name="other_taxes" class="form-control" [(ngModel)]="itemizedInfo.other_taxes"  #other_taxes="ngModel" required [ngClass]="{ 'has-error': f.submitted && !other_taxes.valid }" />
+            <div *ngIf="f.submitted && !other_taxes.valid" class=" text-danger">Required</div></td>
+          </tr>
+         <!--  <tr>
+          	<th></th> 
+          	<td><input type="text"   class="form-control"/></td>
+          </tr>
+          <tr>
+          	<th></th> 
+          	<td><input type="text"   class="form-control"/></td>
+          </tr> -->
+           <tr class="headTitle">
+          	<th colspan="2">INTEREST PAID </th> 
+          </tr>
+          <tr>
+          	<th>Do you have home loan in India? </th> 
+          	<td>
+              <select class="form-control" name="home_loan_india" (change)="onSelect($event.target.value)" [(ngModel)]="itemizedInfo.home_loan_india" #home_loan_india="ngModel" required [ngClass]="{ 'has-error': f.submitted && !home_loan_india.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !home_loan_india.valid" class=" text-danger">Required</div>
+
+             </td>
+          </tr>
+          <tr>
+          	<td><div class="lineheight" >If yes, Amount of Home loan Interest paid (Please attach document)</div></td> 
+          	<td><input type="text" name="homeloan_interest" [disabled]="disabled_flg" class="form-control" [(ngModel)]="itemizedInfo.homeloan_interest"  #homeloan_interest="ngModel" required [ngClass]="{ 'has-error': f.submitted && !homeloan_interest.valid && !disabled_flg }" />
+            <div *ngIf="f.submitted && !homeloan_interest.valid  && !disabled_flg" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Investment interest </th> 
+          	<td><input type="text" name="investment_interest" class="form-control" [(ngModel)]="itemizedInfo.investment_interest"  #investment_interest="ngModel" required [ngClass]="{ 'has-error': f.submitted && !investment_interest.valid }" />
+            <div *ngIf="f.submitted && !investment_interest.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr >
+          	<th>Any Other interest paid (list below): </th> 
+          	<td><input type="text" name="other_interest" class="form-control" [(ngModel)]="itemizedInfo.other_interest"  #other_interest="ngModel" required [ngClass]="{ 'has-error': f.submitted && !other_interest.valid }" />
+            <div *ngIf="f.submitted && !other_interest.valid" class=" text-danger">Required</div></td>
+          </tr>
+            </tbody>
+          </table>
+         </div>
+      	<div class="table-responsive col-sm-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+    	       	<tr class="headTitle">
+                <th colspan="2">GIFTS TO CHARITY (attach receipts)</th>
+	          	</tr>
+	          </thead>
+	          <tbody>
+	          	 <tr>
+          	<th>Year</th> 
+          	<td><input type="number" name="charity_year" min="2000" max="{{today}}"  class="form-control" [(ngModel)]="itemizedInfo.charity_year"  #charity_year="ngModel" required [ngClass]="{ 'has-error': f.submitted && !charity_year.valid }" />
+            <div *ngIf="f.submitted && !charity_year.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Total gifts by cash or check  </th> 
+          	<td><input type="text" name="gifts_cash" class="form-control" [(ngModel)]="itemizedInfo.gifts_cash"  #gifts_cash="ngModel" required [ngClass]="{ 'has-error': f.submitted && !gifts_cash.valid }" />
+            <div *ngIf="f.submitted && !gifts_cash.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<td colspan="2"><div class="lineheight" >(Pl specify charity institution name, date contributed and Amount) </div> </td> 
+          	
+          </tr>
+          <tr><td colspan="2">&nbsp;</td></tr>
+          <tr>
+          	<th>Charitable miles traveled  </th> 
+          	<td><input type="text" name="charitable_miles" class="form-control" [(ngModel)]="itemizedInfo.charitable_miles"  #charitable_miles="ngModel" required [ngClass]="{ 'has-error': f.submitted && !charitable_miles.valid }" />
+            <div *ngIf="f.submitted && !charitable_miles.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Other than by cash or check </th> 
+          	<td><input type="text" name="other_cash" class="form-control" [(ngModel)]="itemizedInfo.other_cash"  #other_cash="ngModel" required [ngClass]="{ 'has-error': f.submitted && !other_cash.valid }" />
+            <div *ngIf="f.submitted && !other_cash.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<td colspan="2"><div class="lineheight" >(Pl specify charity institution name, date contributed and Fair market value of goods) </div></td> 
+          	
+          </tr>
+          <tr class="headTitle">
+          	<th colspan="2">JOB EXPENSES (list below): </th> 
+          	
+          </tr>
+			<tr>
+          	<td colspan="2" ><div class="lineheight" >Note: Please mention only the amount which is incurred in your official assignment and it should not be reimbursed by the employer. Emp business expenses should be accompanied by receipts.</div>  </td> 
+          	
+          </tr>
+          <tr>
+          	<th><div class="lineheight">Parking fees/ tolls, local transportation expenses </div></th> 
+          	<td><input type="text" name="parking_fees" class="form-control" [(ngModel)]="itemizedInfo.parking_fees"  #parking_fees="ngModel" required [ngClass]="{ 'has-error': f.submitted && !parking_fees.valid }" />
+            <div *ngIf="f.submitted && !parking_fees.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th><div class="lineheight">Travel expense while away from home including </div></th> 
+          	<td><input type="text" name="travel_expense" class="form-control" [(ngModel)]="itemizedInfo.travel_expense"  #travel_expense="ngModel" required [ngClass]="{ 'has-error': f.submitted && !travel_expense.valid }" />
+            <div *ngIf="f.submitted && !travel_expense.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Lodging, Airplane, car rental etc </th> 
+          	<td><input type="text" name="lodging_airplane_car_rental" class="form-control" [(ngModel)]="itemizedInfo.lodging_airplane_car_rental"  #lodging_airplane_car_rental="ngModel" required [ngClass]="{ 'has-error': f.submitted && !lodging_airplane_car_rental.valid }" />
+            <div *ngIf="f.submitted && !lodging_airplane_car_rental.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Any other expenses (Business Use only)</th> 
+          	<td><input type="text" name="other_expenses" class="form-control" [(ngModel)]="itemizedInfo.other_expenses"  #other_expenses="ngModel" required [ngClass]="{ 'has-error': f.submitted && !other_expenses.valid }" />
+            <div *ngIf="f.submitted && !other_expenses.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Internet</th> 
+          	<td><input type="text" name="internet" class="form-control" [(ngModel)]="itemizedInfo.internet"  #internet="ngModel" required [ngClass]="{ 'has-error': f.submitted && !internet.valid }" />
+            <div *ngIf="f.submitted && !internet.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Cell phone/ Company related phone calls </th> 
+          	<td><input type="text" name="phone_calls" class="form-control" [(ngModel)]="itemizedInfo.phone_calls"  #phone_calls="ngModel" required [ngClass]="{ 'has-error': f.submitted && !phone_calls.valid }" />
+            <div *ngIf="f.submitted && !phone_calls.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Stationary/ Postage </th> 
+          	<td><input type="text" name="stationary_postage" class="form-control" [(ngModel)]="itemizedInfo.stationary_postage"  #stationary_postage="ngModel" required [ngClass]="{ 'has-error': f.submitted && !stationary_postage.valid }" />
+            <div *ngIf="f.submitted && !stationary_postage.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Job related Education expenses </th> 
+          	<td><input type="text" name="education_expenses" class="form-control" [(ngModel)]="itemizedInfo.education_expenses"  #education_expenses="ngModel" required [ngClass]="{ 'has-error': f.submitted && !education_expenses.valid }" />
+            <div *ngIf="f.submitted && !education_expenses.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Meals & entertainment expenses </th> 
+          	<td><input type="text" name="entertainment_expenses" class="form-control" [(ngModel)]="itemizedInfo.entertainment_expenses"  #entertainment_expenses="ngModel" required [ngClass]="{ 'has-error': f.submitted && !entertainment_expenses.valid }" />
+            <div *ngIf="f.submitted && !entertainment_expenses.valid" class=" text-danger">Required</div></td>
+          </tr>
+
+          <tr class="headTitle">
+          	<th colspan="2">OTHER MISC. DEDUCTIONS (list below):  </th> 
+          	
+          </tr>
+          <tr>
+          	<th>Safe Deposit box rental </th> 
+          	<td><input type="text" name="safe_deposit" class="form-control" [(ngModel)]="itemizedInfo.safe_deposit"  #safe_deposit="ngModel" required [ngClass]="{ 'has-error': f.submitted && !safe_deposit.valid }" />
+            <div *ngIf="f.submitted && !safe_deposit.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Investment Expense </th> 
+          	<td><input type="text" name="investment_expense" class="form-control" [(ngModel)]="itemizedInfo.investment_expense"  #investment_expense="ngModel" required [ngClass]="{ 'has-error': f.submitted && !investment_expense.valid }" />
+            <div *ngIf="f.submitted && !investment_expense.valid" class=" text-danger">Required</div></td>
+          </tr>
+          <tr>
+          	<th>Margin or Investment Interest Paid</th> 
+          	<td><input type="text" name="margin_investment" class="form-control" [(ngModel)]="itemizedInfo.margin_investment"  #margin_investment="ngModel" required [ngClass]="{ 'has-error': f.submitted && !margin_investment.valid }" />
+            <div *ngIf="f.submitted && !margin_investment.valid" class=" text-danger">Required</div></td>
+          </tr>
+            </tbody>
+          </table>
+         </div>
+     </div>
+     <div class="row">
+     <div class="col-sm-12  form-group headTitle">Upload Document</div>
+    <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+      
+
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+          
+           </div>
+           </div>
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of itemizedInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                <tr *ngIf="itemizedInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+              
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/moving-dep']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+   
+        </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+ <!-- Non Editable-->
+
+ <div class="col-sm-12" *ngIf="editMode == false">
+ 
+   <nb-card  size="normal">
+      <nb-card-header>Itemized Deduction</nb-card-header>
+      <nb-card-body>
+     <!--  <pre>{{itemizedInfo | json}}</pre> -->
+      <div class="row">
+       
+  <div class="table-responsive col-sm-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr class="headTitle">
+                <th colspan="2">US MEDICAL and DENTAL</th>
+              </tr>
+            </thead>
+          <tr>
+            <th>Year</th> 
+            <td>
+             {{itemizedInfo.usmedical_year}}</td>
+          </tr>
+          <tr>
+          <th>Health insurance premiums</th> 
+            <td> {{itemizedInfo.health_insurance}}</td>
+          </tr>
+           <tr>
+            <th>Long term care premiums </th> 
+            <td>{{itemizedInfo.longterm_care}}</td>
+          </tr>
+           <tr>
+            <th>Medical miles traveled</th> 
+            <td>{{itemizedInfo.medical_miles}}</td>
+          </tr>
+           <tr class="headTitle">
+            <th colspan="2">Other US medical and dental expenses (list below): </th> 
+          </tr>
+    <tr>
+            <th>Hospital</th> 
+            <td>{{itemizedInfo.hospital}}</td>
+          </tr>
+               <tr>
+            <th>Contacts/ Glasses</th> 
+            <td>{{itemizedInfo.contacts_glasses}}</td>
+          </tr>
+           <tr>
+            <th>Laser eye surgery</th> 
+            <td>{{itemizedInfo.laser_eye_surgery}}</td>
+          </tr>
+           <tr>
+            <th>Prescriptions</th> 
+            <td>{{itemizedInfo.prescriptions}}</td>
+          </tr>
+           <tr>
+            <th>Co-pays</th> 
+            <td>{{itemizedInfo.co_pays}}</td>
+          </tr>
+           <tr>
+            <th>Physician/ Dentist/ Chiropractor</th> 
+            <td>{{itemizedInfo.physician_dentist_chiropractor}}</td>
+          </tr>
+           <tr>
+            <th>Lab Fees</th> 
+            <td>{{itemizedInfo.lab_fees}}</td>
+          </tr>
+           <tr class="headTitle">
+            <th colspan="2">TAXES paid in US </th> 
+          </tr>
+          <tr>
+            <th>State and local income taxes </th> 
+            <td>{{itemizedInfo.state_local_income_taxes}}</td>
+          </tr>
+          <tr>
+            <th>Sales tax paid on purchase of boat, automobile</th> 
+            <td>{{itemizedInfo.sales_tax}}</td>
+          </tr>
+          <tr>
+            <th>Real estate taxes </th> 
+            <td>{{itemizedInfo.real_estate_taxes}}</td>
+          </tr>
+          <tr>
+            <th>Personal property/ Vehicle Excise taxes </th> 
+            <td>{{itemizedInfo.property_vehicle_excise_taxes}}</td>
+          </tr>
+           <tr class="headTitle">
+            <th colspan="2">Other taxes (list):  </th> 
+          </tr>
+          <tr>
+            <th> </th> 
+            <td>{{itemizedInfo.other_taxes}}</td>
+          </tr>
+         <!--  <tr>
+            <th></th> 
+            <td><input type="text"   class="form-control"/></td>
+          </tr>
+          <tr>
+            <th></th> 
+            <td><input type="text"   class="form-control"/></td>
+          </tr> -->
+           <tr class="headTitle">
+            <th colspan="2">INTEREST PAID </th> 
+          </tr>
+          <tr>
+            <th>Do you have home loan in India? </th> 
+            <td>
+             {{itemizedInfo.home_loan_india}}
+
+             </td>
+          </tr>
+          <tr>
+            <td><div class="lineheight" >If yes, Amount of Home loan Interest paid (Please attach document)</div></td> 
+            <td>{{itemizedInfo.homeloan_interest}}</td>
+          </tr>
+          <tr>
+            <th>Investment interest </th> 
+            <td>{{itemizedInfo.investment_interest}}</td>
+          </tr>
+          <tr >
+            <th>Any Other interest paid (list below): </th> 
+            <td>{{itemizedInfo.other_interest}}</td>
+          </tr>
+            </tbody>
+          </table>
+         </div>
+        <div class="table-responsive col-sm-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr class="headTitle">
+                <th colspan="2">GIFTS TO CHARITY (attach receipts)</th>
+              </tr>
+            </thead>
+            <tbody>
+               <tr>
+            <th>Year</th> 
+            <td>{{itemizedInfo.charity_year}}</td>
+          </tr>
+          <tr>
+            <th>Total gifts by cash or check  </th> 
+            <td>{{itemizedInfo.gifts_cash}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="lineheight" >(Pl specify charity institution name, date contributed and Amount) </div> </td> 
+            
+          </tr>
+          <tr><td colspan="2">&nbsp;</td></tr>
+          <tr>
+            <th>Charitable miles traveled  </th> 
+            <td>{{itemizedInfo.charitable_miles}}</td>
+          </tr>
+          <tr>
+            <th>Other than by cash or check </th> 
+            <td>{{itemizedInfo.other_cash}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="lineheight" >(Pl specify charity institution name, date contributed and Fair market value of goods) </div></td> 
+            
+          </tr>
+          <tr class="headTitle">
+            <th colspan="2">JOB EXPENSES (list below): </th> 
+            
+          </tr>
+      <tr>
+            <td colspan="2" ><div class="lineheight" >Note: Please mention only the amount which is incurred in your official assignment and it should not be reimbursed by the employer. Emp business expenses should be accompanied by receipts.</div>  </td> 
+            
+          </tr>
+          <tr>
+            <th><div class="lineheight">Parking fees/ tolls, local transportation expenses </div></th> 
+            <td>{{itemizedInfo.parking_fees}}</td>
+          </tr>
+          <tr>
+            <th><div class="lineheight">Travel expense while away from home including </div></th> 
+            <td>{{itemizedInfo.travel_expense}}</td>
+          </tr>
+          <tr>
+            <th>Lodging, Airplane, car rental etc </th> 
+            <td>{{itemizedInfo.lodging_airplane_car_rental}}</td>
+          </tr>
+          <tr>
+            <th>Any other expenses (Business Use only)</th> 
+            <td>{{itemizedInfo.other_expenses}}</td>
+          </tr>
+          <tr>
+            <th>Internet</th> 
+            <td>{{itemizedInfo.internet}}</td>
+          </tr>
+          <tr>
+            <th>Cell phone/ Company related phone calls </th> 
+            <td>{{itemizedInfo.phone_calls}}</td>
+          </tr>
+          <tr>
+            <th>Stationary/ Postage </th> 
+            <td>{{itemizedInfo.stationary_postage}}</td>
+          </tr>
+          <tr>
+            <th>Job related Education expenses </th> 
+            <td>{{itemizedInfo.education_expenses}}</td>
+          </tr>
+          <tr>
+            <th>Meals & entertainment expenses </th> 
+            <td>{{itemizedInfo.entertainment_expenses}}</td>
+          </tr>
+
+          <tr class="headTitle">
+            <th colspan="2">OTHER MISC. DEDUCTIONS (list below):  </th> 
+            
+          </tr>
+          <tr>
+            <th>Safe Deposit box rental </th> 
+            <td>{{itemizedInfo.safe_deposit}}</td>
+          </tr>
+          <tr>
+            <th>Investment Expense </th> 
+            <td>{{itemizedInfo.investment_expense}}</td>
+          </tr>
+          <tr>
+            <th>Margin or Investment Interest Paid</th> 
+            <td>{{itemizedInfo.margin_investment}}</td>
+          </tr>
+            </tbody>
+          </table>
+         </div>
+     </div>
+     <div class="row">
+     <div class="col-sm-12  form-group headTitle">Upload Document</div>
+   
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of itemizedInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                <tr *ngIf="itemizedInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        
+   </nb-card-body>
+    <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/moving-dep']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+
+  </div>
+
+ 

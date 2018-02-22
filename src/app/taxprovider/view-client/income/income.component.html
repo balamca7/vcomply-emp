@@ -1,0 +1,197 @@
+<div class="col-sm-12">
+ 
+	 <nb-card  size="normal">
+      <nb-card-header>W2 - WAGES FORM</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{incomeInfo | json}}</pre> -->
+<div class="row">
+ 
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note : Please ignore filling the below fields if you are enclosing the supporting documents i.e W2, 1099 INT, 1099 DIV etc
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+          Note: 1 Please mention the amounts in the respective countries currency
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 2 Please attach the documents issued by the banks or companies supporting INTEREST or DIVIDEND
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">US Interest Income (Form 1099 INT)</div>
+     
+      	<div class="table-responsive">
+         
+
+          <table class="table table-bordered table-striped">
+              <tr class="">
+                <th>Sl.No</th>
+                <th>Name of Bank</th>
+                <th>Interest received for the year </th>
+                <th>Tax Withheld</th>
+               
+              </tr>
+            
+            <tbody>
+  			
+               <tr *ngFor="let itemrow of incomeInfo.USInteresetIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.bank_name}}</td>
+                <td>{{itemrow.received_interest}}</td>
+                <td>{{itemrow.tax_held}}</td>
+                 
+                </tr>
+            </tbody>
+          </table>
+         
+        </div>
+       
+       
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            Note: Please attach the documents issued by the banks or companies supporting INTEREST
+          </div>
+         
+        
+        </div>
+     <div class="col-sm-12 headTitle center">Foreign Interest Income </div>
+             <div class="table-responsive">
+             
+          <table class="table table-bordered table-striped">
+             
+            
+            <tbody>
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Bank</th>
+                <th class="text-nowrap" scope="row" >Interest received for the year</th>
+                <th class="text-nowrap" scope="row">Amount of tax deducted</th>
+                <th class="text-nowrap" scope="row">Country Name</th>
+              </tr>
+              
+              <tr *ngFor="let itemrow of incomeInfo.ForeignInteresetIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.bank_name}}</td>
+                <td>{{itemrow.received_interest}}</td>
+                <td>{{itemrow.tax_deducted}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                  
+                </tr>
+             </tbody>
+             </table>
+           
+             </div> 
+                  <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            Note: Please mention the amounts in the respective countries currency
+          </div>
+         
+        
+        </div>
+     <div class="col-sm-12 headTitle center">US Dividend Income (Form 1099 DIV)</div>
+          <div class="table-responsive">
+           
+          <table class="table table-bordered table-striped">     
+ 			
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Payer</th>
+                 <th>Ordinary Dividend</th>
+                <th>Qualified Dividend</th>
+                <th>Capital Gains</th>
+                <th>Federal Income Tax</th>
+                <th>Foreign tax Paid</th>
+              
+              </tr>
+            
+            
+               <tr *ngFor="let itemrow of incomeInfo.USDividendIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.payer_name}}</td>
+                <td>{{itemrow.ordinary_dividend}}</td>
+                <td>{{itemrow.qualified_dividend}}</td>
+                 <td>{{itemrow.capital_gains}}</td>
+                 <td>{{itemrow.federal_incometax}}</td>
+                 <td>{{itemrow.foreign_taxpaid}}</td>
+                 
+                </tr>
+             </table>
+           
+           </div>
+            <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: Please attach the documents issued by the banks or companies supporting DIVIDEND
+          </div>
+         
+        
+        </div>
+ <div class="col-sm-12 headTitle center">Foreign Dividend Income</div>
+          <div class="table-responsive">
+             
+          <table class="table table-bordered table-striped">     
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Company</th>
+                 <th>Dividend received for the year</th>
+                <th>Amount of tax deducted</th>
+                <th>Country Name</th>
+               
+              </tr>
+              
+            
+          <tr *ngFor="let itemrow of incomeInfo.ForeignDividendIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.company_name}}</td>
+                <td>{{itemrow.received_dividend}}</td>
+                <td>{{itemrow.tax_deducted}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                
+                 
+                </tr>
+          </table>
+        
+         </div>
+           <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: The dividend from shares though exempt in India are taxable in USA. So please include the same.
+          </div>
+         
+        
+        </div>
+       
+        <div class="col-sm-12 form-group headTitle">Documents</div>
+    <div class="col-sm-12">
+         
+         
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of incomeInfo.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+              </table> 
+            </div>
+          </div>
+ </div>
+   </nb-card-body>
+ 
+</nb-card>
+
+  </div>
+
+ 

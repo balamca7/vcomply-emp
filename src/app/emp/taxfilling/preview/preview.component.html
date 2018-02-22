@@ -1,0 +1,28 @@
+<div class="row">
+<div class="col-md-12 col-lg-12">
+    <nb-card size="normal">
+    	 <nb-card-header>Preview</nb-card-header>
+      <nb-card-body>
+      	
+      	<app-general-info [edit] = "false"></app-general-info>
+        <app-taxprovider [edit] = "false"></app-taxprovider>
+        <app-source-list [edit] = "false"></app-source-list>
+        <app-citizenship [edit] = "false"></app-citizenship>
+        <app-income [edit] = "false"></app-income>
+        <app-rental-income [edit] = "false"></app-rental-income>
+        <app-business-income [edit] = "false"></app-business-income>
+        <app-sale-assets [edit] = "false"></app-sale-assets>
+        <app-itemized-deductions [edit] = "false"></app-itemized-deductions>
+        <app-moving-dep [edit] = "false"></app-moving-dep>
+        <app-fbar [edit] = "false"></app-fbar>
+        <app-form8938 [edit] = "false"></app-form8938>
+        <app-add-comment [edit] = "false"></app-add-comment>
+      </nb-card-body>
+      <nb-card-footer>      
+              
+        <a [routerLink]="['/emp/taxfill/add-comment']"   class="btn btn-sm btn-success "> Back<!--  <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i> --></a>
+              
+        </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

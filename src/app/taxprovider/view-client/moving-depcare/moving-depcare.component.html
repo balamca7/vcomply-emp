@@ -1,0 +1,142 @@
+<div class="col-sm-12">
+  
+	 <nb-card  size="normal">
+      <nb-card-header>Moving & Dependent Care</nb-card-header>
+      <nb-card-body>
+      <!--   <pre>{{movingDepInfo | json}}</pre> -->
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+            <thead>
+            	<tr class="headTitle"><th colspan="2">CASUALTY THEFT (in USA)</th></tr>
+              
+              	</thead>
+            	
+            
+            <tbody>
+            	<tr>
+                <td>Description of property</td>
+                <td>{{movingDepInfo.property_description}}</td>
+          		</tr>
+          		<tr>
+                <td>Date acquired</td>
+                <td>{{movingDepInfo.acquired_date}}</td>
+          		</tr>
+          		<tr>
+                <td>Date of incident</td>
+                <td>{{movingDepInfo.incident_date}}</td>
+          		</tr>
+          		<tr>
+				<td>Insurance or other reimbursement claimed</td>
+                <td>{{movingDepInfo.insurance_claimed}}</td>
+          		</tr>
+          		<tr>
+                <td>Fair market value before theft/incident</td>
+                <td>{{movingDepInfo.fair_market_before}}</td>
+          		</tr>
+          		<tr>
+                <td>Fair Market value after theft/incident</td>
+                <td>{{movingDepInfo.fair_market_after}}</td>
+          		</tr>
+          		<tr class="headTitle"><th colspan="3">MOVING EXPENSES</th></tr>
+          		<tr>
+                <td>No. of miles from old home to new workplace</td>
+                <td>{{movingDepInfo.no_miles_oldhome_new}}</td>
+          		</tr>
+          		<tr>
+                <td>No. of miles from old home to old workplace</td>
+                <td>{{movingDepInfo.no_miles_oldhome_old}}</td>
+          		</tr>
+          		<tr>
+                <td>Cost of transportation and storage of goods</td>
+                <td>{{movingDepInfo.transport_cost}}</td>
+          		</tr>
+          		<tr>
+                <td>Travel & lodging expenses during move</td>
+                <td>{{movingDepInfo.travel_expenses}}</td>
+          		</tr>
+          		<tr>
+                <td>Any amount reimbursed by employer</td>
+                <td>{{movingDepInfo.reimbursed_employer}}</td>
+          		</tr>
+          		<tr class="headTitle"><th colspan="2">CHILD & DEPENDANT CARE EXPENSES</th></tr>
+          		<tr>
+                <td>Care provider's SSN/EIN</td>
+                <td>{{movingDepInfo.provider_ssn}}</td>
+          		</tr>
+          		<tr>
+                <td>Care provider's name</td>
+                <td>{{movingDepInfo.provider_name}}</td>
+          		</tr>
+          		<tr>
+                <td>Care provider's complete address</td>
+                <td>{{movingDepInfo.provider_address}}</td>
+          		</tr>
+          		<tr>
+                <td>Amount paid to care provider</td>
+                <td>{{movingDepInfo.provider_paid_amount}}</td>
+          		</tr>
+          		<tr *ngFor="let dependents of movingDepInfo.dependents; let i=index">
+                <td>Dependant #{{i+1}} - {{dependents.name}}</td>
+                <td>{{dependents.dependant_care}}</td>
+          		</tr>
+             <tr class="headTitle"><th colspan="2">RENTER'S CREDIT</th></tr>
+             <tr><th colspan="3" class="redColor"><div class="lineheight" >(Applicable only if you live in Arizona, California, Indiana, New Jersey, Missouri, Michigan, Massachusetts or Wisconsin)</div></th></tr>
+              <tr>
+                <td>Did you pay rent?</td>
+                <td>{{movingDepInfo.pay_rent}}</td>
+          		</tr>
+          		 <tr>
+                <td>If yes, Please specify the rent paid </td>
+                <td>{{movingDepInfo.rent_paid}}</td>
+          		</tr>
+          		 <tr>
+                <td>Name of the landlord</td>
+                <td>{{movingDepInfo.landlord_name}}</td>
+          		</tr>
+          		 <tr>
+                <td>Address of the Landlord</td>
+                <td>{{movingDepInfo.landlord_address}}</td>
+          		</tr>
+          		 <tr>
+                <td>Telephone number of Landlord</td>
+                <td>{{movingDepInfo.landlord_telephone}}</td>
+          		</tr>
+          		 <tr>
+                <td>Address of the rented property</td>
+                <td>{{movingDepInfo.rented_property_address}}</td>
+          		</tr>
+            </tbody>
+          </table>
+         
+<div class="col-sm-12  form-group headTitle">Documents</div>
+    <div class="col-sm-12 ">
+        
+         
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <td>Sl.No</td>
+              <td>File Name</td>
+              <td colspan="1"> </td>
+            </tr>
+        <tr *ngFor="let fileList of movingDepInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+              </table> 
+            </div>
+          </div>
+          </div>
+   </nb-card-body>
+   
+</nb-card>
+  </div>
+
+ 

@@ -1,0 +1,121 @@
+<div class="col-sm-12">
+   
+	 <nb-card  size="normal">
+      <nb-card-header>CAPITAL GAINS</nb-card-header>
+      <nb-card-body>
+        <!--  <pre>{{assetsInfo | json}}</pre> -->
+<div class="row">
+ 
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 1 Please ignore filling the below fields if you are enclosing respective transaction sheets.
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+          Note: 2 The amount should be in the currency in which the deal took place. Please specify the currency.
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 2 Please attach the documents issued by the banks or companies supporting INTEREST or DIVIDEND
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">Sale of US Assets (1099-B) (1099-S)</div>
+   
+      	<div class="table-responsive">
+          
+          <table class="table table-bordered table-striped">
+           <tr >
+                <th>Sl.No</th>
+                <th>Description</th>
+                <th>Date Purchased</th>
+                <th>Date Sold</th>
+                <th>Sales Price</th>
+                <th>Purchase Price</th>
+                <th>State of Sale</th>
+                
+              </tr>
+                <tbody>
+              
+            
+                <tr *ngFor="let itemrow of assetsInfo.USAssets; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.description}}</td>
+                <td>{{itemrow.purchased_date}}</td>
+                <td>{{itemrow.sold_date}}</td>
+                <td>{{itemrow.sales_price}}</td>
+                <td>{{itemrow.purchase_price}}</td>
+                 <td>{{itemrow.state?.name}}</td>
+                  
+                </tr>
+     
+        </tbody>
+      </table>
+    
+    </div>
+
+     <div class="col-sm-12 headTitle center">Sale of Foreign Assets (Foreign Stock Trade, Mutual Funds, Etc.)</div>
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+         
+
+           <tr>
+                <th>Sl.No</th>
+                <th>Description</th>
+                <th>Date Purchased</th>
+                <th>Date Sold</th>
+                <th>Sales Price</th>
+                <th>Purchase Price</th>
+                <th>Country of Sale</th>
+               
+              </tr>
+                <tbody>
+            
+            
+                <tr *ngFor="let itemrow of assetsInfo.ForeignAssets; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.description}}</td>
+                <td>{{itemrow.purchased_date}}</td>
+                <td>{{itemrow.sold_date}}</td>
+                <td>{{itemrow.sales_price}}</td>
+                <td>{{itemrow.purchase_price}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                 
+                </tr>
+     
+			
+            </tbody>
+          </table>
+        
+       
+   <div class="col-sm-12  form-group headTitle">Documents</div>
+    <div class="col-sm-12 ">
+         
+         
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> Action</th>
+            </tr>
+        <tr *ngFor="let fileList of assetsInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+              </table> 
+            </div>
+          </div>
+       </div>
+  </div>
+   </nb-card-body>
+    
+</nb-card>
+
+  </div>
+
+ 

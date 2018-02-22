@@ -1,0 +1,345 @@
+<div class="row">
+<div class="col-md-12 col-lg-12">
+    <nb-card size="normal">
+      <nb-tabset>
+       
+        <nb-tab tabTitle="Workpermit">
+           <form name="form"  #f="ngForm" (ngSubmit)="f.form.valid && updateWorkpermitDetails(WorkpermitInfo)" novalidate>
+ <nb-card>
+      
+      <nb-card-body>
+        <h6 class="row col-sm-12 form-group"><u>Personal Details </u></h6>
+        <div class="row">
+
+      <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">First name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" placeholder="First name"  class="form-control"/>
+          </div>
+        </div>
+             <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Middle name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" placeholder="Middle name" class="form-control"/>
+          </div>
+        </div>
+        <div class= "col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" placeholder="Last name" class="form-control"/>
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" value="" class="form-control form-control-line"/>
+           </div>
+           </div>
+            
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Gender</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+           <select class="form-control form-control-line">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+              </select>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Nationality</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Nationality" class="form-control"/>
+           </div>
+           </div>
+    </div>
+    <h6 class="row col-sm-12 form-group"><u>Work Permit Details </u></h6>
+        <div class="row">
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Workpermit Type</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            
+             <select [(ngModel)]="WorkpermitInfo.workpermit_type" [ngModelOptions]="{standalone: true}" class="form-control" name="visa_type" #workpermit_type="ngModel" required [ngClass]="{ 'has-error': f.submitted && !workpermit_type.valid }">
+              <option></option>
+<option *ngFor="let wptype of WPTypeList" value={{wptype.id}} >
+                  {{wptype.name}}
+                </option> 
+              </select>
+         
+               <div *ngIf="f.submitted && !workpermit_type.valid" class=" text-danger">Work permit type is required</div>
+           </div>
+           </div>
+        <div class=" col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Case / Passport / Control Number</label>
+           
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" placeholder="Case / Passport / Control Number" name="number" class="form-control" [(ngModel)]="WorkpermitInfo.number" #number="ngModel" required [ngClass]="{ 'has-error': f.submitted && !number.valid }" />
+             <div *ngIf="f.submitted && !number.valid" class=" text-danger">Case / Passport / Control Number is required</div>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Issue Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" value="" class="form-control form-control-line" name="issue_date" [(ngModel)]="WorkpermitInfo.issue_date" #issue_date="ngModel" required [ngClass]="{ 'has-error': f.submitted && !issue_date.valid }" />
+          <div *ngIf="f.submitted && !issue_date.valid" class=" text-danger">Issue date is required</div>
+           </div>
+           </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Validity From Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" value="" class="form-control form-control-line" name="validity_FD" [(ngModel)]="WorkpermitInfo.validity_FD" #validity_FD="ngModel" required [ngClass]="{ 'has-error': f.submitted && !validity_FD.valid }" />
+          <div *ngIf="f.submitted && !validity_FD.valid" class=" text-danger">Validity from date is required</div>
+           </div>
+           </div>
+       <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Validity Expire Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" value="" class="form-control form-control-line" name="validity_TD" [(ngModel)]="WorkpermitInfo.validity_TD" #validity_TD="ngModel" required [ngClass]="{ 'has-error': f.submitted && !validity_TD.valid }" />
+          <div *ngIf="f.submitted && !validity_TD.valid" class=" text-danger">Validity expire date is required</div>
+           </div>
+           </div>
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Place of Issue</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Place of Issue" class="form-control" name="place_issue" [(ngModel)]="WorkpermitInfo.place_issue" #place_issue="ngModel" required [ngClass]="{ 'has-error': f.submitted && !place_issue.valid }" />
+          <div *ngIf="f.submitted && !place_issue.valid" class=" text-danger">Place issue is required</div>
+           </div>
+           </div>
+
+             <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Visa Type / Class</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+
+           <select class="form-control form-control-line" name="visa_type" [(ngModel)]="WorkpermitInfo.visa_type" #visa_type="ngModel" required [ngClass]="{ 'has-error': f.submitted && !visa_type.valid }" >
+              <option></option>
+                <option *ngFor="let visatype of visaTypeList" value={{visatype.id}} >
+                  {{visatype.name}}
+                </option>  
+              </select>
+              <div *ngIf="f.submitted && !visa_type.valid" class=" text-danger">Visa type is required</div>
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Entries</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+           <select class="form-control form-control-line" name="entries" [(ngModel)]="WorkpermitInfo.entries" #entries="ngModel" required [ngClass]="{ 'has-error': f.submitted && !entries.valid }" >
+              <option value="Single">Single</option>
+               <option value="Multiple">Multiple</option>
+              
+              </select>
+              <div *ngIf="f.submitted && !entries.valid" class=" text-danger">Entries is required</div>
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Issuing Post (City)</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Issuing Post (City)" name="issuing_city" class="form-control" [(ngModel)]="WorkpermitInfo.issuing_city" #issuing_city="ngModel" required [ngClass]="{ 'has-error': f.submitted && !issuing_city.valid }" />
+          <div *ngIf="f.submitted && !issuing_city.valid" class=" text-danger">Issuing Post (City) is required</div>
+           </div>
+           </div>
+
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Visa / Control Number</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Visa / Control Number" name="visa_number" class="form-control" [(ngModel)]="WorkpermitInfo.visa_number" #visa_number="ngModel" required [ngClass]="{ 'has-error': f.submitted && !visa_number.valid }" />
+          <div *ngIf="f.submitted && !visa_number.valid" class=" text-danger">Visa / Control Number is required</div>
+           </div>
+           </div>
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Employer</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Employer" class="form-control" name="employer" [(ngModel)]="WorkpermitInfo.employer" #employer="ngModel" required [ngClass]="{ 'has-error': f.submitted && !employer.valid }" />
+          <div *ngIf="f.submitted && !employer.valid" class=" text-danger">Employer is required</div>
+           </div>
+           </div>
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Receipt Number</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Receipt Number" class="form-control" name="receipt_number" [(ngModel)]="WorkpermitInfo.receipt_number" #receipt_number="ngModel" required [ngClass]="{ 'has-error': f.submitted && !receipt_number.valid }" />
+          <div *ngIf="f.submitted && !receipt_number.valid" class=" text-danger">Receipt Number is required</div>
+           </div>
+           </div>
+
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Case Type</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Case Type" class="form-control" name="case_type" [(ngModel)]="WorkpermitInfo.case_type" #case_type="ngModel" required [ngClass]="{ 'has-error': f.submitted && !case_type.valid }" />
+          <div *ngIf="f.submitted && !case_type.valid" class=" text-danger">Case Type is required</div>
+           </div>
+           </div>
+
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Receipt Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" value="" class="form-control form-control-line" name="receipt_date" [(ngModel)]="WorkpermitInfo.receipt_date" #receipt_date="ngModel" required [ngClass]="{ 'has-error': f.submitted && !receipt_date.valid }" />
+          <div *ngIf="f.submitted && !receipt_date.valid" class=" text-danger">Receipt Date is required</div>
+           </div>
+           </div>
+
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Notice Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" value="" class="form-control form-control-line" name="notice_date" [(ngModel)]="WorkpermitInfo.notice_date" #notice_date="ngModel" required [ngClass]="{ 'has-error': f.submitted && !notice_date.valid }" />
+          <div *ngIf="f.submitted && !notice_date.valid" class=" text-danger">Notice Date is required</div>
+           </div>
+           </div>
+              <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Petitioner</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Petitioner" class="form-control" name="petitioner" [(ngModel)]="WorkpermitInfo.petitioner" #petitioner="ngModel" required [ngClass]="{ 'has-error': f.submitted && !petitioner.valid }" />
+          <div *ngIf="f.submitted && !petitioner.valid" class=" text-danger">Petitioner is required</div>
+           </div>
+           </div> 
+
+            <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Beneficiary</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Beneficiary" class="form-control" name="beneficiary" [(ngModel)]="WorkpermitInfo.beneficiary" #beneficiary="ngModel" required [ngClass]="{ 'has-error': f.submitted && !beneficiary.valid }" />
+          <div *ngIf="f.submitted && !beneficiary.valid" class=" text-danger">Beneficiary is required</div>
+           </div>
+           </div>      
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Notice Type</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+
+             <input type="text" class="form-control form-control-line" name="notice_type" [(ngModel)]="WorkpermitInfo.notice_type" #notice_type="ngModel" required [ngClass]="{ 'has-error': f.submitted && !notice_type.valid }" />
+
+          <!--  <select class="form-control form-control-line" name="notice_type" [(ngModel)]="WorkpermitInfo.notice_type" #notice_type="ngModel" required [ngClass]="{ 'has-error': f.submitted && !notice_type.valid }" >
+              <option></option>
+              
+              </select> -->
+              <div *ngIf="f.submitted && !notice_type.valid" class=" text-danger">Notice Type is required</div>
+           </div>
+           </div>  
+
+           <div class="col-sm-12 row ">
+          <div class="col-sm-3 form-group input-group-sm">
+          <label for="input-password" class="label">Description</label>
+        </div>
+          <div class="col-sm-9 form-group input-group-sm">
+            <textarea rows="6" class="form-control form-control-line" name="description" [(ngModel)]="WorkpermitInfo.description" #description="ngModel"  ></textarea>
+           </div>
+           </div>  
+
+           
+                  </div>
+ 
+             </nb-card-body>
+             <nb-card-footer>      
+          <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Update <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+          
+            <a [routerLink]="['/emp/workpermit/self']"  class="btn btn-sm btn-warning "> Cancel</a>
+      </nb-card-footer>
+      
+    </nb-card>
+     </form>
+        </nb-tab>
+        <nb-tab tabTitle="Document">
+               <form name="formUpload"  #fu="ngForm" (ngSubmit)="uploadWorkpermitDocument(WorkpermitInfo.id, file.files)" >
+ <nb-card>
+      
+      <nb-card-body>
+
+        <div class="col-sm-12 row " *ngFor="let fileList of WorkpermitInfo.fileList">
+            <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label"><a href="{{fileList.filepath}}" target="_blank"><i class="fa fa-file-pdf-o"></i> {{fileList.filename}}</a>
+          </label>
+         
+<!-- <div class="thumbnail" style="width: 150px;height: 200px;" >
+                <p>click me to view PDF in Iframe!</p>
+                <pdf-viewer [src]="'https://vadimdez.github.io/ng2-pdf-viewer/pdf-test.pdf'"
+                            style="display: block;"
+                 ></pdf-viewer>
+            </div> -->
+          </div>
+          <!-- <iframe width="500" height="600" [src]="fileList.filepath" type="application/pdf"></iframe> -->
+        </div>
+
+               <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+            
+           </div>
+           </div>  
+                 
+ 
+             </nb-card-body>
+             <nb-card-footer>      
+          <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Upload <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+            <a [routerLink]="['/emp/workpermit/self']"  class="btn btn-sm btn-warning "> Cancel</a>
+      </nb-card-footer>
+      
+    </nb-card>
+     </form>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </div>
+
+  
+             </div>

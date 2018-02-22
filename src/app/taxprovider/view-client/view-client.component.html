@@ -1,0 +1,93 @@
+<div class="col-sm-12">
+	 <nb-card  size="normal">
+      <nb-card-header>View Submited Tax Form</nb-card-header>
+      <nb-card-body>
+        <div class="row col-sm-6">
+            <div class="col-sm-12 row " >
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label" *ngIf="clientInfo.end_time == null">
+              Review Started... 
+            </label>
+            <label for="input-password" class="label" *ngIf="clientInfo.end_time != null">
+              Review Completed. 
+            </label>
+          </div>
+         
+        </div>
+            <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Review Start Date </label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            : {{clientInfo.started_time | date:'MM/dd/yyyy h:mm a' }}
+           
+          </div>
+        </div>
+         <div class="col-sm-12 row " *ngIf="clientInfo.end_time != null">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Review Completed Date</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            : {{clientInfo.end_time | date:'MM/dd/yyyy h:mm a'}}
+           
+          </div>
+        </div>
+
+        </div>
+        <div class="row col-sm-12">
+	<app-tabs>
+      <app-tab [tabTitle]="'General'">
+      		<app-taxpayer-info></app-taxpayer-info>
+      </app-tab>
+      <app-tab [tabTitle]="'Source'">
+      		<app-source-list></app-source-list>
+      </app-tab>
+      <app-tab [tabTitle]="'Citizenship'">
+      		<app-citizenship></app-citizenship>
+      </app-tab>
+      <app-tab [tabTitle]="'Income'">
+      		<app-income></app-income>
+      </app-tab>
+
+     
+       <app-tab [tabTitle]="'Rental'">
+      		<app-rental-income></app-rental-income>
+      </app-tab>
+       <app-tab [tabTitle]="'Business'">
+      		<app-business-income></app-business-income>
+      </app-tab>
+       <app-tab [tabTitle]="'Assets'">
+      		<app-sale-assets></app-sale-assets>
+      </app-tab>
+       <app-tab [tabTitle]="'Deductions'">
+      		<app-itemized-deductions></app-itemized-deductions>
+      </app-tab>
+      <app-tab [tabTitle]="'Moving'">
+      		<app-moving-depcare></app-moving-depcare>
+      </app-tab>
+
+       <app-tab [tabTitle]="'FBAR'">
+      		<app-fbar></app-fbar>
+      </app-tab>
+
+       <app-tab [tabTitle]="'Form8938'">
+      		<app-form8938></app-form8938>
+      </app-tab>
+
+       <app-tab [tabTitle]="'Comments'">
+      		<app-comments></app-comments>
+      </app-tab>
+
+    </app-tabs>
+</div>
+
+  </nb-card-body>
+  <nb-card-footer>
+      <button class="btn btn-sm btn-success" [disabled] = "clientInfo.end_time != null" (click)="saveReviewCompleted(clientInfo)"> Review Completed</button>
+      <span class="pull-right"><button class="btn btn-sm btn-info"> Tax preparation</button></span>
+  </nb-card-footer>
+</nb-card>
+  </div>    

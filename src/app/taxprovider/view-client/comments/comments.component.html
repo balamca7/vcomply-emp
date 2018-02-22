@@ -1,0 +1,70 @@
+<div class="col-sm-12">
+   
+	 <nb-card  size="normal">
+      <nb-card-header>ADDITIONAL COMMENTS</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{commentInfo | json}}</pre> -->
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+           <!--  <thead>
+            	<tr class="header"><th colspan="3" style="color: red;">REQUIREMENT TO FILE FORM 8938</th></tr>
+            	<tr class="header"><th colspan="3" style="color: red;">Form 8938 - Statement of Specified Foreign Financial Assets</th></tr>
+              
+              	</thead> -->
+            	
+            
+            <tbody>
+            	
+            	<tr>
+
+                <th><p>1. Were you/ your spouse self employed or an active member of a partnership at any time during the year 2016? </p>  </th>
+               	 <td colspan="2"><div class="col-sm-12 row">
+            <label class="custom-control custom-radio col-sm-6">
+              <input type="radio" #focus class="custom-control-input" name="selfemployed_activemember" value="Yes" [(ngModel)]="commentInfo.selfemployed_activemember" disabled="true">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Yes</span>
+            </label>
+                    
+            <label class="custom-control custom-radio col-sm-6">
+              <input type="radio" class="custom-control-input" name="selfemployed_activemember" value="No" [(ngModel)]="commentInfo.selfemployed_activemember" disabled="true">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">No</span>
+            </label>
+          </div></td>
+          		</tr>
+            	<tr>
+                <th colspan="3"><p>
+(a) If “Yes”, We will send a separate form for you to fill those details. The Online Tax organizer does not have this form.</p>
+
+                </th>
+              
+          		</tr>
+          		<tr>
+                <th colspan="3" ><p>2. Did you / your spouse receive a distribution from a Retirement plan (IRA, 401K) in the year 2016? If yes, please provide Form 1099-R.</p></th>
+             
+                
+          		</tr>
+          		
+          		<tr class="headTitle">
+				<th colspan="3"> Additional informations if any</th>
+                
+                </tr>
+                <tr>
+                <th colspan="3">{{commentInfo.additional_information}}
+           
+     
+          </th></tr>
+               
+          			
+          					
+            </tbody>
+          </table>
+         </div>
+
+   </nb-card-body>
+  
+</nb-card>
+ </div>
+
+ 

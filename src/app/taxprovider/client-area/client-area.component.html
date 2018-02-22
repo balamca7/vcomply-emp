@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+	<nb-card  size="normal">
+    	<nb-card-header>Client Area</nb-card-header>
+      	<nb-card-body>
+      		<div class="row">
+      			<div class="col-sm-12">Please select the client and view the client submited form details.</div>
+      			<div class="col-sm-3" *ngFor="let client of clientInfo;">
+      				<a [routerLink]="['/taxprov/view-client', client.id]">
+      				<div class="row">
+      					<span class="col-sm-12 center">
+      						<i class="fa fa-folder-o fa-6" aria-hidden="true"></i>
+      					</span>
+      					<span class="col-sm-12 center">{{client.id}} - {{client.name}}</span>
+      				</div>
+      			</a>
+      			</div>
+      			<div style="padding: 10px;" class="col-sm-12 warning" *ngIf="clientInfo.length ==0">Data not available.</div>
+      		
+      		</div>
+      	</nb-card-body>
+	</nb-card>
+</div>

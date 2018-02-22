@@ -1,0 +1,119 @@
+<div class="col-sm-12">
+	 <nb-card  size="normal">
+      <nb-card-header>Source List</nb-card-header>
+      <nb-card-body>
+<!-- <pre>{{slData | json}}</pre> -->
+     
+
+
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+            <thead>
+            	<tr><th colspan="3" style="color: red;text-align: left;">Note 1: Please tick the documents provided below & please attach the same if relevant.</th></tr>
+              <tr>
+            	<tr class="headTitle">
+                <th>Sl.No</th>
+                <th>Required Documents & Informations</th>
+                <th>Yes/No</th>
+          		</tr>
+            </thead>
+            <tbody>
+             <tr>
+                <td class="text-nowrap" scope="row">1</td>
+                <td>Consent Letter & Authorization Letter Signed</td>
+                <td>{{slData.consent_auth_letter_signed}}
+              </td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">2</td>
+                <td>Copy of Passport & Visa of People reported in Tax Organizer.</td>
+                <td>{{slData.copy_passport_visa_people_reported}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">3</td>
+                <td>Travel History details</td>
+                <td>{{slData.travel_history}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">4</td>
+                <td>Last Year Federal Return & State return (If Filed)</td>
+                <td>{{slData.lastyear_federal_state_return}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">5</td>
+                <td>India Return FY 2015-16 (If Filed)</td>
+                <td>{{slData.india_return}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">6</td>
+                <td>W2 & all income documents/Statements (1099's)</td>
+                <td>{{slData.w2_all_income_docs_stat_1099}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">7</td>
+                <td>H.S.A Distribution document (1099-SA)</td>
+                <td>{{slData.hsa_distribute_doc_1099_sa}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">8</td>
+                <td>Did you receive rent from real estate or other property?</td>
+                <td>{{slData.receive_rent_from_real_estate_other}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">9</td>
+                <td>Please disclose any Foreign Income Earned (In case of Resident Tax Filers)</td>
+                <td>{{slData.foreign_income_earned}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">10</td>
+                <td>Proof of USA property sold if any (1099-S, HUD-1)</td>
+                <td>{{slData.proof_usa_property_sold}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">11</td>
+                <td>Details of Income of Spouse if Spouse is working or received any other income</td>
+                <td>{{slData.income_spouse}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">12</td>
+                <td>Details of Rent paid during stay in USA to claim Renters Credit. </td>
+                <td>{{slData.rent_paid_stay_usa}}</td>
+             </tr>
+             
+              <tr><th colspan="3" style="color: red;">**Apart from above mentioned Sources, Please attach supporting documents for information provided in the Tax Organizer.</th></tr>
+              
+            </tbody>
+          </table>
+         
+  <div class="col-sm-12  form-group headTitle">Documents</div>
+    <div class="col-sm-12  ">
+         
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> Action</th>
+            </tr>
+        <tr *ngFor="let fileList of slData.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+              </table> 
+            </div>
+          </div>
+          </div>
+   </nb-card-body>
+   
+</nb-card>
+
+  </div>
+
+ 

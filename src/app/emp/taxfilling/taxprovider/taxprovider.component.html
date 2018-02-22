@@ -1,0 +1,163 @@
+
+<div class="col-sm-8" *ngIf="editMode==true">
+  <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveTaxprovider(generalInfo)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>Tax Provider</nb-card-header>
+      <nb-card-body>
+      <!-- <pre>{{generalInfo | json}}</pre>   -->
+ 
+   
+      <div class="row">
+
+    
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Tax Provider</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+ 
+
+            <select class="form-control" name="taxprovider_id" (change)="onTaxproviderSelect($event.target.value)" [ngModelOptions]="{standalone: true}" class="form-control" [ngModel]="generalInfo.id" #taxprovider_id="ngModel" required [ngClass]="{ 'has-error': f.submitted && !taxprovider_id.valid }">
+              
+              <option value=""></option>
+                <option *ngFor="let taxprovider of taxProviderList" value={{taxprovider.id}} >
+                  {{taxprovider.name}}
+                </option>  
+              </select>
+            
+            <div *ngIf="f.submitted && !taxprovider_id.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Tax Provider Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.name == null ? '-' : generalInfo.name}}
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact No</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              
+               {{generalInfo.contact == null ? '-' : generalInfo.contact}}
+          </div>
+        </div>
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Address</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.address == null ? '-' : generalInfo.address}}
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Price (USD)</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.price == null ? '-' : generalInfo.price}}
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Description</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.description == null ? '-' : generalInfo.description}}
+          </div>
+        </div>
+    </div>
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+          
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/source-list']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+  <!--Non editable -->
+  <div class="col-sm-8" *ngIf="editMode==false">
+  
+   <nb-card  size="normal">
+      <nb-card-header>Tax Provider</nb-card-header>
+      <nb-card-body>
+   
+      <div class="row">
+
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Tax Provider Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.name == null ? '-' : generalInfo.name}}
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact No</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              
+               {{generalInfo.contact == null ? '-' : generalInfo.contact}}
+          </div>
+        </div>
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Address</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.address == null ? '-' : generalInfo.address}}
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Price (USD)</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.price == null ? '-' : generalInfo.price}}
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Description</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.description == null ? '-' : generalInfo.description}}
+          </div>
+        </div>
+    </div>
+   </nb-card-body>
+   <nb-card-footer *ngIf="editMode != false">      
+           
+          
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/source-list']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        </nb-card-footer>
+</nb-card>
+
+  </div>

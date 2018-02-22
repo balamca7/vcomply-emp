@@ -1,0 +1,59 @@
+<div class="col-sm-12">
+   
+	 <nb-card  size="normal">
+      <nb-card-header>FBAR</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{fbarInfo | json}}</pre> -->
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+            <thead>
+            	<tr class="headTitle"><th colspan="2">NON-US BANK OR ANY OTHER INVESTMENT ACCOUNTS</th></tr>
+              
+              	</thead>
+            	
+            
+            <tbody>
+            	<tr>
+                <td colspan="2"><p>You must fill out Treasury Department Form 90-22.1 every year if you own, or have an interest or signature authority in, any foreign financial accounts. You must report all your financial accounts if the cumulative highest individual account balances exceed $10,000/-. If you earn dividends or interest in these accounts, please ensure that income is reported on Form 1040 Schedule B. this form must be filed independently and failure to file this form would lead a penalty to US $ 100000 or 50% of account value</p></td>
+               
+          		</tr>
+          		<tr>
+                <td colspan="2" class="redColor"><p>Note 1: Financial account includes any bank (Savings, Current, FD, RD etc), securities, securitues derivatives or other financial instruments account ( Eg. Demat, Mutual Fund etc)</p></td>
+                
+          		</tr>
+          		<tr>
+                <td colspan="2" class="redColor"><p>Note 2: If filing a Married filing Joint tax return, you need to include both you and your spouse account balance to check the FBAR applicability</p></td>
+              
+          		</tr>
+          		<tr>
+				<td><p> Did you or your spouse have a Non-US bank account in the calendar year?</p></td>
+                
+                <td>{{fbarInfo.bank_account_nonUS}}</td>
+          		</tr>
+          		<tr>
+                <td><p>Did the cumulative balances of all accounts exceed $10,000/- during the year?</p></td>
+                
+                <td>{{fbarInfo.cumulative_balances}}</td>
+          		</tr>
+          		<tr>
+                <td>If Yes, Please mention the countries</td>
+                <td>
+
+                  {{fbarInfo.country?.name}}
+
+                 </td>
+          		</tr>
+          		
+          	
+            </tbody>
+          </table>
+         </div>
+
+   </nb-card-body>
+ 
+</nb-card>
+
+  </div>
+
+ 

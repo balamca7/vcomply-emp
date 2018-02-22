@@ -1,0 +1,345 @@
+<div class="col-sm-12" *ngIf="editMode == true">
+  <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && addSourceListDetails(slData, file.files)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>Source List</nb-card-header>
+      <nb-card-body>
+     <!-- <pre>{{slData | json}}</pre> --> 
+     
+
+
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+            <thead>
+            	<tr><td colspan="3" >Note 1: Please tick the documents provided below & please attach the same if relevant.</td></tr>
+              <tr>
+            	<tr class="headTitle">
+                <th>Sl.No</th>
+                <th>Required Documents & Informations</th>
+                <th>Yes/No</th>
+          		</tr>
+            </thead>
+            <tbody>
+             <tr>
+                <td class="text-nowrap" scope="row">1</td>
+                <td>Consent Letter & Authorization Letter Signed</td>
+                <td><select class="form-control" name="consent_auth_letter_signed" [(ngModel)]="slData.consent_auth_letter_signed" #consent_auth_letter_signed="ngModel" required [ngClass]="{ 'has-error': f.submitted && !consent_auth_letter_signed.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !consent_auth_letter_signed.valid" class=" text-danger">Required</div>
+              </td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">2</td>
+                <td>Copy of Passport & Visa of People reported in Tax Organizer.</td>
+                <td><select class="form-control" name="copy_passport_visa_people_reported" [(ngModel)]="slData.copy_passport_visa_people_reported" #copy_passport_visa_people_reported="ngModel" required [ngClass]="{ 'has-error': f.submitted && !copy_passport_visa_people_reported.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !copy_passport_visa_people_reported.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">3</td>
+                <td>Travel History details</td>
+                <td><select class="form-control" name="travel_history " [(ngModel)]="slData.travel_history  " #travel_history ="ngModel" required [ngClass]="{ 'has-error': f.submitted && !travel_history  .valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !travel_history .valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">4</td>
+                <td>Last Year Federal Return & State return (If Filed)</td>
+                <td><select class="form-control" name="lastyear_federal_state_return" [(ngModel)]="slData.lastyear_federal_state_return" #lastyear_federal_state_return="ngModel" required [ngClass]="{ 'has-error': f.submitted && !lastyear_federal_state_return.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !lastyear_federal_state_return.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">5</td>
+                <td>India Return FY 2015-16 (If Filed)</td>
+                <td><select class="form-control" name="india_return" [(ngModel)]="slData.india_return" #india_return="ngModel" required [ngClass]="{ 'has-error': f.submitted && !india_return.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !india_return.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">6</td>
+                <td>W2 & all income documents/Statements (1099's)</td>
+                <td><select class="form-control" name="w2_all_income_docs_stat_1099" [(ngModel)]="slData.w2_all_income_docs_stat_1099" #w2_all_income_docs_stat_1099="ngModel" required [ngClass]="{ 'has-error': f.submitted && !w2_all_income_docs_stat_1099.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !w2_all_income_docs_stat_1099.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">7</td>
+                <td>H.S.A Distribution document (1099-SA)</td>
+                <td><select class="form-control" name="hsa_distribute_doc_1099_sa" [(ngModel)]="slData.hsa_distribute_doc_1099_sa" #hsa_distribute_doc_1099_sa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !hsa_distribute_doc_1099_sa.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !hsa_distribute_doc_1099_sa.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">8</td>
+                <td>Did you receive rent from real estate or other property?</td>
+                <td><select class="form-control" name="receive_rent_from_real_estate_other" [(ngModel)]="slData.receive_rent_from_real_estate_other" #receive_rent_from_real_estate_other="ngModel" required [ngClass]="{ 'has-error': f.submitted && !receive_rent_from_real_estate_other.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !receive_rent_from_real_estate_other.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">9</td>
+                <td>Please disclose any Foreign Income Earned (In case of Resident Tax Filers)</td>
+                <td><select class="form-control" name="foreign_income_earned" [(ngModel)]="slData.foreign_income_earned" #foreign_income_earned="ngModel" required [ngClass]="{ 'has-error': f.submitted && !foreign_income_earned.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !foreign_income_earned.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">10</td>
+                <td>Proof of USA property sold if any (1099-S, HUD-1)</td>
+                <td><select class="form-control" name="proof_usa_property_sold" [(ngModel)]="slData.proof_usa_property_sold" #proof_usa_property_sold="ngModel" required [ngClass]="{ 'has-error': f.submitted && !proof_usa_property_sold.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !proof_usa_property_sold.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">11</td>
+                <td>Details of Income of Spouse if Spouse is working or received any other income</td>
+                <td><select class="form-control" name="income_spouse" [(ngModel)]="slData.income_spouse" #income_spouse="ngModel" required [ngClass]="{ 'has-error': f.submitted && !income_spouse.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !income_spouse.valid" class=" text-danger">Required</div></td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">12</td>
+                <td>Details of Rent paid during stay in USA to claim Renters Credit. </td>
+                <td><select class="form-control" name="rent_paid_stay_usa" [(ngModel)]="slData.rent_paid_stay_usa" #rent_paid_stay_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !rent_paid_stay_usa.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !rent_paid_stay_usa.valid" class=" text-danger">Required</div></td>
+             </tr>
+             
+              <tr><td colspan="3">**Apart from above mentioned Sources, Please attach supporting documents for information provided in the Tax Organizer.</td></tr>
+              
+            </tbody>
+          </table>
+         </div>
+         <div class="row">
+  <div class="col-sm-12 form-group headTitle">Upload Document</div>
+    <div class="col-sm-12 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+    
+
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+           </div>
+           </div>
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of slData.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View" class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                <tr *ngIf="slData.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+
+   </nb-card-body>
+   <nb-card-footer>
+    <button type="submit" class="btn btn-success btn-sm"> Save</button>
+          
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/citizenship']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+ <!-- non editable -->
+
+ <div class="col-sm-12" *ngIf="editMode == false">
+ 
+   <nb-card  size="normal">
+      <nb-card-header>Source List</nb-card-header>
+      <nb-card-body>
+   
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+             
+            <thead>
+              <tr><td colspan="3" >Note 1: Please tick the documents provided below & please attach the same if relevant.</td></tr>
+              <tr>
+              <tr class="headTitle">
+                <th>Sl.No</th>
+                <th>Required Documents & Informations</th>
+                <th>Yes/No</th>
+              </tr>
+            </thead>
+            <tbody>
+             <tr>
+                <td class="text-nowrap" scope="row">1</td>
+                <td>Consent Letter & Authorization Letter Signed</td>
+                <td>{{slData.consent_auth_letter_signed}}
+              </td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">2</td>
+                <td>Copy of Passport & Visa of People reported in Tax Organizer.</td>
+                <td>{{slData.copy_passport_visa_people_reported}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">3</td>
+                <td>Travel History details</td>
+                <td>{{slData.travel_history}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">4</td>
+                <td>Last Year Federal Return & State return (If Filed)</td>
+                <td>{{slData.lastyear_federal_state_return}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">5</td>
+                <td>India Return FY 2015-16 (If Filed)</td>
+                <td>{{slData.india_return}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">6</td>
+                <td>W2 & all income documents/Statements (1099's)</td>
+                <td>{{slData.w2_all_income_docs_stat_1099}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">7</td>
+                <td>H.S.A Distribution document (1099-SA)</td>
+                <td>{{slData.hsa_distribute_doc_1099_sa}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">8</td>
+                <td>Did you receive rent from real estate or other property?</td>
+                <td>{{slData.receive_rent_from_real_estate_other}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">9</td>
+                <td>Please disclose any Foreign Income Earned (In case of Resident Tax Filers)</td>
+                <td>{{slData.foreign_income_earned}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">10</td>
+                <td>Proof of USA property sold if any (1099-S, HUD-1)</td>
+                <td>{{slData.proof_usa_property_sold}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">11</td>
+                <td>Details of Income of Spouse if Spouse is working or received any other income</td>
+                <td>{{slData.income_spouse}}</td>
+             </tr>
+             <tr>
+                <td class="text-nowrap" scope="row">12</td>
+                <td>Details of Rent paid during stay in USA to claim Renters Credit. </td>
+                <td>{{slData.rent_paid_stay_usa}}</td>
+             </tr>
+             
+              <tr><td colspan="3">**Apart from above mentioned Sources, Please attach supporting documents for information provided in the Tax Organizer.</td></tr>
+              
+            </tbody>
+          </table>
+         </div>
+         <div class="row">
+  <div class="col-sm-12 form-group headTitle">Upload Document</div>
+  
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of slData.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View" class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                <tr *ngIf="slData.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+
+   </nb-card-body>
+   <nb-card-footer *ngIf="editMode != false">
+          
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/citizenship']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+
+  </div>
+
+ 

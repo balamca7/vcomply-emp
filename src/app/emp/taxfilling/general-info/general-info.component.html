@@ -1,0 +1,1186 @@
+<!-- <input type="hidden" #focus> -->
+<div class="col-sm-12" *ngIf="editMode == true">
+  <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveGeneralInfoDetails(generalInfo, file.files)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>GENERAL INFORMATION</nb-card-header>
+      <nb-card-body>
+     <!-- <pre>{{generalInfo | json}}</pre> -->
+    
+      <div class="row">
+        <div class="col-sm-12 form-group headTitle"> Taxpayer</div>
+      </div>
+      <div class="row">
+
+      <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">First name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="f_name" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.f_name" #f_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !f_name.valid }" />
+            <div *ngIf="f.submitted && !f_name.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+           
+        <div class= "col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text"   class="form-control" name="l_name" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.l_name" #l_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !l_name.valid }" />
+          
+          <div *ngIf="f.submitted && !l_name.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date"   class="form-control" name="dob" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.dob" #dob="ngModel" required [ngClass]="{ 'has-error': f.submitted && !dob.valid }" />
+          
+          <div *ngIf="f.submitted && !dob.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+            
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Gender</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <select class="form-control form-control-line" name="gender" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.gender" #gender="ngModel" required [ngClass]="{ 'has-error': f.submitted && !gender.valid }">
+                  <option></option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+              </select><div *ngIf="f.submitted && !gender.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Pan Number</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="pan" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.pan_no" #pan="ngModel" required [ngClass]="{ 'has-error': f.submitted && !pan.valid }" />
+          
+          <div *ngIf="f.submitted && !pan.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">SSN / ITIN</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+         <input type="text"   class="form-control" name="ssn_itin" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.ssn_itin_no" #ssn_itin="ngModel" required [ngClass]="{ 'has-error': f.submitted && !ssn_itin.valid }" />
+          
+          <div *ngIf="f.submitted && !ssn_itin.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Official)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="email_official" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.email_official" #email_official="ngModel" required [ngClass]="{ 'has-error': f.submitted && !email_official.valid }" />
+          
+          <div *ngIf="f.submitted && !email_official.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Personal)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="email_personal" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.email_personal" #email_personal="ngModel"  [ngClass]="{ 'has-error': f.submitted && !email_personal.valid }" />
+          
+          <div *ngIf="f.submitted && !email_personal.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+
+          <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (US) *</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="contact_usa" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.contact_usa" #contact_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !contact_usa.valid }" />
+          
+          <div *ngIf="f.submitted && !contact_usa.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (India)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="contact_india" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.contact_india" #contact_india="ngModel"  [ngClass]="{ 'has-error': f.submitted && !contact_india.valid }" />
+          
+          <div *ngIf="f.submitted && !contact_india.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+
+           
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Designation</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="designation" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.designation" #designation="ngModel" required [ngClass]="{ 'has-error': f.submitted && !designation.valid }" />
+          
+          <div *ngIf="f.submitted && !designation.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+    </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group headTitle"> Spouse</div>
+      </div>
+      <div class="row">
+
+      <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">First name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="s_f_name" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.f_name" #s_f_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_f_name.valid }" />
+            <div *ngIf="f.submitted && !s_f_name.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+           
+        <div class= "col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text"   class="form-control" name="s_l_name" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.l_name" #s_l_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_l_name.valid }" />
+          
+          <div *ngIf="f.submitted && !s_l_name.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="date"   class="form-control" name="s_dob" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.dob" #s_dob="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_dob.valid }" />
+          
+          <div *ngIf="f.submitted && !s_dob.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+            
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Gender</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <select class="form-control form-control-line" name="s_gender" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.gender" #s_gender="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_gender.valid }">
+                  <option></option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+              </select><div *ngIf="f.submitted && !s_gender.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Pan Number</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="s_pan" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.pan_no" #s_pan="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_pan.valid }" />
+          
+          <div *ngIf="f.submitted && !s_pan.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">SSN / ITIN</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+         <input type="text"   class="form-control" name="s_ssn_itin" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.ssn_itin_no" #s_ssn_itin="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_ssn_itin.valid }" />
+          
+          <div *ngIf="f.submitted && !s_ssn_itin.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Official)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="s_email_official" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.email_official" #s_email_official="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_email_official.valid }" />
+          
+          <div *ngIf="f.submitted && !s_email_official.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Personal)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="s_email_personal" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.email_personal" #s_email_personal="ngModel"  [ngClass]="{ 'has-error': f.submitted && !s_email_personal.valid }" />
+          
+          <div *ngIf="f.submitted && !s_email_personal.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+
+          <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (US)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="s_contact_usa" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.contact_usa" #s_contact_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_contact_usa.valid }" />
+          
+          <div *ngIf="f.submitted && !s_contact_usa.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (India)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="s_contact_india" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.contact_india" #s_contact_india="ngModel"  [ngClass]="{ 'has-error': f.submitted && !s_contact_india.valid }" />
+          
+          <div *ngIf="f.submitted && !s_contact_india.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Designation</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <input type="text"   class="form-control" name="s_designation" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.spouse.designation" #s_designation="ngModel" required [ngClass]="{ 'has-error': f.submitted && !s_designation.valid }" />
+          
+          <div *ngIf="f.submitted && !s_designation.valid" class=" text-danger">Required</div>
+           </div>
+           </div>
+    </div>
+    
+   
+   <div class="row">
+        <div class="col-sm-12 form-group headTitle">Dependents</div>
+      </div>
+<div class="table-responsive">
+ 
+   <form  name="df"  #df="ngForm" (submit)="addDepantant(dependents)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr >
+                <th>Dependents</th>
+                <th> First name</th>
+                <th> Last name</th>
+                <th> Gender</th>
+                <th> Pan No</th>
+                 <th>SSN / ITIN</th>
+                <th> D.O.B <small>(MM/DD/YY)</small></th>
+                <th> Action</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+              <tr><th class="text-nowrap" scope="row"> </th>
+           <td><input type="text"   class="form-control" name="d_f_name" class="form-control" [(ngModel)]="dependents.f_name" #d_f_name="ngModel" required [ngClass]="{ 'has-error': df.submitted && !d_f_name.valid }" />
+          
+          <div *ngIf="df.submitted && !d_f_name.valid" class=" text-danger">Required</div></td>
+                <td><input type="text" name="d_l_name"  class="form-control" [(ngModel)]="dependents.l_name" #d_l_name="ngModel" required [ngClass]="{ 'has-error': df.submitted && !d_l_name.valid }" />
+          
+          <div *ngIf="df.submitted && !d_l_name.valid" class=" text-danger">Required</div></td>
+                <td><select class="form-control form-control-line" name="d_gender" [(ngModel)]="dependents.gender" #d_gender="ngModel" required [ngClass]="{ 'has-error': df.submitted && !d_gender.valid }" >
+          
+          
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+              </select><div *ngIf="df.submitted && !d_gender.valid" class=" text-danger">Required</div></td>
+                <td><input type="text"   class="form-control" [ngModelOptions]="{standalone: true}" name="d_pan" [(ngModel)]="dependents.pan_no" #d_pan="ngModel" required [ngClass]="{ 'has-error': df.submitted && !d_l_name.valid }" />
+          
+          <div *ngIf="df.submitted && !d_pan.valid" class=" text-danger">Required</div></td>
+                <td><input type="text"   class="form-control"  name="d_ssn_itin" [(ngModel)]="dependents.ssn_itin_no" #d_ssn_itin="ngModel" required [ngClass]="{ 'has-error': df.submitted && !d_ssn_itin.valid }" />
+          
+          <div *ngIf="df.submitted && !d_ssn_itin.valid" class=" text-danger">Required</div></td>
+                 <td><input type="date"   class="form-control" name="d_dob" [(ngModel)]="dependents.dob" #d_dob="ngModel" required [ngClass]="{ 'has-error': df.submitted && !d_dob.valid }" />
+          
+          <div *ngIf="df.submitted && !d_dob.valid" class=" text-danger">Required</div></td>
+                 
+                  <td><button type = "submit"  [disabled]="df.invalid || df.pending" class="btn btn-info btn-sm">Add <i class="nb-plus"></i></button></td>
+                </tr>
+              
+              <tr *ngFor="let itemrow of generalInfo.dependents; let i=index" >
+          <th class="text-nowrap" scope="row">{{ i + 1 }}</th>
+           
+                <td><input type="text"   class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="itemrow.f_name" required  /></td>
+                <td><input type="text"   class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="itemrow.l_name" required  /></td>
+                <td><select class="form-control form-control-line" name="d_gender" [ngModelOptions]="{standalone: true}" [(ngModel)]="itemrow.gender" required  >
+                               <option></option>
+             <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+              </select></td>
+                <td><input type="text"   class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="itemrow.pan_no" required  /></td>
+                 <td><input type="text"   class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="itemrow.ssn_itin_no" required  /></td>
+                 <td><input type="date"   class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="itemrow.dob" required /></td>
+                  <td> <button *ngIf="itemrow.id == null" (click)="deleteDepantant(i)" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+        </tr> 
+            </tbody>
+          </table>
+          </form>
+        </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Father's Name of Taxpayer</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="father_name" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.father_name" #father_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !father_name.valid }" />
+            <div *ngIf="f.submitted && !father_name.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Marital Status</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <select class="form-control" name="marital_status" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.marital_status" #marital_status="ngModel" required [ngClass]="{ 'has-error': f.submitted && !marital_status.valid }">
+              <option></option>
+              <option>Single</option>
+              <option>Married</option>
+              <option>Divorced</option>
+              </select>
+            
+            <div *ngIf="f.submitted && !marital_status.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+         <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Filing Status Opted</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <select class="form-control" name="filing_status" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.filing_status" #filing_status="ngModel" required [ngClass]="{ 'has-error': f.submitted && !filing_status.valid }">
+              <option></option>
+              <option>Single</option>
+              <option>Married Filing Joint</option>
+              <option>Married Filing Separate (If spouse has Income)</option>
+              <option>Head Of Household</option>
+              <option>Qualifying Widow(er) with dependent child</option>
+              </select>
+            
+            <div *ngIf="f.submitted && !filing_status.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+
+         <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Permanent Home</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text"   class="form-control" name="permanent_home" [ngModelOptions]="{standalone: true}"  [(ngModel)]="generalInfo.permanent_home" #permanent_home="ngModel" required [ngClass]="{ 'has-error': f.submitted && !permanent_home.valid }" />
+              
+            
+            <div *ngIf="f.submitted && !permanent_home.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">INDIA ADDRESS</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <textarea  class="form-control" name="address_india" [ngModelOptions]="{standalone: true}"  [(ngModel)]="generalInfo.address_india" #address_india="ngModel" required [ngClass]="{ 'has-error': f.submitted && !address_india.valid }" ></textarea>
+              
+            
+            <div *ngIf="f.submitted && !address_india.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">USA ADDRESS</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <textarea  class="form-control" name="address_usa" [ngModelOptions]="{standalone: true}"  [(ngModel)]="generalInfo.address_usa" #address_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !address_usa.valid }" ></textarea>
+              
+            
+            <div *ngIf="f.submitted && !address_usa.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            <label for="input-password" class="label">Preferred address for communication (US Address / India Address) (Mandatory)</label>
+          </div>
+         
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Perferred Country</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <select class="form-control" name="perferred_country" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.perferred_country" #perferred_country="ngModel" required [ngClass]="{ 'has-error': f.submitted && !perferred_country.valid }">
+              <option></option>
+               <option>India</option>
+              <option>USA</option>
+              </select>
+              
+            <div *ngIf="f.submitted && !perferred_country.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        </div>
+     
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Bank Account Details - USA</div>
+      </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Bank Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="bankname_usa" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.bankname_usa" #bankname_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !bankname_usa.valid }" />
+            <div *ngIf="f.submitted && !bankname_usa.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Type</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <select name="acctype_usa" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.acctype_usa" #acctype_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !acctype_usa.valid }" >
+               <option></option>
+               <option>Current</option>
+              <option>Savings</option>
+            </select>
+            <div *ngIf="f.submitted && !acctype_usa.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Account Number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="accno_usa" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.accno_usa" #accno_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !accno_usa.valid }" />
+            <div *ngIf="f.submitted && !accno_usa.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Routing # / IFSC Code</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="ifsc_usa" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.ifsc_usa" #ifsc_usa="ngModel" required [ngClass]="{ 'has-error': f.submitted && !ifsc_usa.valid }" />
+            <div *ngIf="f.submitted && !ifsc_usa.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+      </div>
+     
+
+      
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Bank Account Details - India</div>
+      </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Bank Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="bankname_india" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.bankname_india" #bankname_india="ngModel" required [ngClass]="{ 'has-error': f.submitted && !bankname_india.valid }" />
+            <div *ngIf="f.submitted && !bankname_india.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Type</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <select name="acctype_india" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.acctype_india" #acctype_india="ngModel" required [ngClass]="{ 'has-error': f.submitted && !acctype_india.valid }" >
+               <option></option>
+               <option>Current</option>
+              <option>Savings</option>
+            </select>
+            <div *ngIf="f.submitted && !acctype_india.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Account Number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="accno_india" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.accno_india" #accno_india="ngModel" required [ngClass]="{ 'has-error': f.submitted && !accno_india.valid }" />
+            <div *ngIf="f.submitted && !accno_india.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Routing # / IFSC Code</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type="text" name="ifsc_india" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.ifsc_india" #ifsc_india="ngModel" required [ngClass]="{ 'has-error': f.submitted && !ifsc_india.valid }" />
+            <div *ngIf="f.submitted && !ifsc_india.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+      </div>
+     
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Employment Details</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label">Details of employment with any previous employer in the year 2016</label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            <input type="text" name="prev_employment" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.prev_employment" #prev_employment="ngModel" required [ngClass]="{ 'has-error': f.submitted && !prev_employment.valid }" />
+            <div *ngIf="f.submitted && !prev_employment.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+      </div>
+      <div class="row "></div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label">Payroll Type</label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            <input type="text" name="payroll_type" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.payroll_type" #payroll_type="ngModel" required [ngClass]="{ 'has-error': f.submitted && !payroll_type.valid }" />
+            <div *ngIf="f.submitted && !payroll_type.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label"><p>Payroll Conversion date 
+(Applicable if Converted from
+ Split to Full Pay / Shadow to Full Pay) 
+</p></label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            <input type="date" name="payroll_date" [ngModelOptions]="{standalone: true}" class="form-control" [(ngModel)]="generalInfo.payroll_date" #payroll_date="ngModel" required [ngClass]="{ 'has-error': f.submitted && !payroll_date.valid }" />
+            <div *ngIf="f.submitted && !payroll_date.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+      </div>
+      
+          <div class="col-sm-12 row form-group">Please note that all fields are required to be filled to the extent possible as it will aid in flawless processing of your Tax Return.</div>
+          <div class="row">
+      <div class="col-sm-12 form-group headTitle">Upload Document</div>
+    <div class="col-sm-12 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+     
+
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+          
+           </div>
+         </div>
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of generalInfo.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View" class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                  <tr *ngIf="generalInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+           
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/tax-provider']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+
+        </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+  <!-- General information non editable -->
+
+<div class="col-sm-12" *ngIf="editMode == false">
+   <nb-card  size="normal">
+      <nb-card-header>GENERAL INFORMATION</nb-card-header>
+      <nb-card-body>
+    <!--  <pre>{{generalInfo | json}}</pre>  -->
+    
+      <div class="row">
+        <div class="col-sm-12 form-group headTitle"> Taxpayer</div>
+      </div>
+      <div class="row">
+
+      <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">First name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.f_name}}
+          </div>
+        </div>
+           
+        <div class= "col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.l_name}}
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.dob}}
+           </div>
+           </div>
+            
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Gender</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.gender}}
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Pan Number</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.pan_no}}
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">SSN / ITIN</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.ssn_itin_no}}
+           </div>
+           </div>
+
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Official)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.email_official}}
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Personal)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.email_personal}}
+           </div>
+           </div>
+
+          <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (US) *</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.contact_usa}}
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (India)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.contact_india}}
+           </div>
+           </div>
+
+           
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Designation</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.designation}}
+           </div>
+           </div>
+    </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group headTitle"> Spouse</div>
+      </div>
+      <div class="row">
+
+      <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">First name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.spouse.f_name}}
+          </div>
+        </div>
+           
+        <div class= "col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.spouse.l_name}}
+          </div>
+        </div>
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date of Birth</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.spouse.dob}}
+           </div>
+           </div>
+            
+         <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Select Gender</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.spouse.gender}}
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Pan Number</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.spouse.pan_no}}
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">SSN / ITIN</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+         {{generalInfo.spouse.ssn_itin_no}}
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Official)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.spouse.email_official}}
+           </div>
+           </div>
+
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">E-Mail ID (Personal)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.spouse.email_personal}}
+           </div>
+           </div>
+
+          <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (US)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.spouse.contact_usa}}
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact Number (India)</label>
+
+            </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.spouse.contact_india}}
+           </div>
+           </div>
+           <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Designation</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          {{generalInfo.spouse.designation}}
+           </div>
+           </div>
+    </div>
+    
+   
+   <div class="row">
+        <div class="col-sm-12 form-group headTitle">Dependents</div>
+      </div>
+<div class="table-responsive">
+ 
+   
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr >
+                <th>Dependents</th>
+                <th> First name</th>
+                <th> Last name</th>
+                <th> Gender</th>
+                <th> Pan No</th>
+                 <th>SSN / ITIN</th>
+                <th> D.O.B <small>(MM/DD/YY)</small></th>
+                
+              </tr>
+            </thead>
+            <tbody>
+             
+              <tr *ngFor="let itemrow of generalInfo.dependents; let i=index" >
+                <th class="text-nowrap" scope="row">{{ i + 1 }}</th>
+                 <td>{{itemrow.f_name}}</td>
+                 <td>{{itemrow.l_name}}</td>
+                 <td>{{itemrow.gender}}</td>
+                 <td>{{itemrow.pan_no}}</td>
+                 <td>{{itemrow.ssn_itin_no}}</td>
+                 <td>{{itemrow.dob}}</td>
+           
+                </tr>
+              
+            </tbody>
+          </table>
+         
+        </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Father's Name of Taxpayer</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.father_name}}
+            
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Marital Status</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             {{generalInfo.marital_status}}
+           </div>
+        </div>
+
+         <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Filing Status Opted</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.filing_status}}
+          </div>
+        </div>
+
+
+         <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Permanent Home</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.permanent_home}}
+          </div>
+        </div>
+
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">INDIA ADDRESS</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.address_india}}
+          
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">USA ADDRESS</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.address_usa}}
+           
+          </div>
+        </div>
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            <label for="input-password" class="label">Preferred address for communication (US Address / India Address) (Mandatory)</label>
+          </div>
+         
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Perferred Country</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.perferred_country}}
+          </div>
+        </div>
+        </div>
+     
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Bank Account Details - USA</div>
+      </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Bank Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.bankname_usa}}
+           
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Type</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.acctype_usa}}
+           
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Account Number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.accno_usa}}
+            
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Routing # / IFSC Code</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.ifsc_usa}}
+           
+          </div>
+        </div>
+      </div>
+     
+
+      
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Bank Account Details - India</div>
+      </div>
+         <div class="row">
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Bank Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.bankname_india}}
+          
+          </div>
+        </div>
+
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Type</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.acctype_india}}
+            
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Account Number</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.accno_india}}
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Routing # / IFSC Code</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.ifsc_india}}
+            
+          </div>
+        </div>
+      </div>
+     
+       <div class="row">
+        <div class="col-sm-12 form-group headTitle">Employment Details</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label">Details of employment with any previous employer in the year</label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            {{generalInfo.prev_employment}}
+            
+          </div>
+        </div>
+      </div>
+      <div class="row "></div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label">Payroll Type</label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            {{generalInfo.payroll_type}}
+           
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-8 form-group input-group-sm">
+            <label for="input-password" class="label"><p>Payroll Conversion date 
+(Applicable if Converted from
+ Split to Full Pay / Shadow to Full Pay) 
+</p></label>
+          </div>
+          <div class="col-sm-4 form-group input-group-sm">
+            {{generalInfo.payroll_date}}
+            
+          </div>
+        </div>
+      </div>
+      
+          <div class="col-sm-12 row form-group">Please note that all fields are required to be filled to the extent possible as it will aid in flawless processing of your Tax Return.</div>
+      <div class="row">
+      <div class="col-sm-12 headTitle">Upload Document</div>
+    
+    <div class="col-sm-12 row ">
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> Action</th>
+            </tr>
+        <tr *ngFor="let fileList of generalInfo.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                <tr *ngIf="generalInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        </div>
+   </nb-card-body>
+  <nb-card-footer *ngIf="editMode != false">
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/tax-provider']"  class="btn btn-sm btn-success "> Next</a>
+              </span>
+   </nb-card-footer>
+</nb-card>
+  </div>
+

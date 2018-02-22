@@ -1,0 +1,516 @@
+
+<div class="col-sm-12" *ngIf="editMode == true">
+  <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveIncomeInfoDetails(incomeInfo, file.files)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>W2 - WAGES FORM</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{incomeInfo | json}}</pre> -->
+<div class="row">
+ 
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note : Please ignore filling the below fields if you are enclosing the supporting documents i.e W2, 1099 INT, 1099 DIV etc
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+          Note: 1 Please mention the amounts in the respective countries currency
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 2 Please attach the documents issued by the banks or companies supporting INTEREST or DIVIDEND
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">US Interest Income (Form 1099 INT)</div>
+     
+      	<div class="table-responsive">
+          <form  name="af"  #af="ngForm" (ngSubmit)="addUSInteresetIncome(USInteresetIncome)" novalidate>
+
+          <table class="table table-bordered table-striped">
+              <tr class="">
+                <th>Sl.No</th>
+                <th>Name of Bank</th>
+                <th>Interest received for the year </th>
+                <th>Tax Withheld</th>
+                <th>Action</th>
+              </tr>
+            
+            <tbody>
+  			<tr>          
+                <td></td>    
+                <td ><input type="text" name="bank_name" class="form-control" [(ngModel)]="USInteresetIncome.bank_name"  #bank_name="ngModel" required [ngClass]="{ 'has-error': af.submitted && !bank_name.valid }" />
+            <div *ngIf="af.submitted && !bank_name.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="received_interest"  class="form-control" [(ngModel)]="USInteresetIncome.received_interest"  #received_interest="ngModel" required [ngClass]="{ 'has-error': af.submitted && !received_interest.valid }" />
+            <div *ngIf="af.submitted && !received_interest.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="tax_held"  class="form-control" [(ngModel)]="USInteresetIncome.tax_held" #tax_held="ngModel" required [ngClass]="{ 'has-error': af.submitted && !tax_held.valid }" />
+            <div *ngIf="af.submitted && !tax_held.valid" class=" text-danger">Required</div></td>
+                <td><button type = "submit" class="btn btn-info btn-sm" [disabled]="af.invalid || af.pending">Add <i class="nb-plus"></i></button></td>
+             
+              </tr>
+               <tr *ngFor="let itemrow of incomeInfo.USInteresetIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.bank_name}}</td>
+                <td>{{itemrow.received_interest}}</td>
+                <td>{{itemrow.tax_held}}</td>
+                  <td> <button (click)="deleteIncome(i, incomeInfo.USInteresetIncome);$event.stopPropagation()" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+                </tr>
+                 <tr *ngIf="incomeInfo.USInteresetIncome.length==0">
+                  <td colspan="5" align="center">Document not available.</td>
+                </tr>
+            </tbody>
+          </table>
+           </form>
+        </div>
+       
+       
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            Note: Please attach the documents issued by the banks or companies supporting INTEREST
+          </div>
+         
+        
+        </div>
+     <div class="col-sm-12 headTitle center">Foreign Interest Income </div>
+             <div class="table-responsive">
+               <form  name="bf"  #bf="ngForm" (ngSubmit)="addForeignInteresetIncome(ForeignInteresetIncome)" novalidate>
+          <table class="table table-bordered table-striped">
+             
+            
+            <tbody>
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Bank</th>
+                <th class="text-nowrap" scope="row" >Interest received for the year</th>
+                <th class="text-nowrap" scope="row">Amount of tax deducted</th>
+                <th class="text-nowrap" scope="row">Country Name</th>
+                <th>Action</th>
+            
+              </tr>
+              <tr>
+                <td></td>
+                <td><input type="text" name="f_bank_name" class="form-control" [(ngModel)]="ForeignInteresetIncome.bank_name" #f_bank_name="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !f_bank_name.valid }" />
+            <div *ngIf="bf.submitted && !f_bank_name.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="f_received_interest" class="form-control" [(ngModel)]="ForeignInteresetIncome.received_interest" #f_received_interest="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !f_received_interest.valid }" />
+            <div *ngIf="bf.submitted && !f_received_interest.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="f_tax_deducted" class="form-control" [(ngModel)]="ForeignInteresetIncome.tax_deducted" #f_tax_deducted="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !f_tax_deducted.valid }" />
+            <div *ngIf="bf.submitted && !f_tax_deducted.valid" class=" text-danger">Required</div></td>
+                 <td><select class="form-control" name="f_country_name" (change)="onCountrySelect($event.target.value)" [ngModel]="ForeignInteresetIncome.country?.id" #f_country_name="ngModel" required [ngClass]="{ 'has-error': bf.submitted && !f_country_name.valid }">
+                  <option value=""></option>
+                  <option *ngFor="let product of CountryList" [value]="product.id">{{product.name}}</option>
+                </select>
+                
+           
+              <div *ngIf="bf.submitted && !f_country_name.valid" class=" text-danger">Required</div>
+              </td>
+                  <td><button type = "submit" class="btn btn-info btn-sm" [disabled]="bf.invalid || bf.pending">Add <i class="nb-plus"></i></button></td>
+              </tr>
+              <tr *ngFor="let itemrow of incomeInfo.ForeignInteresetIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.bank_name}}</td>
+                <td>{{itemrow.received_interest}}</td>
+                <td>{{itemrow.tax_deducted}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                  <td> <button (click)="deleteIncome(i, incomeInfo.ForeignInteresetIncome);$event.stopPropagation()" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+                </tr>
+                 <tr *ngIf="incomeInfo.ForeignInteresetIncome.length==0">
+                  <td colspan="6" align="center">Document not available.</td>
+                </tr>
+             </tbody>
+             </table>
+           </form>
+             </div> 
+                  <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            Note: Please mention the amounts in the respective countries currency
+          </div>
+         
+        
+        </div>
+     <div class="col-sm-12 headTitle center">US Dividend Income (Form 1099 DIV)</div>
+          <div class="table-responsive">
+            <form  name="cf"  #cf="ngForm" (ngSubmit)="addUSDividendIncome(USDividendIncome)" novalidate>
+          <table class="table table-bordered table-striped">     
+ 			
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Payer</th>
+                 <th>Ordinary Dividend</th>
+                <th>Qualified Dividend</th>
+                <th>Capital Gains</th>
+                <th>Federal Income Tax</th>
+                <th>Foreign tax Paid</th>
+                <th>Action</th>
+              </tr>
+            
+            <tr>
+            	<td></td>
+                 <td><input type="text" name="payer_name" class="form-control" [(ngModel)]="USDividendIncome.payer_name" #payer_name="ngModel" required [ngClass]="{ 'has-error': cf.submitted && !payer_name.valid }" />
+            <div *ngIf="cf.submitted && !payer_name.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="ordinary_dividend" class="form-control" [(ngModel)]="USDividendIncome.ordinary_dividend" #ordinary_dividend="ngModel" required [ngClass]="{ 'has-error': cf.submitted && !ordinary_dividend.valid }" />
+            <div *ngIf="cf.submitted && !ordinary_dividend.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="qualified_dividend" class="form-control" [(ngModel)]="USDividendIncome.qualified_dividend" #qualified_dividend="ngModel" required [ngClass]="{ 'has-error': cf.submitted && !qualified_dividend.valid }" />
+            <div *ngIf="cf.submitted && !qualified_dividend.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="capital_gains" class="form-control" [(ngModel)]="USDividendIncome.capital_gains" #capital_gains="ngModel" required [ngClass]="{ 'has-error': cf.submitted && !capital_gains.valid }" />
+            <div *ngIf="cf.submitted && !capital_gains.valid" class=" text-danger">Required</div></td>
+                 <td><input type="number" min="0" name="federal_incometax" class="form-control" [(ngModel)]="USDividendIncome.federal_incometax" #federal_incometax="ngModel" required [ngClass]="{ 'has-error': cf.submitted && !federal_incometax.valid }" />
+            <div *ngIf="cf.submitted && !federal_incometax.valid" class=" text-danger">Required</div></td>
+                  <td><input type="number" min="0" name="foreign_taxpaid" class="form-control" [(ngModel)]="USDividendIncome.foreign_taxpaid" #foreign_taxpaid="ngModel" required [ngClass]="{ 'has-error': cf.submitted && !foreign_taxpaid.valid }" />
+            <div *ngIf="cf.submitted && !foreign_taxpaid.valid" class=" text-danger">Required</div></td>
+                 <td><button type = "submit" class="btn btn-info btn-sm" [disabled]="cf.invalid || cf.pending">Add <i class="nb-plus"></i></button></td>
+              </tr>
+               <tr *ngFor="let itemrow of incomeInfo.USDividendIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.payer_name}}</td>
+                <td>{{itemrow.ordinary_dividend}}</td>
+                <td>{{itemrow.qualified_dividend}}</td>
+                 <td>{{itemrow.capital_gains}}</td>
+                 <td>{{itemrow.federal_incometax}}</td>
+                 <td>{{itemrow.foreign_taxpaid}}</td>
+                  <td> <button (click)="deleteIncome(i, incomeInfo.USDividendIncome);$event.stopPropagation()" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+                </tr>
+                <tr *ngIf="incomeInfo.USDividendIncome.length==0">
+                  <td colspan="8" align="center">Document not available.</td>
+                </tr>
+             </table>
+           </form>
+           </div>
+            <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: Please attach the documents issued by the banks or companies supporting DIVIDEND
+          </div>
+         
+        
+        </div>
+ <div class="col-sm-12 headTitle center">Foreign Dividend Income</div>
+          <div class="table-responsive">
+              <form  name="df"  #df="ngForm" (ngSubmit)="addForeignDividendIncome(ForeignDividendIncome)" novalidate>
+          <table class="table table-bordered table-striped">     
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Company</th>
+                 <th>Dividend received for the year</th>
+                <th>Amount of tax deducted</th>
+                <th>Country Name</th>
+               <th>Action</th>
+              </tr>
+              
+            <tr>
+                <td></td>
+            	  <td><input type="text" name="company_name" class="form-control" [(ngModel)]="ForeignDividendIncome.company_name" #company_name="ngModel" required [ngClass]="{ 'has-error': df.submitted && !company_name.valid }" />
+            <div *ngIf="df.submitted && !company_name.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="received_dividend" class="form-control" [(ngModel)]="ForeignDividendIncome.received_dividend" #received_dividend="ngModel" required [ngClass]="{ 'has-error': df.submitted && !received_dividend.valid }" />
+            <div *ngIf="df.submitted && !received_dividend.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="tax_deducted" class="form-control" [(ngModel)]="ForeignDividendIncome.tax_deducted" #tax_deducted="ngModel" required [ngClass]="{ 'has-error': df.submitted && !tax_deducted.valid }" />
+            <div *ngIf="df.submitted && !tax_deducted.valid" class=" text-danger">Required</div></td>
+                <td><select class="form-control" name="country_name" (change)="onForeignDividendCountrySelect($event.target.value)" [ngModel]="ForeignDividendIncome.country?.id" #country_name="ngModel" required [ngClass]="{ 'has-error': df.submitted && !country_name.valid }">
+                  <option value=""></option>
+                  <option *ngFor="let product of CountryList" [value]="product.id">{{product.name}}</option>
+                </select>
+                
+           
+              <div *ngIf="df.submitted && !country_name.valid" class=" text-danger">Required</div></td>
+               <td><button type = "submit" class="btn btn-info btn-sm" [disabled]="df.invalid || df.pending">Add <i class="nb-plus"></i></button></td>
+              </tr>
+          <tr *ngFor="let itemrow of incomeInfo.ForeignDividendIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.company_name}}</td>
+                <td>{{itemrow.received_dividend}}</td>
+                <td>{{itemrow.tax_deducted}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                
+                  <td> <button (click)="deleteIncome(i, incomeInfo.ForeignDividendIncome);$event.stopPropagation()"  class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button></td>
+                </tr>
+                 <tr *ngIf="incomeInfo.ForeignDividendIncome.length==0">
+                  <td colspan="6" align="center">Document not available.</td>
+                </tr>
+          </table>
+        </form>
+         </div>
+           <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: The dividend from shares though exempt in India are taxable in USA. So please include the same.
+          </div>
+         
+        
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 form-group headTitle">Upload Document</div>
+    <div class="col-sm-12 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+     
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+          </div>
+           </div>
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of incomeInfo.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="incomeInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+          
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/rental-income']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+     
+           
+        </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+ <!-- Non Editable -->
+
+
+ <div class="col-sm-12" *ngIf="editMode == false">
+   <nb-card  size="normal">
+      <nb-card-header>W2 - WAGES FORM</nb-card-header>
+      <nb-card-body>
+  
+<div class="row">
+ 
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note : Please ignore filling the below fields if you are enclosing the supporting documents i.e W2, 1099 INT, 1099 DIV etc
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+          Note: 1 Please mention the amounts in the respective countries currency
+          </div>
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: 2 Please attach the documents issued by the banks or companies supporting INTEREST or DIVIDEND
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">US Interest Income (Form 1099 INT)</div>
+     
+        <div class="table-responsive">
+          <form  name="af"  #af="ngForm" (ngSubmit)="addUSInteresetIncome(USInteresetIncome)" novalidate>
+
+          <table class="table table-bordered table-striped">
+              <tr class="">
+                <th>Sl.No</th>
+                <th>Name of Bank</th>
+                <th>Interest received for the year </th>
+                <th>Tax Withheld</th>
+                
+              </tr>
+            
+            <tbody>
+       
+               <tr *ngFor="let itemrow of incomeInfo.USInteresetIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.bank_name}}</td>
+                <td>{{itemrow.received_interest}}</td>
+                <td>{{itemrow.tax_held}}</td>
+                 
+                </tr>
+                 <tr *ngIf="incomeInfo.USInteresetIncome.length==0">
+                  <td colspan="5" align="center">Document not available.</td>
+                </tr>
+            </tbody>
+          </table>
+           </form>
+        </div>
+       
+       
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            Note: Please attach the documents issued by the banks or companies supporting INTEREST
+          </div>
+         
+        
+        </div>
+     <div class="col-sm-12 headTitle center">Foreign Interest Income </div>
+             <div class="table-responsive">
+               <form  name="bf"  #bf="ngForm" (ngSubmit)="addForeignInteresetIncome(ForeignInteresetIncome)" novalidate>
+          <table class="table table-bordered table-striped">
+             
+            
+            <tbody>
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Bank</th>
+                <th class="text-nowrap" scope="row" >Interest received for the year</th>
+                <th class="text-nowrap" scope="row">Amount of tax deducted</th>
+                <th class="text-nowrap" scope="row">Country Name</th>
+               
+            
+              </tr>
+             
+              <tr *ngFor="let itemrow of incomeInfo.ForeignInteresetIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.bank_name}}</td>
+                <td>{{itemrow.received_interest}}</td>
+                <td>{{itemrow.tax_deducted}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                 
+                </tr>
+                 <tr *ngIf="incomeInfo.ForeignInteresetIncome.length==0">
+                  <td colspan="6" align="center">Document not available.</td>
+                </tr>
+             </tbody>
+             </table>
+           </form>
+             </div> 
+                  <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+            Note: Please mention the amounts in the respective countries currency
+          </div>
+         
+        
+        </div>
+     <div class="col-sm-12 headTitle center">US Dividend Income (Form 1099 DIV)</div>
+          <div class="table-responsive">
+            <form  name="cf"  #cf="ngForm" (ngSubmit)="addUSDividendIncome(USDividendIncome)" novalidate>
+          <table class="table table-bordered table-striped">     
+      
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Payer</th>
+                 <th>Ordinary Dividend</th>
+                <th>Qualified Dividend</th>
+                <th>Capital Gains</th>
+                <th>Federal Income Tax</th>
+                <th>Foreign tax Paid</th>
+               
+              </tr>
+            
+          
+               <tr *ngFor="let itemrow of incomeInfo.USDividendIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.payer_name}}</td>
+                <td>{{itemrow.ordinary_dividend}}</td>
+                <td>{{itemrow.qualified_dividend}}</td>
+                 <td>{{itemrow.capital_gains}}</td>
+                 <td>{{itemrow.federal_incometax}}</td>
+                 <td>{{itemrow.foreign_taxpaid}}</td>
+                 
+                </tr>
+                <tr *ngIf="incomeInfo.USDividendIncome.length==0">
+                  <td colspan="8" align="center">Document not available.</td>
+                </tr>
+             </table>
+           </form>
+           </div>
+            <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: Please attach the documents issued by the banks or companies supporting DIVIDEND
+          </div>
+         
+        
+        </div>
+ <div class="col-sm-12 headTitle center">Foreign Dividend Income</div>
+          <div class="table-responsive">
+              <form  name="df"  #df="ngForm" (ngSubmit)="addForeignDividendIncome(ForeignDividendIncome)" novalidate>
+          <table class="table table-bordered table-striped">     
+              <tr class="">
+                <th>Sl.No</th>
+                <th class="text-nowrap" scope="row">Name of Company</th>
+                 <th>Dividend received for the year</th>
+                <th>Amount of tax deducted</th>
+                <th>Country Name</th>
+              
+              </tr>
+              
+           
+          <tr *ngFor="let itemrow of incomeInfo.ForeignDividendIncome; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.company_name}}</td>
+                <td>{{itemrow.received_dividend}}</td>
+                <td>{{itemrow.tax_deducted}}</td>
+                 <td>{{itemrow.country?.name}}</td>
+                
+                
+                </tr>
+                 <tr *ngIf="incomeInfo.ForeignDividendIncome.length==0">
+                  <td colspan="6" align="center">Document not available.</td>
+                </tr>
+          </table>
+        </form>
+         </div>
+           <div class="col-sm-12 row ">
+
+          <div class="col-sm-12 form-group input-group-sm">
+           Note: The dividend from shares though exempt in India are taxable in USA. So please include the same.
+          </div>
+         
+        
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 form-group headTitle">Upload Document</div>
+   
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> </th>
+            </tr>
+        <tr *ngFor="let fileList of incomeInfo.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="incomeInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+        
+   </nb-card-body>
+   <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/rental-income']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+
+  </div>
+
+ 

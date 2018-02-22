@@ -1,0 +1,17 @@
+<div class="row">
+<div class="col-md-12 col-lg-12">
+    <nb-card size="normal">
+    	 <nb-card-header>Taxprovider Area</nb-card-header>
+      <nb-card-body>
+     <ul>
+  <li> <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"/>
+  </li>
+  <li *ngFor="let n of names"> 
+  <input [type]="'checkbox'" checked="true" [(ngModel)]="n.selected" (change)="checkIfAllSelected();">
+  {{n.name}}
+  </li>
+</ul>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

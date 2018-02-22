@@ -1,0 +1,123 @@
+
+
+
+<div class="col-sm-12">
+   <nb-card  size="normal">
+      <nb-card-header>Case Status View</nb-card-header>
+      <nb-card-body>
+   
+
+ <ul class="progress-tracker progress-tracker--vertical">
+  <li class="progress-step is-complete">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 1</h4>
+      Taxpayer / Client - Documents submitted
+    </span>
+  </li>
+ 
+  <li class="progress-step is-complete">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 2</h4>
+      Review by Tax provider
+    </span>
+  </li>
+  <li class="progress-step is-active">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 3</h4>
+      Query from Tax provider (Additional documents needed / Some correction)
+    </span>
+  </li>
+  <li class="progress-step">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 4</h4>
+      Query Responded by Taxpayer / Client
+    </span>
+  </li>
+ 
+  <li class="progress-step">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 5</h4>
+      Tax preparation
+    </span>
+  </li>
+   <li class="progress-step">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 6</h4>
+      Review by Taxpayer / Client
+    </span>
+  </li>
+   <li class="progress-step">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 7</h4>
+      eFile authorization By Taxpayer / Client
+    </span>
+  </li>
+   <li class="progress-step">
+    <span class="progress-marker"></span>
+    <span class="progress-text">
+      <h4 class="progress-title">Step 8</h4>
+      Tax Filed
+    </span>
+  </li>
+</ul>
+
+ <!-- <ol class="track-progress" data-steps="5">
+   <li class="done">
+     <span>Taxpayer</span>
+     <i></i>
+   </li>
+    <li class="done">
+     <span>Taxprovider</span>
+     <i></i>
+   </li>
+    <li class="done">
+     <span>Site</span>
+     <i></i>
+   </li>
+    <li class="">
+     <span>Data Source</span>
+   </li>
+    <li>
+     <span>Final Details</span>
+     <i></i>
+   </li>
+ </ol> -->
+
+</nb-card-body>
+</nb-card>
+</div>
+
+<!-- 
+<div draggable="true" ngClass="{{dragAreaClass}}">
+  <div class="row">
+    <div class="col-md-12 text-center" >
+      <a href="javascript:void(0)" (click)="file.click()" >
+        Click to browse 
+      </a>
+      Or Drag & Drop to upload your files
+      <input type="file" 
+             #file 
+             [multiple]="(maxFiles > 1)"
+             (change) = "onFileChange(file.files)"
+              />
+              
+    </div>
+  </div>
+
+</div>
+<div class="row error" *ngIf="errors.length > 0">    
+  <ul>
+    <li *ngFor="let err of errors">{{err}}</li>
+  </ul>
+</div>  
+<button type = "submit"   (click)="saveFiles(file.files)" class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+
+
+ -->

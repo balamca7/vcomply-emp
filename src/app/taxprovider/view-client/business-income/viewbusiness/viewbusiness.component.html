@@ -1,0 +1,215 @@
+<!-- <pre>{{property | json}}</pre> -->
+<div><span class="pull-right"><button class="btn btn-sm btn-danger" (click)="onClose()">Close</button></span></div>
+<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <tr class="headTitle">
+                <th colspan="2">Particulars</th>
+                <th>Business </th>
+               
+              </tr>
+            	<tr>
+                <td colspan="3">Note 1: This section needs to be completed if you have any self employed or business income. Please specify the currency in which such expense is incurred.</td>
+               
+          </tr>
+          <tr>
+                <td colspan="3">Note 2: If your filing status is MFJ (Married Filing Joint), please mention the business income of your spouse also.</td>
+               
+          </tr>
+          <tr>
+                <td colspan="3">** Indicates mandatory field</td>
+               
+          </tr>
+
+           
+                <tbody>
+              <tr>
+                <th colspan="2">Name of proprietor</th>
+                <td>{{property.proprietor_name}}</td>
+               
+              </tr>
+            
+          
+			<tr>              
+                <th colspan="2">Nature of Business/ profession, including services</th>
+                <td>{{property.business_nature}}</td>
+              
+            
+              </tr>
+              
+              <tr>
+               
+               <th colspan="2">Business Code</th>
+                <td>{{property.business_code}}</td>
+              
+            
+              </tr>
+               <tr>
+              
+              <th colspan="2">Name of the Business</th>
+                <td>{{property.business_name}}</td>
+            
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Address of the Business</th>
+                <td>{{property.business_address}}</td>
+             
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Accounting Method</th>
+                <td>{{property.accounting_method}}</td>
+            
+              </tr>
+               <tr>
+               
+                <td colspan="2"><p>Did you "materially participate" in the operation of this business during this year? Note: If "No", the losses may be limited.</p></td>
+                <td>{{property.materially_participate}}</td>
+             
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">Was the business started or acquired by you in the year?</th>
+                <td>{{property.business_started}}</td>
+               
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">Did you make any payments in year that would require you to file Form(s) 1099?</th>
+                <td>{{property.forms1099_payments}}</td>
+             
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">If "Yes," did you or will you file required Forms 1099?</th>
+                <td>{{property.forms1099_required}}</td>
+             
+            
+              </tr>
+              <tr>
+               
+                <th colspan="2">For State Purposes, please let us know if this business is an LLC</th>
+                <td>{{property.state_purposes}}</td>
+              
+            
+              </tr>
+              <tr>
+                <th  colspan="4" class="text-nowrap" scope="row" style="color: red;">&nbsp;</th>
+              </tr>
+              
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Income</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+             
+            
+              </tr>
+              <tr>
+                <th colspan="2">Gross Receipts or Sales</th>
+                <td>{{property.gross_receipts_sales}}</td>
+                
+              </tr>
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Expenses</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+               </tr>
+              <tr>
+                <th colspan="2">Advertising</th>
+                <td>{{property.advertising}}</td>
+             
+                
+              </tr>
+               <tr>
+                <th colspan="2">Car & Truck Expenses</th>
+                <td>{{property.car_truck_expenses}}</td>
+               
+              </tr>
+               <tr>
+               <th colspan="2">Contract Labor</th>
+                <td>{{property.contract_labor}}</td>
+             
+              </tr>
+               <tr>
+                <th colspan="2">Legal/professional fees</th>
+                <td>{{property.legal_professional_fees}}</td>
+                
+              </tr>
+               <tr>
+                <th colspan="2">Office Expenses</th>
+                <td>{{property.office_expenses}}</td>
+                
+              </tr>
+               <tr>
+                <th colspan="2">Rent or Lease</th>
+                <td>{{property.rent_lease}}</td>
+               
+              </tr>
+               <tr>
+                <th colspan="2">Meals and Entertainment</th>
+                <td>{{property.meals_entertainment}}</td>
+               
+              </tr>
+               <tr>
+                <th colspan="2">Repairs and Maintenance</th>
+                <td>{{property.repairs_maintenance}}</td>
+              
+              </tr>
+               <tr>
+                <th colspan="2">Taxes & Licenses</th>
+                <td>{{property.taxes_licenses}}</td>
+             
+              </tr>
+               <tr>
+                <th colspan="2">Utilities</th>
+                <td>{{property.utilities}}</td>
+             
+              </tr>
+               <tr>
+                <th colspan="2">Wages</th>
+                <td>{{property.wages}}</td>
+             
+              </tr>
+              <tr>
+                <th colspan="2">Business Travel Miles (Using personal Vehicle)</th>
+                <td>{{property.business_travel_miles}}</td>
+               
+              </tr>
+               <tr>
+                <th colspan="2">Others (Pl Specify)</th>
+                <td>{{property.others}}</td>
+               
+              </tr>
+              
+             
+               <tr>
+                <td colspan="4">&nbsp;</td>
+              </tr>
+              
+             <!--  <tr class="header">
+                <th class="text-nowrap" scope="row">Description of Fixed Assets if any used for business</th>
+                <th class="text-nowrap" scope="row" >Date of Purchase</th>
+                <th class="text-nowrap" scope="row">Cost of Asset</th>
+              </tr>
+               <tr>
+                <td><input type="text"   class="form-control"/></td>
+                <td><input type="date"   class="form-control"/></td>
+                 <td><input type="number" min="0" class="form-control"/></td>
+              </tr>
+               <tr>
+                <td><input type="text"   class="form-control"/></td>
+                <td><input type="date"   class="form-control"/></td>
+                 <td><input type="number" min="0"  class="form-control"/></td>
+              </tr>
+               <tr>
+                <td ><input type="text"   class="form-control"/></td>
+                <td><input type="date"   class="form-control"/></td>
+                 <td><input type="number" min="0"  class="form-control"/></td>
+              </tr> -->
+            </tbody>
+          </table>
+         </div>
+     

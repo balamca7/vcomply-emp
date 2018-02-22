@@ -1,0 +1,493 @@
+ <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.css'>
+ <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+ <div style="background: white;">
+  <div class="header" id="home">
+    <div class="container">
+      <div class="header_left">
+        <ul>
+          <!-- <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>+ (123) 111 222 333</li> -->
+          <li><span class="glyphicon glyphicon-envelope"
+            aria-hidden="true"></span><a href="mailto:support@studycollab.com">support@vcomply.com</a></li>
+        </ul>
+      </div>
+
+      <div class="header_right">
+        <ul>
+          <li><a
+            class="book popup-with-zoom-anim button-isi zoomIn animated"
+            data-wow-delay=".5s" [routerLink]="['/login']">Login</a></li>
+          <li>|</li>
+          <li><a
+            class="book popup-with-zoom-anim button-isi zoomIn animated"
+            data-wow-delay=".5s" [routerLink]="['/subscripe']">Subscription</a></li>
+          <!-- <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:support@studycollab.com">support@studycollab.com</a></li> -->
+        </ul>
+      </div>
+
+      <div class="clearfix"></div>
+
+    </div>
+  </div>
+ <div class="logo-navigation">
+    <div class="container">
+      <div class="logo">
+        <a href="#"><h1>
+            <img src="assets/website/images/logo6.png" alt=" " />
+          </h1></a>
+      </div>
+        
+      <div class="clearfix"></div>
+    </div>
+  </div>
+<div id="wrapper">
+    <div class="container {{successMsghide}}">
+
+      <accordion  [showArrows]="false" [closeOthers]="true" >
+        <accordion-group  [isOpened]="openChooseplan" [disabled]="disableChooseplan">
+           <accordion-heading  class="panel-warning">
+                Choose Plan <button class="pull-right {{hideShowChooseplan}}" (click)="enableChooseplan()">Change</button>
+            </accordion-heading>
+         <!--  <form name="planform"  #f="ngForm" (ngSubmit)="f.form.valid && choosePlan(e)" novalidate> -->
+            <div class="row">
+              <div class="col-md-3" *ngFor="let plan of planList">
+                  <div class="circle img-circle {{plan.cls}}">
+                      <h4 class="{{ plan.color }}" >{{plan.title}}</h4>
+                      <span class="icon {{ plan.color }}"><i class="fa fa-usd"></i></span>
+                      <span class="price-large {{ plan.color }}">{{plan.price}}</span>
+                     <!--  <span class="price-small">,90</span> -->
+                      <p>Great for small Business</p>
+                      <button type="button" class="btn btn-info" (click)="choosePlan(plan)">Choose</button>
+                  </div>
+              </div>
+               <!-- <div class="col-md-3">
+                  <div class="circle c1 img-circle">
+                      <h4 class="blue">{{planList[0].title}}</h4>
+                      <span class="icon blue"><i class="fa fa-eur"></i></span>
+                      <span class="price-large blue">8</span>
+                      <span class="price-small">,90</span>
+                      <p>Great for small Business</p>
+                      <button type="button" class="btn btn-info" (click)="choosePlan()">Choose</button>
+                  </div>
+              </div>
+          
+              <div class="col-md-3">
+                  <div class="circle c2 img-circle">
+                      <h4 class="yellow">BUSINESS</h4>
+                      <span class="icon yellow"><i class="fa fa-eur"></i></span>
+                      <span class="price-large yellow">24</span>
+                      <span class="price-small">,90</span>
+                      <p>Great for small Business</p>
+                      <button type="button" class="btn btn-warning" (click)="choosePlan()">Choose</button>
+                  </div>
+              </div>
+          
+          <div class="col-md-3">
+                  <div class="circle c3 img-circle">
+                      <h4 class="green">LAW FIRM</h4>
+                      <span class="icon green"><i class="fa fa-eur"></i></span>
+                      <span class="price-large green">54</span>
+                      <span class="price-small">,90</span>
+                      <p>Great for small Business</p>
+                      <button type="button" class="btn btn-success" (click)="choosePlan()">Choose</button>
+                  </div>
+              </div>
+          
+          <div class="col-md-3">
+                  <div class="circle c4 img-circle">
+                      <h4 class="red">ACCOUNTING FIRM</h4>
+                      <span class="icon red"><i class="fa fa-eur"></i></span>
+                      <span class="price-large red">8</span>
+                      <span class="price-small">,90</span>
+                      <p>Great for small Business</p>
+                      <button type="button" class="btn btn-danger" (click)="choosePlan()">Choose</button>
+                  </div>
+              </div> -->
+        </div><!-- .Container ends here -->
+        <!-- </form> -->
+        </accordion-group>
+        <accordion-group [disabled]="disableRegister" [isOpened]="openRegister">
+
+           <accordion-heading  class="panel-warning">
+                Register <button class="pull-right {{hideShowRegister}}" (click)="enableRegister()">Change</button>
+            </accordion-heading>
+            <!-- <button class="pull-right " (click)="chooseNext()">Next</button> -->
+            <div class="outer-container">
+      <section class="ccontainer None content-container main-wwsui-container" style="" id="main-container">
+        <div class="row resp_grid grid-container-100">
+          <div class="span6 col-md-6  col-sm-6  col-xs-12 ">
+            <section class="ccontainer None left-main-container" style="" id="left-main-container">
+             
+
+              <div id="wwsui-main-container">
+                <div id="wwsui-ius-widgets-container">
+                <div id="ius-sign-up-widget">
+                  <div id="ius-sign-up-wrapper" class="ius ius-reset ius-sign-up-widget ius-hosted-ui en-US" style="">
+                    <section id="ius-sign-up-spinner" class="ius-sign-in-spinner ius-hide ius-section">
+                      <div class="ius-spinner"></div>
+                    </section>
+                    <section id="ius-sign-up" class="ius-section">
+                      <div id="ius-sign-up-branding-container" class="ius-hide ius-cobranding-container"></div>
+                      <header class="ius-header-container">
+                        <div id="ius-sign-up-ecosystem-logos" class="ius-hide ius-widget-header-ecosystem-logos"></div>
+                       
+                        <span id="ius-sign-up-header" class="ius-header">Subscribe to vComply</span> 
+                        <!-- <span id="ius-sign-up-sub-header" class="ius-sub-header">
+                          <span id="ius-sign-up-sub-header-italicized-prompt" class="ius-italic ius-side"></span> 
+                          <a id="ius-sign-up-sub-header-italicized-link" class="ius-italic ius-side"></a> 
+                          <span id="ius-sign-up-sub-header-prompt">Already have a vComply account?</span> 
+                          <a href="#" target="_blank" id="ius-sign-up-ecosystem-learn-more" class="ius-hide ius-small-info-link" >Learn&nbsp;more</a> 
+                          <span id="ius-sign-up-sign-in-link-container" class="">
+                            <span id="ius-sign-up-sign-in-content">Already have an account?</span> 
+                            <a id="ius-sign-in-url" class="ius-small-info-link" href="">Add Another Company</a> 
+                          </span>
+                         
+                          </span> -->
+                        </header>
+                        
+                       <form name="form"  #f="ngForm" (ngSubmit)="f.form.valid && register(userInfo)" novalidate>
+                           <div class="row">
+
+         <div class="col-sm-12 row">
+
+            <div class="col-sm-6 form-group input-group-sm">
+              <label >First name</label>
+            </div>
+            <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !f_name.valid }">
+         
+              <input type="text" name="f_name" placeholder="First name" class="form-control" [(ngModel)]="userInfo.f_name" #f_name="ngModel" required />
+              <div *ngIf="f.submitted && !f_name.valid" class=" text-danger">First name is required</div>
+            </div>
+          </div>
+          <div class=" col-sm-12 row">
+            <div class="col-sm-6 form-group input-group-sm">
+              <label>Middle name</label>
+            </div>
+            <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !m_name.valid }">
+              <input type="text" name="m_name" placeholder="Middle name" class="form-control" [(ngModel)]="userInfo.m_name" #m_name="ngModel" />
+              <div *ngIf="f.submitted && !m_name.valid" class=" text-danger">middle name is required</div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label>Last name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !l_name.valid }">
+            <input type="text" name="l_name" placeholder="Last name" class="form-control" [(ngModel)]="userInfo.l_name" #l_name="ngModel" required />
+            <div *ngIf="f.submitted && !l_name.valid" class=" text-danger">Last name is required</div>
+          </div>
+        </div>
+     
+        <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label >Email ID</label>
+
+
+
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !email_id.valid }">
+            <input type="email" name="email_id" placeholder="Email ID" class="form-control" [(ngModel)]="userInfo.email_id" #email_id="ngModel" required pattern=".+\@.+\..+" email />
+             <div *ngIf="f.submitted && !email_id.valid" class="form-text error text-danger">Email id is required</div>
+             <div *ngIf="f.submitted && !email_id.touched && !email_id.errors?.pattern" class="form-text error text-danger">Please enter the correct email, this email not valid.</div>
+
+          </div>
+        </div>
+        <!--  <div class="col-sm-12 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label >Password</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <input type="password" name="password" value="" placeholder="Password" class="form-control form-control-line" [(ngModel)]="userInfo.password" #password="ngModel" required />
+             <div *ngIf="f.submitted && !password.valid" class=" text-danger">Password is required</div>
+           </div>
+           </div>
+            <div class="col-sm-12 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label >Confirm Password</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !confirmpassword.valid }">
+          <input type="password" placeholder="Confirm Password" name="confirmpassword" class="form-control form-control-line" [(ngModel)]="userInfo.confirmpassword" #confirmpassword="ngModel" required />
+             <div *ngIf="f.submitted && !confirmpassword.valid" class=" text-danger">Confirm Password is required</div>
+           </div>
+           </div> -->
+          
+           
+        
+         <!-- <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label >Nationality</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !nationality.valid }">
+             <input type="text"   class="form-control" name="Nationality" placeholder="Nationality" [(ngModel)]="userInfo.nationality" #nationality="ngModel" required />
+             <div *ngIf="f.submitted && !nationality.valid" class=" text-danger">Nationality is required</div>
+               
+          </div>
+        </div>
+          -->
+                
+ <!-- <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label >State</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !state_id.valid }">
+             <select class="form-control" name="state_id" placeholder="State" [(ngModel)]="userInfo.state_id" #state_id="ngModel" required >
+              <option></option>
+               <option *ngFor="let state of states" value= {{state.id}}>
+                  {{state.name}}
+                </option>
+               
+             </select>
+             <div *ngIf="f.submitted && !state_id.valid" class=" text-danger">State is required</div>
+          </div>
+        </div>
+         <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label >Country</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !country_id.valid }">
+             <select class="form-control" name="country_id" placeholder="Country" [(ngModel)]="userInfo.country_id" #country_id="ngModel" required >
+              <option></option>
+                <option *ngFor="let country of countries" value= {{country.id}}>
+                  {{country.name}}
+                </option>
+              
+             </select>
+             <div *ngIf="f.submitted && !country_id.valid" class=" text-danger">Country is required</div>
+          </div>
+        </div> -->
+         
+        <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label >Mobile</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm" [ngClass]="{ 'has-error': f.submitted && !mobile.valid }">
+             <input type="Tel" name="mobile"  class="form-control" placeholder="Mobile" [(ngModel)]="userInfo.mobile"  #mobile="ngModel" required />
+             <div *ngIf="f.submitted && !mobile.valid" class=" text-danger">Mobile is required</div>
+                
+          </div>
+        </div>
+         <div class="row  col-sm-12">
+
+          <div class="col-sm-6 form-group input-group-sm">
+          <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Next</button>
+          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          
+          </div>
+        </div>
+        </div>
+                        </form>
+                    <footer class="ius-footer-container">
+                      <span id="ius-terms-of-use" class="ius-side ius-italic">
+                        <span id="ius-terms-of-use-text">By clicking Sign Up, you acknowledge you have read and agreed to the 
+                          <a href="">Terms of Service</a>
+                        </span>.
+                      </span>
+                    </footer>
+                  </section>
+                
+                  
+                 
+                
+                </div>
+               
+              </div>
+                
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="span6 col-md-6  col-sm-6 hidden-xs ">
+            <section class="ccontainer bg-grey right-main-container" style="" id="right-main-container">
+              <section class="ccontainer None product-pane" style="" id="wwsui-right-rail-container"><div id="buy-standard-content" class="wwsui-right-rail-content">
+        <div class="wwsui-right-rail-header">
+            <h3>Your subscription includes:</h3>
+        </div>
+        <div class="wwsui-right-rail-description">
+            <p class="p2" style="padding-top: 18px;font-size:16px;font-weight:bold;">vComply at</p>
+        </div>
+            <div class="ctext" style="padding-top:18px;">
+                  <p>
+                <span class="x-price-currency-quantifier" style="font-size:38px;font-weight:bold;">$</span><span class="x-price-amount-whole" style="font-size:38px;font-weight:bold;">{{selectedPlan.price}}</span>&nbsp;&nbsp;&nbsp;<span class="x-price-duration-quantifier" style="font-size:18px;">for one year</span>
+            </p>
+            <!-- <div class="ctext" style="padding-top:12px;">
+                <span class="text-lightgrey" style="color:#2CA01C;font-size:18px;">MRP</span> <span class="text-lightgrey-strikethrough" style="color:#2CA01C;font-size:18px;text-decoration: line-through;">₹ 4999</span><span class="text-lightgrey" style="color:#2CA01C;font-size:18px;"> | </span> <span class="x-price-discount" style="color:#2CA01C;font-size:18px;">50%
+                    OFF</span>
+            </div> -->
+                </div>
+        
+    <div class="ctext" style="padding-top: 28px;"><p><span class="p1"><b>It comes with:</b></span></p></div>
+        <div class="ctext">
+            <!-- <div class="ctextimage nowrap" style="padding-top: 26px;">
+                          <img class="cq-dd-image img-left" alt="taking_a_break_2" data-sha="0164051a" src="assets/website/images/call_support_1@1x.png" style="width: 50px;">
+                          <div class="ctext" style="padding-top: 9px;">
+                            <b>Free training and support</b>
+
+                          </div>
+                        </div> -->
+                        <div class="ctextimage nowrap" style="padding-top: 17px;">
+                          <img class="cq-dd-image img-left" alt="security_PCI_compliant" data-sha="2b46ab88" src="assets/website/images/security_PCI_compliant@1x.png" style="height:41.43px;width: 50px;">
+                          <div class="ctext" style="padding-top: 9px;">
+                            <b>Bank-level security and privacy</b>
+                          </div>
+                        </div>
+                        <!-- <div class="ctextimage nowrap" style="padding-top: 17px;">
+                          <img class="cq-dd-image img-left" alt="pro_assist_care_for_ppt" data-sha="614be701" src="assets/website/images/Accept_payment_all_cards@1x.png" style="width: 50px;">
+                          <div class="ctext" style="padding-top: 9px;">
+                            <b>60-day money back guarantee</b>
+
+                          </div>
+                        </div> -->
+        </div>
+                      <div>&nbsp;</div>
+                  <div>&nbsp;</div>
+                  <div>&nbsp;</div>
+                      <hr style="padding-bottom: 6px;background-color: #505050;">
+                  <div>&nbsp;</div>
+                  <div class="ctext" style="padding-top: 9px;">
+                    <b>* &nbsp; Price includes all applicable taxes.</b>
+                  </div>
+
+                </div></section>
+    </section>
+    </div>
+      
+    </div>
+  </section>
+  </div>
+        </accordion-group>
+        <accordion-group  [disabled]="disablePayment" [isOpened]="openPayment">
+          
+           <accordion-heading  class="panel-warning">
+               Payment Options <!-- <button class="pull-right {{hideShowPayment}}" (click)="enablePayment()">Change</button> -->
+            </accordion-heading>
+            <div class="row">
+            <div class="col-xs-12 col-md-4">
+             <form name="formPayment"  #f1="ngForm" (ngSubmit)="f1.form.valid && userpayment(cardInfo)" novalidate>
+        
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="panel-body">
+                   
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                     
+                                    <div class="input-group" [ngClass]="{ 'has-error': f1.submitted && !cardNumber.valid }">
+                                        <input 
+                                            type="tel"
+                                            class="form-control"
+                                            name="cardNumber"
+                                            placeholder="Valid Card Number"
+                                            autocomplete="cc-number"
+                                            required autofocus 
+                                            [(ngModel)]="cardInfo.cardNumber"  #cardNumber="ngModel"
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                     <div *ngIf="f1.submitted && !cardNumber.valid" class=" text-danger">Card number is required</div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                              <div class="form-group">
+                                <label for="expityMonth">
+                                    EXPIRY DATE</label>
+                                <div class="col-xs-6 col-lg-6 pl-ziro" [ngClass]="{ 'has-error': f1.submitted && !expiryMonth.valid }">
+                                    <input type="text" length=2 class="form-control" name="expiryMonth" placeholder="MM" [(ngModel)]="cardInfo.expiryMonth" #expiryMonth="ngModel" required />
+                                </div>
+                                <div *ngIf="f1.submitted && !expiryMonth.valid" class=" text-danger">Expiry month is required</div>
+                                <div class="col-xs-6 col-lg-6 pl-ziro" [ngClass]="{ 'has-error': f1.submitted && !expiryYear.valid }">
+                                    <input type="year" length=2 class="form-control" name="expiryYear" placeholder="YY" [(ngModel)]="cardInfo.expiryYear" #expiryYear="ngModel" required /></div>
+                                    <div *ngIf="f1.submitted && !expiryYear.valid" class=" text-danger">Expiry year is required</div>
+                            </div>
+                                
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group" [ngClass]="{ 'has-error': f1.submitted && !cardCVC.valid }">
+                                    <label for="cardCVC">CV CODE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        name="cardCVC"
+                                        placeholder="CVC"
+                                        autocomplete="cc-csc"
+                                        [(ngModel)]="cardInfo.cardCVC" #cardCVC="ngModel"
+                                        required
+                                    />
+                                </div>
+                                <div *ngIf="f1.submitted && !cardCVC.valid" class=" text-danger">CVC is required</div>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponCode" />
+                                </div>
+                            </div>                        
+                        </div> -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit">Pay</button>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>            
+            <!-- CREDIT CARD FORM ENDS HERE -->
+            
+            </form>
+            <!-- <div class="col-xs-12 col-md-4">
+            <paypal-button [props]="paypalConfig"></paypal-button>
+            </div> -->
+            </div>
+        </div>     
+        </accordion-group>
+        <!-- <accordion-group style="background: red;" [disabled]="true">
+            <accordion-heading >
+                Custom heading
+            </accordion-heading>
+            Its all about me.
+        </accordion-group> -->
+    </accordion>
+
+        
+    </div><!-- .Row ends here -->
+
+
+ <div class="container {{successMsg}}">
+  <div class="row text-center">
+        <div class="col-sm-6 col-sm-offset-3">
+        <br><br> <h2 style="color:#0fad00"><i class="ion-ios-checkmark-outline"></i>Payment Successfully.</h2>
+        <h4>Thank you,</h4>
+        <h3>Dear, {{paymentDetails.f_name}}</h3>
+        <p style="font-size:20px;color:#5C5C5C;">Your payment of ${{paymentDetails.price}} to vComply id #{{paymentDetails.client_id}} has been processed successfully.</p>
+        <p>We'll send you a confirmation email shortly.
+        <p>For you reference, your vComply transcaion ID is 456789.</p>
+        <a [routerLink]="['/login']" class="btn btn-success">     Log in      </a>
+    <br><br>
+        </div>
+        
+  </div>
+</div>
+
+</div>
+</div>

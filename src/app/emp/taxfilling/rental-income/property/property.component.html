@@ -1,0 +1,182 @@
+<!--       <pre>{{propertyInfo | json}}</pre> -->
+     	 <form name="f"  #f="ngForm" (ngSubmit)="f.form.valid && onPropertyFormSubmit()" novalidate>
+     	<div class="table-responsive">
+          <div class="col-sm-12"><button type="submit" class="btn btn-defualt btn-sm">Save</button></div>
+          <table class="table table-bordered table-striped">
+           <!--  <input type="hidden" name="id" [(ngModel)]="propertyInfo.id"> -->
+              <tr class="headTitle">
+                <th  colspan="3" class="text-nowrap" scope="row" >Property Details</th>
+              </tr>
+              <tr>
+                <th colspan="2">Address of Property</th>
+                <td><input type="text" class="form-control" name="address" [(ngModel)]="propertyInfo.address" #address="ngModel"  [ngClass]="{ 'has-error': f.submitted && !address.valid }" required /><div *ngIf="f.submitted && !address.valid" class=" text-danger">Required</div></td>
+              </tr>
+            
+            <tbody>
+			<tr>              
+                <th colspan="2">Did you actively participate?</th>
+                <td><input type="text"   class="form-control" name="actively_participate" [(ngModel)]="propertyInfo.actively_participate" /></td>
+            
+              </tr>
+              <tr>
+                <td colspan="3">Note: Active participation indicates selecting tenants, approving expenses, arranging services etch</td>
+               
+          </tr>
+              <tr>
+               
+               <th colspan="2">Did you sell the rented property in Year?</th>
+                <td><input type="text"   class="form-control" name="sell_rented_property" [(ngModel)]="propertyInfo.sell_rented_property" /></td>
+
+            
+              </tr>
+               <tr>
+              
+              <th colspan="2">Description of Property</th>
+                <td><input type="text"   class="form-control" name="description_property" [(ngModel)]="propertyInfo.description_property" /></td>
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Number of days rented</th>
+                <td><input type="Number" min="0"   class="form-control" name="no_of_days_rented" [(ngModel)]="propertyInfo.no_of_days_rented" /></td>
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Number of days used personally</th>
+                <td><input type="Number" min="0"   class="form-control" name="no_of_days_personal"  [(ngModel)]="propertyInfo.no_of_days_personal"/></td>
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Number of days vacant</th>
+                <td><input type="Number" min="0"  class="form-control" name="no_of_vacant"  [(ngModel)]="propertyInfo.no_of_vacant"/></td>
+            
+              </tr>
+              <tr>
+                <th  colspan="3" class="text-nowrap" scope="row" >&nbsp;</th>
+              </tr>
+              
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Income</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+              </tr>
+              <tr>
+                <th colspan="2">Gross Rents Received</th>
+                <td><input type="Number" min="0"   class="form-control" name="gross_rents_received" [(ngModel)]="propertyInfo.gross_rents_received" /></td>
+              </tr>
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Expenses</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+              </tr>
+              <tr>
+                <th colspan="2">Advertising</th>
+                <td><input type="Number" min="0" class="form-control" name="advertising" [(ngModel)]="propertyInfo.advertising" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Cleaning</th>
+                <td><input type="Number" min="0" class="form-control" name="cleaning" [(ngModel)]="propertyInfo.cleaning" /></td>
+              </tr>
+               <tr>
+               <th colspan="2">Insurance</th>
+                <td><input type="Number" min="0" class="form-control" name="insurance" [(ngModel)]="propertyInfo.insurance" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Legal/professional fees</th>
+                <td><input type="Number" min="0" class="form-control" name="legal_professional_fees" [(ngModel)]="propertyInfo.legal_professional_fees" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Management fee</th>
+                <td><input type="Number" min="0" class="form-control" name="management_fee" [(ngModel)]="propertyInfo.management_fee" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Mortgage interest</th>
+                <td><input type="Number" min="0" class="form-control" name="mortgage_interest" [(ngModel)]="propertyInfo.mortgage_interest"/></td>
+              </tr>
+               <tr>
+                <th colspan="2">Other interest</th>
+                <td><input type="Number" min="0" class="form-control" name="other_interest" [(ngModel)]="propertyInfo.other_interest"/></td>
+              </tr>
+               <tr>
+                <th colspan="2">Repairs and Maintenance</th>
+                <td><input type="Number" min="0" class="form-control" name="repairs_maintenance" [(ngModel)]="propertyInfo.repairs_maintenance" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Real Estate Taxes</th>
+                <td><input type="Number" min="0" class="form-control" name="real_estate_taxes" [(ngModel)]="propertyInfo.real_estate_taxes"/></td>
+              </tr>
+               <tr>
+                <th colspan="2">Utilities</th>
+                <td><input type="Number" min="0" class="form-control" name="utilities" [(ngModel)]="propertyInfo.utilities" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Rental Miles ( Using personal Vehicle)</th>
+                <td><input type="Number" min="0" class="form-control" name="rental_miles" [(ngModel)]="propertyInfo.rental_miles"/></td>
+              </tr>
+               <tr>
+                <th colspan="2">Others (Pl Specify)</th>
+                <td><input type="Number" min="0" class="form-control" name="others" [(ngModel)]="propertyInfo.others" /></td>
+              </tr>
+               <tr>
+                <td colspan="4">&nbsp;</td>
+              
+              </tr>
+                
+               <tr>
+                <th colspan="2">Cost of Land</th>
+                <td><input type="Number" min="0" class="form-control" name="cost_land" [(ngModel)]="propertyInfo.cost_land" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Cost of building</th>
+                <td><input type="Number" min="0" class="form-control" name="cost_building" [(ngModel)]="propertyInfo.cost_building" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Date building was acquired/constructed</th>
+                <td><input type="date"   class="form-control" name="constructed_date" [(ngModel)]="propertyInfo.constructed_date" /></td>
+              </tr>
+               <tr>
+                <th colspan="2">Date it was rented out</th>
+                <td><input type="date"   class="form-control" name="rentedout_date" [(ngModel)]="propertyInfo.rentedout_date" /></td>
+              </tr>
+
+               <tr class="headTitle">
+                <th  colspan="3" class="text-nowrap" scope="row" >IMPROVEMENTS</th>
+              </tr>
+              <tr>
+                <td  colspan="3" class="text-nowrap" scope="row" >List out any major improvements/ Purchase made to the rental property in the year 2016/ Also list out for previous year's</td>
+              </tr>
+              <tr><td colspan="3"><div class="table-responsive">
+ <form  name="sf"  #sf="ngForm" (submit)="addImprovements(improveInfo)" novalidate>
+                <table class="table table-striped table-bordered">
+              <tr class="header">
+                <th class="text-nowrap" scope="row" >Sl.No</th>
+                <th class="text-nowrap" scope="row" colspan="2">Major Improvements</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+                <th class="text-nowrap" scope="row" ></th>
+              </tr>
+
+               <tr>
+                <td></td>
+                <td colspan="2"><input type="text" name="improvement"  class="form-control" [(ngModel)]="improveInfo.improvement"  #improvement="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !improvement.valid }" />
+            <div *ngIf="sf.submitted && !improvement.valid" class=" text-danger">Required</div></td>
+                <td><input type="number" min="0" name="amount"  class="form-control" [(ngModel)]="improveInfo.amount"   #amount="ngModel" required [ngClass]="{ 'has-error': sf.submitted && !amount.valid }" />
+            <div *ngIf="sf.submitted && !amount.valid" class=" text-danger">Required</div>
+          </td>
+                <td><button type = "submit"  [disabled]="sf.invalid || sf.pending" class="btn btn-primary btn-sm">Add <i class="nb-plus"></i></button></td>
+              </tr>
+            <tr *ngFor="let itemrow of propertyInfo.improvements; let i = index;">
+                <td>{{i+1}}</td>
+                <td colspan="2">{{itemrow.improvement}}</td>
+                <td>{{itemrow.amount}}</td>
+                  <td><!-- <button  (click)="deleteState(i, getCommonDetails.stateEntrydetails)" class="btn btn-danger btn-sm pull-right"><i class="nb-trash"></i></button> --></td>
+        </tr>  
+            </table>
+          </form>
+          </div>
+          
+          </td>
+        </tr>
+            </tbody>
+          </table>
+         </div>
+ </form>

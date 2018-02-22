@@ -1,0 +1,372 @@
+
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+// @nebular theming framework
+@import '~@nebular/theme/styles/theming';
+// @nebular out of the box themes
+@import '~@nebular/theme/styles/themes';
+/* Padding - just for asthetics on Bootsnipp.com */
+body { margin-top:20px; }
+
+/* CSS for Credit Card Payment form */
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}
+#secure .ccjs-card {
+    z-index: 5000;
+    max-width: 368px !important;
+    width: auto !important;
+}
+.ccjs-card, .ccjs-card .ccjs-csc-diagram, .ccjs-card .ccjs-csc-diagram-amex {
+    width: 23em!important;
+    height: 14em!important;
+    -webkit-border-radius: .75em;
+    -moz-border-radius: .75em;
+    border-radius: .75em;
+}
+.ccjs-card {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box;
+    background: #fafafa;
+    font-size: 16px;
+    font-family: 'Source Sans Pro',Helvtica,Arial,san-serif;
+    text-align: left;
+    position: relative;
+    z-index: 10000;
+    margin: 1em auto;
+    border: 1px solid #dbdbdb;
+}
+#purchase-box {
+    padding: 20px 40px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.ccjs-card label.ccjs-number input.ccjs-number-formatted {
+    z-index: 1;
+}
+.ccjs-card label.ccjs-number input {
+    width: 10.35em;
+    position: absolute;
+    z-index: 0;
+    top: 1.2em;
+    left: 0;
+}
+.ccjs-card input, .ccjs-card-style input, .ccjs-card select, .ccjs-card-style select {
+    background-color: #fff;
+    color: #5e656b;
+    font-size: 1.25em;
+    line-height: 1;
+    height: 2em;
+}
+.ccjs-card .ccjs-expiration .ccjs-month, .ccjs-card .ccjs-expiration .ccjs-year {
+    width: 3.5em;
+    position: absolute;
+}
+
+.ccjs-card .ccjs-expiration select {
+    font-size: 1em;
+}
+
+.ccjs-card select, .ccjs-card-style select {
+    color: #767f86;
+    height: 1.5em\9;
+    padding: .25em 0\9;
+}
+
+.ccjs-card input, .ccjs-card-style input, .ccjs-card select, .ccjs-card-style select {
+    background-color: #fff;
+    color: #5e656b;
+    font-size: 1.25em;
+    line-height: 1;
+    height: 2em;
+}
+.ccjs-card label.ccjs-number {
+    top: 2.25em;
+    left: 1.5em;
+    width: 13.25em;
+    position: relative;
+}
+.ccjs-card label.ccjs-csc input, .ccjs-card-style label.ccjs-csc input {
+    right: 1.2em;
+    top: 1.2em;
+    position: absolute;
+    width: 2.95em;
+}
+#secure .ccjs-card .lock {
+    height: 40px;
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+}
+img {
+    max-width: 100%;
+    width: auto\9;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+.ccjs-card label, .ccjs-card-style label, .ccjs-card legend, .ccjs-card-style legend, .ccjs-card fieldset, .ccjs-card-style fieldset {
+    line-height: 1.5em;
+    height: 1.5em;
+    color: #5e656b;
+    border: 0;
+}
+// which themes you what to enable (empty to enable all)
+$nb-enabled-themes: (default, cosmic);
+
+$nb-themes: nb-register-theme((
+ // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+
+  font-main: Roboto,
+  font-secondary: Exo,
+), default, default);
+
+$nb-themes: nb-register-theme((
+  // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+
+  font-main: Roboto,
+  font-secondary: Exo,
+), cosmic, cosmic);
+
+@include nb-install-component() {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .left {
+    display: flex;
+    width: 100%;
+    order: 0;
+    flex-direction: row;
+  }
+  .right {
+    order: 1;
+    flex-direction: row-reverse;
+  }
+
+  .logo-containter {
+    display: flex;
+    align-items: center;
+  }
+
+  .control-item {
+    display: block;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+
+    .navigation {
+      padding-right: nb-theme(padding);
+      font-size: 2.5rem;
+      text-decoration: none;
+
+      i {
+        display: block;
+      }
+
+    }
+
+    .logo {
+      padding: 0 nb-theme(padding);
+      font-size: 1.75rem;
+      font-weight: nb-theme(font-weight-bolder);
+      border-left: 1px solid nb-theme(separator);
+      white-space: nowrap;
+
+      span {
+        font-weight: nb-theme(font-weight-normal);
+      }
+    }
+  }
+
+  .toggle-layout /deep/ a {
+    display: block;
+    text-decoration: none;
+    line-height: 1;
+
+    i {
+      color: nb-theme(color-fg-highlight);
+      font-size: 2.25rem;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+
+    nb-action:not(.toggle-layout) {
+      border: none;
+    }
+
+    .control-item {
+      display: none;
+    }
+
+    .toggle-layout {
+      padding: 0;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+
+    nb-user /deep/ .user-name {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+
+    .header-container {
+      .logo {
+        font-size: 1.25rem;
+      }
+    }
+
+    .toggle-layout {
+      display: none;
+    }
+
+    nb-action:not(.toggle-layout) {
+      padding: 0;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    .right /deep/ {
+      display: none;
+    }
+  }
+}
+
+
+#wrapper{
+font-family:trebuchet MS;
+font-size:13px;
+  padding: 60px 0px;
+}
+.container{}
+.row{}
+.circle{
+  background: #ffffff;
+  padding: 35px;
+  text-align: center;
+  height: 250px;
+  width: 250px;
+    
+    transition: all 0.5s;
+  -moz-transition: all 0.5s; /* Firefox 4 */
+  -webkit-transition: all 0.5s; /* Safari and Chrome */
+  -o-transition: all 0.5s; /* Opera */
+}
+.circle h4{
+  margin: 0;
+  padding: 0;
+}
+.circle div{ }
+.circle p{ margin-top: -50px;  padding: 0px !important;}
+.circle span{}
+.circle span.icon{
+}
+.circle button{ margin-top: -100px; }
+.circle span.icon i{
+  font-size: 48px;
+}
+.circle span.price-large{
+  font-size: 68px
+}
+.price-small{
+  font-size: 20px 
+}
+
+.c1:hover{
+  background: #39b3d7;
+  color: #ffffff;
+}
+.c1 .blue{
+  color: #39b3d7;
+}
+.c1:hover .blue{
+  color: #ffffff;
+}
+
+.c2:hover{
+  background: #ed9c28;
+  color: #ffffff;
+}
+.c2 .yellow{
+  color: #ed9c28;
+}
+.c2:hover .yellow{
+  color: #ffffff;
+}
+
+.c3:hover{
+  background: #47a447;
+  color: #ffffff;
+}
+.c3 .green{
+  color: #47a447;
+}
+.c3:hover .green{
+  color: #ffffff;
+}
+
+.c4:hover{
+  background: #d2322d;
+  color: #ffffff;
+}
+.c4 .red{
+  color: #d2322d;
+}
+.c4:hover .red{
+  color: #ffffff;
+}

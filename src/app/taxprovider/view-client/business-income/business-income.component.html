@@ -1,0 +1,40 @@
+<div class="col-sm-12">
+   <nb-card  size="normal">
+      <nb-card-header>BUSINESS INCOME</nb-card-header>
+      <nb-card-body>
+
+        <app-tabs>
+      <app-tab [tabTitle]="'Business List'">
+        <!-- {{propertyList | json}} -->
+        <table class="table table-striped table-bordered">
+      <thead>
+         <tr class="headTitle">
+        <th>Business #</th>
+        <th>Name of proprietor</th>
+         <th width="130px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of propertyList; let i=index;">
+          <td>Business {{ i+1 }}</td>
+         <td>{{ p.proprietor_name }}</td>
+          <td><button title="View" class="btn btn-sm btn-info" (click)="onViewProperty(p)"><i class="fa fa-eye"></i></button></td>
+        </tr>
+        <tr *ngIf="propertyList.length==0">
+          <td colspan="3">Business not available.</td>
+        </tr>
+      </tbody>
+    </table>
+  
+      </app-tab>
+    </app-tabs>
+  
+     <ng-template let-property ="property" #propertyView>
+      <app-viewbusiness [property]="property" (onCloseTab)="onCloseTab()"></app-viewbusiness>
+    </ng-template>
+
+   </nb-card-body>
+</nb-card>
+  </div>
+
+ 

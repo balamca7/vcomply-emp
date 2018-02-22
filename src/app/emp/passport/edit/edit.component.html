@@ -1,0 +1,202 @@
+<div class="row">
+<div class="col-md-12 col-lg-12">
+    <nb-card size="normal">
+      <nb-tabset>
+       
+        <nb-tab tabTitle="Edit Passport Details">
+ 
+   <form name="form"  #f="ngForm" (ngSubmit)="f.form.valid && updatePassportDetails(passportInfo)" novalidate>
+  <nb-card>
+    
+    <nb-card-body>
+        <h6 class="row col-sm-12 form-group"><u>Personal Details </u></h6>
+        <div class="row">
+      <div class="col-sm-6 row ">
+
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">First name</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Given name" class="form-control"/>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Middle name</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Middle name" class="form-control"/>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Last name</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Sur name" class="form-control"/>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Date Of Birth</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" placeholder="Date Of Birth" class="form-control"/>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Gender</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+          <select class="form-control" placeholder="Gender">
+            <option></option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Others</option>
+
+          </select>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Nationality</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Nationality" class="form-control"/>
+        </div>
+      </div>
+  </div>
+    <h6 class="row col-sm-12 form-group"><u>Passport Details </u></h6>
+        <div class="row">
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Passport Number</label>
+        </div>
+         <div class="col-sm-6 form-group input-group-sm">
+          <input type="text" placeholder="Passport Number" class="form-control" [(ngModel)]="passportInfo.number"  #number="ngModel" required [ngClass]="{ 'has-error': f.submitted && !number.valid }" name="number" />
+          
+          <div *ngIf="f.submitted && !number.valid" class=" text-danger">Record number is required</div>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Issue Date</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+           <input type="date" placeholder="Issue Date" class="form-control" [(ngModel)]="passportInfo.issue_date" #issue_date="ngModel" required [ngClass]="{ 'has-error': f.submitted && !issue_date.valid }" name="issue_date" />
+          
+          <div *ngIf="f.submitted && !issue_date.valid" class=" text-danger">Issue date is required</div>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Validity Date From</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+         <input type="date" placeholder="Validity Date From" class="form-control" [(ngModel)]="passportInfo.validity_FD" #validity_FD="ngModel" required [ngClass]="{ 'has-error': f.submitted && !validity_FD.valid }" name="validity_FD" />
+          
+          <div *ngIf="f.submitted && !validity_FD.valid" class=" text-danger">Validity from date is required</div>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Validity Date To</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+          <input type="date" placeholder="Validity Date To" class="form-control" [(ngModel)]="passportInfo.validity_TD" #validity_TD="ngModel" required [ngClass]="{ 'has-error': f.submitted && !validity_TD.valid }" name="validity_TD" />
+          
+          <div *ngIf="f.submitted && !validity_TD.valid" class=" text-danger">Validity to date is required</div>
+        </div>
+      </div>
+      <div class="row col-sm-6">
+      <div class="col-sm-6 form-group input-group-sm">
+        <label for="input-password" class="label">Place Of Issue</label>
+      </div>
+      <div class="col-sm-6 form-group input-group-sm">
+         <input type="text" placeholder="Place Of Issue" class="form-control" [(ngModel)]="passportInfo.place_issue" #place_issue="ngModel" required [ngClass]="{ 'has-error': f.submitted && !place_issue.valid }" name="place_issue" />
+          
+          <div *ngIf="f.submitted && !place_issue.valid" class=" text-danger">Place of issue is required</div>
+     
+      </div>
+    </div>
+      
+      <div class="row col-sm-6">
+        <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Country Of Issue</label>
+        </div>
+        <div class="col-sm-6 form-group input-group-sm">
+           <input type="text" placeholder="Country Of Issue" class="form-control" [(ngModel)]="passportInfo.country_issue" #country_issue="ngModel" required [ngClass]="{ 'has-error': f.submitted && !country_issue.valid }" name="country_issue" />
+          
+          <div *ngIf="f.submitted && !country_issue.valid" class=" text-danger">Country of issue is required</div>
+        </div>
+      </div>
+      
+       <div class="col-sm-12 row ">
+          <div class="col-sm-3 form-group input-group-sm">
+          <label for="input-password" class="label">Description</label>
+        </div>
+          <div class="col-sm-9 form-group input-group-sm">
+            <textarea rows="6" class="form-control form-control-line"></textarea>
+           </div>
+           </div>  
+
+         
+  </div>
+
+
+    </nb-card-body>
+    <nb-card-footer>        
+     <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+            <a [routerLink]="['/emp/passport']"  class="btn btn-sm btn-warning "> Cancel</a>
+    </nb-card-footer>
+  </nb-card>
+</form>
+  </nb-tab>
+   <nb-tab tabTitle="Document">
+               <form name="formUpload"  #fu="ngForm"  (ngSubmit)="uploadPassportDocument(passportInfo.id, file.files)" >
+ <nb-card>
+      
+      <nb-card-body>
+
+        <div class="col-sm-12 row " *ngFor="let fileList of passportInfo.fileList">
+            <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label"><a href="{{fileList.filepath}}" target="_blank"><i class="fa fa-file-pdf-o"></i> {{fileList.filename}}</a>
+          </label>
+         
+
+        </div>
+      </div>
+               <div class=" row ">
+          <div class="col-sm-3 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+             <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+            
+           </div>
+           </div>  
+                 
+ 
+             </nb-card-body>
+             <nb-card-footer>      
+          <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Upload <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+            <a [routerLink]="['/emp/passport']"  class="btn btn-sm btn-warning "> Cancel</a>
+      </nb-card-footer>
+      
+    </nb-card>
+     </form>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </div>
+
+  
+             </div>

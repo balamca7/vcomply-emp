@@ -1,0 +1,249 @@
+<div class="col-sm-12">
+ 
+	 <nb-card  size="normal">
+      <nb-card-header>Itemized Deduction</nb-card-header>
+      <nb-card-body>
+     <!--  <pre>{{itemizedInfo | json}}</pre> -->
+      <div class="row">
+       
+	<div class="table-responsive col-sm-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+    	       	<tr class="headTitle">
+                <th colspan="2">US MEDICAL and DENTAL</th>
+	          	</tr>
+	          </thead>
+          <tr>
+          	<th>Year</th> 
+          	<td>
+             {{itemizedInfo.usmedical_year}}</td>
+          </tr>
+          <tr>
+          <th>Health insurance premiums</th> 
+          	<td>{{itemizedInfo.health_insurance}}</td>
+          </tr>
+           <tr>
+          	<th>Long term care premiums </th> 
+          	<td>{{itemizedInfo.longterm_care}}</td>
+          </tr>
+           <tr>
+          	<th>Medical miles traveled</th> 
+          	<td>{{itemizedInfo.medical_miles}}</td>
+          </tr>
+           <tr class="headTitle">
+          	<th colspan="2">Other US medical and dental expenses (list below): </th> 
+          </tr>
+ 		<tr>
+          	<th>Hospital</th> 
+          	<td>{{itemizedInfo.hospital}}</td>
+          </tr>
+               <tr>
+          	<th>Contacts/ Glasses</th> 
+          	<td>{{itemizedInfo.contacts_glasses}}</td>
+          </tr>
+           <tr>
+          	<th>Laser eye surgery</th> 
+          	<td>{{itemizedInfo.laser_eye_surgery}}</td>
+          </tr>
+           <tr>
+          	<th>Prescriptions</th> 
+          	<td>{{itemizedInfo.prescriptions}}</td>
+          </tr>
+           <tr>
+          	<th>Co-pays</th> 
+          	<td>{{itemizedInfo.co_pays}}</td>
+          </tr>
+           <tr>
+          	<th>Physician/ Dentist/ Chiropractor</th> 
+          	<td>{{itemizedInfo.physician_dentist_chiropractor}}</td>
+          </tr>
+           <tr>
+          	<th>Lab Fees</th> 
+          	<td>{{itemizedInfo.lab_fees}}</td>
+          </tr>
+           <tr class="headTitle">
+          	<th colspan="2">TAXES paid in US </th> 
+          </tr>
+          <tr>
+          	<th>State and local income taxes </th> 
+          	<td>{{itemizedInfo.state_local_income_taxes}}</td>
+          </tr>
+          <tr>
+          	<th>Sales tax paid on purchase of boat, automobile</th> 
+          	<td>{{itemizedInfo.sales_tax}}</td>
+          </tr>
+          <tr>
+          	<th>Real estate taxes </th> 
+          	<td>{{itemizedInfo.real_estate_taxes}}</td>
+          </tr>
+          <tr>
+          	<th>Personal property/ Vehicle Excise taxes </th> 
+          	<td>{{itemizedInfo.property_vehicle_excise_taxes}}</td>
+          </tr>
+           <tr class="headTitle">
+          	<th colspan="2">Other taxes (list):  </th> 
+          </tr>
+          <tr>
+          	<th> </th> 
+          	<td>{{itemizedInfo.other_taxes}}</td>
+          </tr>
+         <!--  <tr>
+          	<th></th> 
+          	<td><input type="text"   class="form-control"/></td>
+          </tr>
+          <tr>
+          	<th></th> 
+          	<td><input type="text"   class="form-control"/></td>
+          </tr> -->
+           <tr class="headTitle">
+          	<th colspan="2">INTEREST PAID </th> 
+          </tr>
+          <tr>
+          	<th>Do you have home loan in India? </th> 
+          	<td>
+              {{itemizedInfo.home_loan_india}}
+
+             </td>
+          </tr>
+          <tr>
+          	<td><div class="lineheight" >If yes, Amount of Home loan Interest paid (Please attach document)</div></td> 
+          	<td>{{itemizedInfo.homeloan_interest}}</td>
+          </tr>
+          <tr>
+          	<th>Investment interest </th> 
+          	<td>{{itemizedInfo.investment_interest}}</td>
+          </tr>
+          <tr >
+          	<th>Any Other interest paid (list below): </th> 
+          	<td>{{itemizedInfo.other_interest}}</td>
+          </tr>
+            </tbody>
+          </table>
+         </div>
+      	<div class="table-responsive col-sm-6">
+          <table class="table table-bordered table-striped">
+            <thead>
+    	       	<tr class="headTitle">
+                <th colspan="2">GIFTS TO CHARITY (attach receipts)</th>
+	          	</tr>
+	          </thead>
+	          <tbody>
+	          	 <tr>
+          	<th>Year</th> 
+          	<td>{{itemizedInfo.charity_year}}</td>
+          </tr>
+          <tr>
+          	<th>Total gifts by cash or check  </th> 
+          	<td>{{itemizedInfo.gifts_cash}}</td>
+          </tr>
+          <tr>
+          	<td colspan="2"><div class="lineheight redColor" >(Pl specify charity institution name, date contributed and Amount) </div> </td> 
+          	
+          </tr>
+          <tr><td colspan="2">&nbsp;</td></tr>
+          <tr>
+          	<th>Charitable miles traveled  </th> 
+          	<td>{{itemizedInfo.charitable_miles}}</td>
+          </tr>
+          <tr>
+          	<th>Other than by cash or check </th> 
+          	<td>{{itemizedInfo.other_cash}}</td>
+          </tr>
+          <tr>
+          	<td colspan="2"><div class="lineheight redColor" >(Pl specify charity institution name, date contributed and Fair market value of goods) </div></td> 
+          	
+          </tr>
+          <tr class="headTitle">
+          	<th colspan="2">JOB EXPENSES (list below): </th> 
+          	
+          </tr>
+			<tr>
+          	<td colspan="2" ><div class="lineheight redColor" >Note: Please mention only the amount which is incurred in your official assignment and it should not be reimbursed by the employer. Emp business expenses should be accompanied by receipts.</div>  </td> 
+          	
+          </tr>
+          <tr>
+          	<th><div class="lineheight">Parking fees/ tolls, local transportation expenses </div></th> 
+          	<td>{{itemizedInfo.parking_fees}}</td>
+          </tr>
+          <tr>
+          	<th><div class="lineheight">Travel expense while away from home including </div></th> 
+          	<td>{{itemizedInfo.travel_expense}}</td>
+          </tr>
+          <tr>
+          	<th>Lodging, Airplane, car rental etc </th> 
+          	<td>{{itemizedInfo.lodging_airplane_car_rental}}</td>
+          </tr>
+          <tr>
+          	<th>Any other expenses (Business Use only)</th> 
+          	<td>{{itemizedInfo.other_expenses}}</td>
+          </tr>
+          <tr>
+          	<th>Internet</th> 
+          	<td>{{itemizedInfo.internet}}</td>
+          </tr>
+          <tr>
+          	<th>Cell phone/ Company related phone calls </th> 
+          	<td>{{itemizedInfo.phone_calls}}</td>
+          </tr>
+          <tr>
+          	<th>Stationary/ Postage </th> 
+          	<td>{{itemizedInfo.stationary_postage}}</td>
+          </tr>
+          <tr>
+          	<th>Job related Education expenses </th> 
+          	<td>{{itemizedInfo.education_expenses}}</td>
+          </tr>
+          <tr>
+          	<th>Meals & entertainment expenses </th> 
+          	<td>{{itemizedInfo.entertainment_expenses}}</td>
+          </tr>
+
+          <tr class="headTitle">
+          	<th colspan="2">OTHER MISC. DEDUCTIONS (list below):  </th> 
+          	
+          </tr>
+          <tr>
+          	<th>Safe Deposit box rental </th> 
+          	<td>{{itemizedInfo.safe_deposit}}</td>
+          </tr>
+          <tr>
+          	<th>Investment Expense </th> 
+          	<td>{{itemizedInfo.investment_expense}}</td>
+          </tr>
+          <tr>
+          	<th>Margin or Investment Interest Paid</th> 
+          	<td>{{itemizedInfo.margin_investment}}</td>
+          </tr>
+            </tbody>
+          </table>
+         </div>
+   
+     <div class="col-sm-12  form-group headTitle">Documents</div>
+    <div class="col-sm-12 ">
+        <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> Action</th>
+            </tr>
+        <tr *ngFor="let fileList of itemizedInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+              </table> 
+            </div>
+          </div>
+          </div>
+   </nb-card-body>
+   
+</nb-card>
+  </div>
+
+ 

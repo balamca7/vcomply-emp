@@ -1,0 +1,78 @@
+<div class="">
+ <nb-card>
+      <nb-card-header class="row"><span class="col-sm-6">Passport Details</span> <span class="col-sm-6 right"><a [routerLink]="['/emp/passport/add']" class="btn btn-sm btn-success" title="Add"><i class="ion-plus"></i> Add</a></span> </nb-card-header>
+      <nb-card-body>
+       
+        <div class=" view third-effect" *ngFor="let passportInfo of PassportInfo; let i = index">
+      	 <div class="alert alert-danger"><h6 class="">Passport {{i+1}} : Passport Number - {{passportInfo.number}}, Valid From  {{passportInfo.validity_FD | date: 'dd/MM/yyyy'}} to {{passportInfo.validity_TD | date: 'dd/MM/yyyy'}}</h6></div>
+        <div class="row">
+         
+                   <div class=" col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Case / Passport / Control Number</label>
+           
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">{{passportInfo.number}}</label>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Issue Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{passportInfo.issue_date | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div>
+        <!--  <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Validity From Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{wpInfo.validity_FD | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div>-->
+       <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Country Of Issue</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+           <label class="label">{{passportInfo.validity_TD | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div> 
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Place of Issue</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{passportInfo.place_issue}}</label>
+           </div>
+           </div>
+        </div>
+          <div class="mask">
+            <a [routerLink]="['/emp/passport/edit',passportInfo.id]" class="btn btn-sm btn-primary" title="Edit"><i class="ion-edit"></i></a>
+            <a [routerLink]="['/emp/passport/',passportInfo.id]" class="btn btn-sm btn-danger" title="Delete"><i class="ion-trash-a"></i></a>
+            
+<!-- 
+             <button (click)="editWorkpermit(wpInfo.id)" class="btn btn-sm btn-primary" title="Edit"><i class="ion-edit"></i></button>
+            <button (click)="deleteWorkpermit(wpInfo.id)" class="btn btn-sm btn-danger" title="Delete"><i class="ion-close-round"></i></button> -->
+          </div>
+
+        </div>
+
+        
+      </nb-card-body>
+     <!--  <nb-card-footer>      
+      </nb-card-footer> -->
+  </nb-card>
+</div>                           
+                                             
+                                            
+                                              
+                                              
+                                             
+                                            
+                                             
+                                             
+                                           
+                                           

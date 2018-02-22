@@ -1,0 +1,162 @@
+<div class="col-sm-8"  *ngIf="!editMode">
+  
+   <nb-card  size="normal">
+      <nb-card-header>General Information</nb-card-header>
+      <nb-card-body>
+      <!-- <pre>{{generalInfo | json}}</pre>  -->
+ 
+   
+      <div class="row">
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Tax Provider Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            {{generalInfo.name}}
+          </div>
+        </div>
+        
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact No</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.contact}}
+               
+          </div>
+        </div>
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Address</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+               {{generalInfo.address}}
+
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Price (USD)</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.price}}
+           
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Description</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              {{generalInfo.description}}        
+
+          </div>
+        </div>
+    </div>
+   </nb-card-body>
+   <nb-card-footer>      
+            <button  (click)="editGeneralInfo()" class="btn btn-sm btn-success "> Edit</button>
+         
+           
+        </nb-card-footer>
+</nb-card>
+
+  </div>
+
+  
+
+<div class="col-sm-8"  *ngIf="editMode">>
+  <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveTaxprovGeneralInfo(generalInfo)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>General Information</nb-card-header>
+      <nb-card-body>
+      <!-- <pre>{{generalInfo | json}}</pre>  -->
+ 
+   
+      <div class="row">
+
+    
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Tax Provider Name</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+ 
+
+            <input type="text" class="form-control" name="taxprovider_name" [(ngModel)]="generalInfo.name" #taxprovider_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !taxprovider_name.valid }" />
+            
+            <div *ngIf="f.submitted && !taxprovider_name.valid" class=" text-danger">Required</div>
+          </div>
+        </div>
+        
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Contact No</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              <input type="text" class="form-control" name="contact_no" [(ngModel)]="generalInfo.contact" #contact_no="ngModel" required [ngClass]="{ 'has-error': f.submitted && !contact_no.valid }" />
+            
+            <div *ngIf="f.submitted && !contact_no.valid" class=" text-danger">Required</div>
+               
+          </div>
+        </div>
+
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Address</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+               <input type="text" class="form-control" name="address" [(ngModel)]="generalInfo.address" #address="ngModel" required [ngClass]="{ 'has-error': f.submitted && !address.valid }" />
+            
+            <div *ngIf="f.submitted && !address.valid" class=" text-danger">Required</div>
+
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Price (USD)</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          	  <input type="text" class="form-control" name="price" [(ngModel)]="generalInfo.price" #price="ngModel" required [ngClass]="{ 'has-error': f.submitted && !price.valid }" />
+            
+            <div *ngIf="f.submitted && !price.valid" class=" text-danger">Required</div>
+           
+          </div>
+        </div>
+         <div class="col-sm-12 row ">
+
+          <div class="col-sm-6 form-group input-group-sm">
+            <label for="input-password" class="label">Description</label>
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+              <textarea rows="5" class="form-control" name="description" [(ngModel)]="generalInfo.description" #description="ngModel"  [ngClass]="{ 'has-error': f.submitted && !description.valid }" > </textarea>
+            
+            <div *ngIf="f.submitted && !description.valid" class=" text-danger">Required</div>
+           
+
+          </div>
+        </div>
+    </div>
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+           
+        </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+  

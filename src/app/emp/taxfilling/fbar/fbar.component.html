@@ -1,0 +1,154 @@
+<!--  <input type="hidden" #focus> -->
+<div class="col-sm-8" *ngIf="editMode == true">
+   <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveFbarInfoDetails(fbarInfo)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>FBAR</nb-card-header>
+      <nb-card-body>
+       <!--  -->
+       <!--  <pre>{{fbarInfo | json}}</pre> -->
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+            <thead >
+            	<tr class="headTitle"><th colspan="2">NON-US BANK OR ANY OTHER INVESTMENT ACCOUNTS</th></tr>
+              
+              	</thead>
+            	
+            
+            <tbody>
+            	<tr>
+                <td colspan="2"><p>You must fill out Treasury Department Form 90-22.1 every year if you own, or have an interest or signature authority in, any foreign financial accounts. You must report all your financial accounts if the cumulative highest individual account balances exceed $10,000/-. If you earn dividends or interest in these accounts, please ensure that income is reported on Form 1040 Schedule B. this form must be filed independently and failure to file this form would lead a penalty to US $ 100000 or 50% of account value</p></td>
+               
+          		</tr>
+          		<tr>
+                <td colspan="2"><p>Note 1: Financial account includes any bank (Savings, Current, FD, RD etc), securities, securitues derivatives or other financial instruments account ( Eg. Demat, Mutual Fund etc)</p></td>
+                
+          		</tr>
+          		<tr>
+                <td colspan="2" ><p>Note 2: If filing a Married filing Joint tax return, you need to include both you and your spouse account balance to check the FBAR applicability</p></td>
+              
+          		</tr>
+          		<tr>
+				<td><p> Did you or your spouse have a Non-US bank account in the calendar year?</p></td>
+                
+                <td><select  class="form-control" name="bank_account_nonUS "  [(ngModel)]="fbarInfo.bank_account_nonUS" #bank_account_nonUS="ngModel" required [ngClass]="{ 'has-error': f.submitted && !bank_account_nonUS.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !bank_account_nonUS.valid" class=" text-danger">Required</div></td>
+          		</tr>
+          		<tr>
+                <td><p>Did the cumulative balances of all accounts exceed $10,000/- during the year?</p></td>
+                
+                <td><select class="form-control" name="cumulative_balances" (change)="onSelect($event.target.value)" [(ngModel)]="fbarInfo.cumulative_balances" #cumulative_balances="ngModel" required [ngClass]="{ 'has-error': f.submitted && !cumulative_balances.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !cumulative_balances.valid" class=" text-danger">Required</div></td>
+          		</tr>
+          		<tr>
+                <td>If Yes, Please mention the countries</td>
+                <td>
+
+                  <select class="form-control" name="country_name" [(ngModel)]="fbarInfo.country_id" #country_name="ngModel" required [disabled] = "disabled_flg" [ngClass]="{ 'has-error': f.submitted && !country_name.valid  && !disabled_flg}">
+                  <option value=""></option>
+                  <option *ngFor="let product of CountryList" [value]="product.id">{{product.name}}</option>
+                </select>
+                
+           
+              <div *ngIf="f.submitted && !country_name.valid && !disabled_flg" class=" text-danger">Required</div>
+
+                  <!-- <input type="text" name="country_name" class="form-control" [(ngModel)]="fbarInfo.country_name" #country_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !country_name.valid && !disabled_flg }" [disabled] = "disabled_flg" />
+                   
+                <div *ngIf="f.submitted && !country_name.valid && !disabled_flg" class=" text-danger">Required</div> --></td>
+          		</tr>
+          		
+          	
+            </tbody>
+          </table>
+         </div>
+
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/form-8938']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+ <!-- Non Editable -->
+ <div class="col-sm-8" *ngIf="editMode == false">
+   <nb-card  size="normal">
+      <nb-card-header>FBAR</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{fbarInfo | json}}</pre> -->
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+             
+            <thead>
+              <tr class="headTitle"><th colspan="2">NON-US BANK OR ANY OTHER INVESTMENT ACCOUNTS</th></tr>
+              
+                </thead>
+              
+            
+            <tbody>
+              <tr>
+                <td colspan="2"><p>You must fill out Treasury Department Form 90-22.1 every year if you own, or have an interest or signature authority in, any foreign financial accounts. You must report all your financial accounts if the cumulative highest individual account balances exceed $10,000/-. If you earn dividends or interest in these accounts, please ensure that income is reported on Form 1040 Schedule B. this form must be filed independently and failure to file this form would lead a penalty to US $ 100000 or 50% of account value</p></td>
+               
+              </tr>
+              <tr>
+                <td colspan="2"><p>Note 1: Financial account includes any bank (Savings, Current, FD, RD etc), securities, securitues derivatives or other financial instruments account ( Eg. Demat, Mutual Fund etc)</p></td>
+                
+              </tr>
+              <tr>
+                <td colspan="2" ><p>Note 2: If filing a Married filing Joint tax return, you need to include both you and your spouse account balance to check the FBAR applicability</p></td>
+              
+              </tr>
+              <tr>
+        <td><p> Did you or your spouse have a Non-US bank account in the calendar year?</p></td>
+                
+                <td>{{fbarInfo.bank_account_nonUS}}</td>
+              </tr>
+              <tr>
+                <td><p>Did the cumulative balances of all accounts exceed $10,000/- during the year?</p></td>
+                
+                <td>{{fbarInfo.cumulative_balances}}</td>
+              </tr>
+              <tr>
+                <td>If Yes, Please mention the countries</td>
+                <td>
+
+                  {{fbarInfo.country_id}}
+
+                 </td>
+              </tr>
+              
+            
+            </tbody>
+          </table>
+         </div>
+
+   </nb-card-body>
+     <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/form-8938']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+
+  </div>
+
+ 

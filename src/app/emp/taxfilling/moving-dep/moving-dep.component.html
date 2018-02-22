@@ -1,0 +1,354 @@
+<div class="col-sm-8" *ngIf="editMode == true">
+   <form  name="form"  #f="ngForm" (ngSubmit)="f.form.valid && saveMovingDepInfoDetails(movingDepInfo, file.files)" novalidate>
+	 <nb-card  size="normal">
+      <nb-card-header>Moving & Dependent Care</nb-card-header>
+      <nb-card-body>
+      <!--   <pre>{{movingDepInfo | json}}</pre> -->
+      	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+          	 
+            <thead>
+            	<tr class="headTitle"><th colspan="2">CASUALTY THEFT (in USA)</th></tr>
+              
+              	</thead>
+            	
+            
+            <tbody>
+            	<tr>
+                <th>Description of property</th>
+                <th><input type="text" name="property_description" class="form-control" [(ngModel)]="movingDepInfo.property_description" #property_description="ngModel" required [ngClass]="{ 'has-error': f.submitted && !property_description.valid }" />
+            <div *ngIf="f.submitted && !property_description.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Date acquired</th>
+                <th><input type="date" name="acquired_date"  class="form-control" [(ngModel)]="movingDepInfo.acquired_date" #acquired_date="ngModel" required [ngClass]="{ 'has-error': f.submitted && !acquired_date.valid }" />
+            <div *ngIf="f.submitted && !acquired_date.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Date of incident</th>
+                <th><input type="date" name="incident_date"  class="form-control" [(ngModel)]="movingDepInfo.incident_date" #incident_date="ngModel" required [ngClass]="{ 'has-error': f.submitted && !incident_date.valid }" />
+            <div *ngIf="f.submitted && !incident_date.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+				<th>Insurance or other reimbursement claimed</th>
+                <th><input type="text" name="insurance_claimed"  class="form-control" [(ngModel)]="movingDepInfo.insurance_claimed" #insurance_claimed="ngModel" required [ngClass]="{ 'has-error': f.submitted && !insurance_claimed.valid }" />
+            <div *ngIf="f.submitted && !insurance_claimed.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Fair market value before theft/incident</th>
+                <th><input type="text" name="fair_market_before"  class="form-control" [(ngModel)]="movingDepInfo.fair_market_before" #fair_market_before="ngModel" required [ngClass]="{ 'has-error': f.submitted && !fair_market_before.valid }" />
+            <div *ngIf="f.submitted && !fair_market_before.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Fair Market value after theft/incident</th>
+                <th><input type="text" name="fair_market_after"  class="form-control" [(ngModel)]="movingDepInfo.fair_market_after" #fair_market_after="ngModel" required [ngClass]="{ 'has-error': f.submitted && !fair_market_after.valid }" />
+            <div *ngIf="f.submitted && !fair_market_after.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr class="headTitle"><th colspan="3">MOVING EXPENSES</th></tr>
+          		<tr>
+                <th>No. of miles from old home to new workplace</th>
+                <th><input type="number" min="0" name="no_miles_oldhome_new"  class="form-control" [(ngModel)]="movingDepInfo.no_miles_oldhome_new" #no_miles_oldhome_new="ngModel" required [ngClass]="{ 'has-error': f.submitted && !no_miles_oldhome_new.valid }" />
+            <div *ngIf="f.submitted && !no_miles_oldhome_new.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>No. of miles from old home to old workplace</th>
+                <th><input type="number" min="0" name="no_miles_oldhome_old"  class="form-control" [(ngModel)]="movingDepInfo.no_miles_oldhome_old" #no_miles_oldhome_old="ngModel" required [ngClass]="{ 'has-error': f.submitted && !no_miles_oldhome_old.valid }" />
+            <div *ngIf="f.submitted && !no_miles_oldhome_old.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Cost of transportation and storage of goods</th>
+                <th><input type="number" min="0" name="transport_cost"  class="form-control" [(ngModel)]="movingDepInfo.transport_cost" #transport_cost="ngModel" required [ngClass]="{ 'has-error': f.submitted && !transport_cost.valid }" />
+            <div *ngIf="f.submitted && !transport_cost.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Travel & lodging expenses during move</th>
+                <th><input type="number" min="0" name="travel_expenses"  class="form-control" [(ngModel)]="movingDepInfo.travel_expenses" #travel_expenses="ngModel" required [ngClass]="{ 'has-error': f.submitted && !travel_expenses.valid }" />
+            <div *ngIf="f.submitted && !travel_expenses.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Any amount reimbursed by employer</th>
+                <th><input type="number" min="0" name="reimbursed_employer"  class="form-control" [(ngModel)]="movingDepInfo.reimbursed_employer" #reimbursed_employer="ngModel" required [ngClass]="{ 'has-error': f.submitted && !reimbursed_employer.valid }" />
+            <div *ngIf="f.submitted && !reimbursed_employer.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr class="headTitle"><th colspan="2">CHILD & DEPENDANT CARE EXPENSES</th></tr>
+          		<tr>
+                <th>Care provider's SSN/EIN</th>
+                <th><input type="text" name="provider_ssn"  class="form-control" [(ngModel)]="movingDepInfo.provider_ssn" #provider_ssn="ngModel" required [ngClass]="{ 'has-error': f.submitted && !provider_ssn.valid }" />
+            <div *ngIf="f.submitted && !provider_ssn.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Care provider's name</th>
+                <th><input type="text" name="provider_name"  class="form-control" [(ngModel)]="movingDepInfo.provider_name" #provider_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !provider_name.valid }" />
+            <div *ngIf="f.submitted && !provider_name.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Care provider's complete address</th>
+                <th><input type="text" name="provider_address"  class="form-control" [(ngModel)]="movingDepInfo.provider_address" #provider_address="ngModel" required [ngClass]="{ 'has-error': f.submitted && !provider_address.valid }" />
+            <div *ngIf="f.submitted && !provider_address.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr>
+                <th>Amount paid to care provider</th>
+                <th><input type="number" min="0" name="provider_paid_amount"  class="form-control" [(ngModel)]="movingDepInfo.provider_paid_amount" #provider_paid_amount="ngModel" required [ngClass]="{ 'has-error': f.submitted && !provider_paid_amount.valid }" />
+            <div *ngIf="f.submitted && !provider_paid_amount.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<tr *ngFor="let dependents of movingDepInfo.dependents; let i=index">
+                <th>Dependant #{{i+1}} - {{dependents.name}}</th>
+                <th><input type="number" min="0" name="dependant_care"  class="form-control" [(ngModel)]="dependents.dependant_care" #dependant_care="ngModel"  [ngClass]="{ 'has-error': f.submitted && !dependant_care.valid }" />
+            <div *ngIf="f.submitted && !dependant_care.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		<!-- <tr>
+                <th>Dependant #2</th>
+                <th><input type="number" min="0" name="transport_cost"  class="form-control" [(ngModel)]="movingDepInfo.transport_cost" #transport_cost="ngModel" required [ngClass]="{ 'has-error': f.submitted && !transport_cost.valid }" />
+            <div *ngIf="f.submitted && !transport_cost.valid" class=" text-danger">Required</div></th>
+          		</tr>
+            <tr>
+                <th>Dependant #3</th>
+                <th><input type="number" min="0" name="transport_cost"  class="form-control" [(ngModel)]="movingDepInfo.transport_cost" #transport_cost="ngModel" required [ngClass]="{ 'has-error': f.submitted && !transport_cost.valid }" />
+            <div *ngIf="f.submitted && !transport_cost.valid" class=" text-danger">Required</div></th>
+          		</tr> -->
+             <tr class="headTitle"><th colspan="2">RENTER'S CREDIT</th></tr>
+             <tr><th colspan="3" class="redColor"><div class="lineheight" >(Applicable only if you live in Arizona, California, Indiana, New Jersey, Missouri, Michigan, Massachusetts or Wisconsin)</div></th></tr>
+              <tr>
+                <th>Did you pay rent?</th>
+                <th><select class="form-control" name="pay_rent" (change)="onSelect($event.target.value)" [(ngModel)]="movingDepInfo.pay_rent" #pay_rent="ngModel" required [ngClass]="{ 'has-error': f.submitted && !pay_rent.valid }">
+                    <option></option>
+               <option *ngFor="let list of yesnoList" value= "{{list.value}}">
+                  {{list.display}}
+                </option>
+                </select>
+                <div *ngIf="f.submitted && !pay_rent.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		 <tr>
+                <th>If yes, Please specify the rent paid </th>
+                <th><input type="text" name="rent_paid"  class="form-control" [(ngModel)]="movingDepInfo.rent_paid" #rent_paid="ngModel" required [ngClass]="{ 'has-error': f.submitted && !rent_paid.valid && !disabled_flg }" [disabled]="disabled_flg" />
+            <div *ngIf="f.submitted && !rent_paid.valid && !disabled_flg" class=" text-danger">Required</div></th>
+          		</tr>
+          		 <tr>
+                <th>Name of the landlord</th>
+                <th><input type="text" name="landlord_name"  class="form-control" [(ngModel)]="movingDepInfo.landlord_name" #landlord_name="ngModel" required [ngClass]="{ 'has-error': f.submitted && !landlord_name.valid }" />
+            <div *ngIf="f.submitted && !landlord_name.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		 <tr>
+                <th>Address of the Landlord</th>
+                <th><input type="text" name="landlord_address"  class="form-control" [(ngModel)]="movingDepInfo.landlord_address" #landlord_address="ngModel" required [ngClass]="{ 'has-error': f.submitted && !landlord_address.valid }" />
+            <div *ngIf="f.submitted && !landlord_address.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		 <tr>
+                <th>Telephone number of Landlord</th>
+                <th><input type="text" name="landlord_telephone"  class="form-control" [(ngModel)]="movingDepInfo.landlord_telephone" #landlord_telephone="ngModel" required [ngClass]="{ 'has-error': f.submitted && !landlord_telephone.valid }" />
+            <div *ngIf="f.submitted && !landlord_telephone.valid" class=" text-danger">Required</div></th>
+          		</tr>
+          		 <tr>
+                <th>Address of the rented property</th>
+                <th><input type="text" name="rented_property_address"  class="form-control" [(ngModel)]="movingDepInfo.rented_property_address" #rented_property_address="ngModel" required [ngClass]="{ 'has-error': f.submitted && !rented_property_address.valid }" />
+            <div *ngIf="f.submitted && !rented_property_address.valid" class=" text-danger">Required</div></th>
+          		</tr>
+            </tbody>
+          </table>
+         </div>
+         <div class="row">
+<div class="col-sm-12  form-group headTitle">Upload Document</div>
+    <div class="col-sm-12 row">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label for="input-password" class="label">Upload Document</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <input type='file' class="form-control" name="fileToUpload" [multiple]="(maxFiles > 1)" (change) = "onFileChange($event)"  #file required />
+      
+          <div class="row error text-danger" *ngIf="errors.length > 0">    
+            <ul>
+              <li *ngFor="let err of errors">{{err}}</li>
+            </ul>
+          </div> 
+          </div>
+           </div>
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"></th>
+            </tr>
+        <tr *ngFor="let fileList of movingDepInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View" class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="movingDepInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+   </nb-card-body>
+   <nb-card-footer>      
+              <button type = "submit"   [disabled]="loading"  class="btn btn-sm btn-success "> Save <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button> 
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/fbar']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+</form>
+  </div>
+
+ <!-- Non Editable -->
+
+ <div class="col-sm-8" *ngIf="editMode == false">
+   <nb-card  size="normal">
+      <nb-card-header>Moving & Dependent Care</nb-card-header>
+      <nb-card-body>
+      <!--   <pre>{{movingDepInfo | json}}</pre> -->
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+             
+            <thead>
+              <tr class="headTitle"><th colspan="2">CASUALTY THEFT (in USA)</th></tr>
+              
+                </thead>
+              
+            
+            <tbody>
+              <tr>
+                <th>Description of property</th>
+                <th>{{movingDepInfo.property_description}}</th>
+              </tr>
+              <tr>
+                <th>Date acquired</th>
+                <th>{{movingDepInfo.acquired_date}}</th>
+              </tr>
+              <tr>
+                <th>Date of incident</th>
+                <th>{{movingDepInfo.incident_date}}</th>
+              </tr>
+              <tr>
+        <th>Insurance or other reimbursement claimed</th>
+                <th>{{movingDepInfo.insurance_claimed}}</th>
+              </tr>
+              <tr>
+                <th>Fair market value before theft/incident</th>
+                <th>{{movingDepInfo.fair_market_before}}</th>
+              </tr>
+              <tr>
+                <th>Fair Market value after theft/incident</th>
+                <th>{{movingDepInfo.fair_market_after}}</th>
+              </tr>
+              <tr class="headTitle"><th colspan="3">MOVING EXPENSES</th></tr>
+              <tr>
+                <th>No. of miles from old home to new workplace</th>
+                <th>{{movingDepInfo.no_miles_oldhome_new}}</th>
+              </tr>
+              <tr>
+                <th>No. of miles from old home to old workplace</th>
+                <th>{{movingDepInfo.no_miles_oldhome_old}}</th>
+              </tr>
+              <tr>
+                <th>Cost of transportation and storage of goods</th>
+                <th>{{movingDepInfo.transport_cost}}</th>
+              </tr>
+              <tr>
+                <th>Travel & lodging expenses during move</th>
+                <th>{{movingDepInfo.travel_expenses}}</th>
+              </tr>
+              <tr>
+                <th>Any amount reimbursed by employer</th>
+                <th>{{movingDepInfo.reimbursed_employer}}</th>
+              </tr>
+              <tr class="headTitle"><th colspan="2">CHILD & DEPENDANT CARE EXPENSES</th></tr>
+              <tr>
+                <th>Care provider's SSN/EIN</th>
+                <th>{{movingDepInfo.provider_ssn}}</th>
+              </tr>
+              <tr>
+                <th>Care provider's name</th>
+                <th>{{movingDepInfo.provider_name}}</th>
+              </tr>
+              <tr>
+                <th>Care provider's complete address</th>
+                <th>{{movingDepInfo.provider_address}}</th>
+              </tr>
+              <tr>
+                <th>Amount paid to care provider</th>
+                <th>{{movingDepInfo.provider_paid_amount}}</th>
+              </tr>
+              <tr *ngFor="let dependents of movingDepInfo.dependents; let i=index">
+                <th>Dependant #{{i+1}} - {{dependents.name}}</th>
+                <th>{{dependents.dependant_care}}</th>
+              </tr>
+             
+             <tr class="headTitle"><th colspan="2">RENTER'S CREDIT</th></tr>
+             <tr><th colspan="3" class="redColor"><div class="lineheight" >(Applicable only if you live in Arizona, California, Indiana, New Jersey, Missouri, Michigan, Massachusetts or Wisconsin)</div></th></tr>
+              <tr>
+                <th>Did you pay rent?</th>
+                <th>{{movingDepInfo.pay_rent}}</th>
+              </tr>
+               <tr>
+                <th>If yes, Please specify the rent paid </th>
+                <th>{{movingDepInfo.rent_paid}}</th>
+              </tr>
+               <tr>
+                <th>Name of the landlord</th>
+                <th>{{movingDepInfo.landlord_name}}</th>
+              </tr>
+               <tr>
+                <th>Address of the Landlord</th>
+                <th>{{movingDepInfo.landlord_address}}</th>
+              </tr>
+               <tr>
+                <th>Telephone number of Landlord</th>
+                <th>{{movingDepInfo.landlord_telephone}}</th>
+              </tr>
+               <tr>
+                <th>Address of the rented property</th>
+                <th>{{movingDepInfo.rented_property_address}}</th>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+         <div class="row">
+<div class="col-sm-12  form-group headTitle">Upload Document</div>
+   
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"></th>
+            </tr>
+        <tr *ngFor="let fileList of movingDepInfo.fileList;let i=index" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}" title="View" class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+                 <tr *ngIf="movingDepInfo.fileList.length==0">
+                  <td colspan="3" align="center">Document not available.</td>
+                </tr>
+              </table> 
+            </div>
+          </div>
+   </nb-card-body>
+     <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/fbar']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+
+  </div>
+
+ 

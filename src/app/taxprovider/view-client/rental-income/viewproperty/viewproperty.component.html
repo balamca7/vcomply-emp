@@ -1,0 +1,169 @@
+<div>
+    <span class="pull-right">
+      <button class="btn btn-sm btn-danger" (click)="onClose()">Close</button>
+    </span>
+  </div>
+     	<!--  <pre>{{property | json}}</pre>  -->
+     	<div class="table-responsive">
+          <table class="table table-bordered table-striped">
+             <tr class="headTitle">
+                <th  colspan="3" class="text-nowrap" scope="row" >Property Details</th>
+              </tr>
+              <tr>
+                <th colspan="2">Address of Property</th>
+                <td>{{property.address}}</td>
+              </tr>
+            
+            <tbody>
+			<tr>              
+                <th colspan="2">Did you actively participate?</th>
+                <td>{{property.actively_participate}}</td>
+            
+              </tr>
+              <tr>
+                <td colspan="3">Note: Active participation indicates selecting tenants, approving expenses, arranging services etch</td>
+               
+          </tr>
+              <tr>
+               
+               <th colspan="2">Did you sell the rented property in Year?</th>
+                <td>{{property.sell_rented_property}}</td>
+
+            
+              </tr>
+               <tr>
+              
+              <th colspan="2">Description of Property</th>
+                <td>{{property.description_property}}</td>
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Number of days rented</th>
+                <td>{{property.no_of_days_rented}}</td>
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Number of days used personally</th>
+                <td>{{property.no_of_days_personal}}</td>
+            
+              </tr>
+               <tr>
+               
+                <th colspan="2">Number of days vacant</th>
+                <td>{{property.no_of_vacant}}</td>
+            
+              </tr>
+              <tr>
+                <th  colspan="3" class="text-nowrap" scope="row" >&nbsp;</th>
+              </tr>
+              
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Income</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+              </tr>
+              <tr>
+                <th colspan="2">Gross Rents Received</th>
+                <td>{{property.gross_rents_received}}</td>
+              </tr>
+              <tr class="headTitle">
+                <th class="text-nowrap" scope="row" colspan="2">Expenses</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+              </tr>
+              <tr>
+                <th colspan="2">Advertising</th>
+                <td>{{property.advertising}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Cleaning</th>
+                <td>{{property.cleaning}}</td>
+              </tr>
+               <tr>
+               <th colspan="2">Insurance</th>
+                <td>{{property.insurance}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Legal/professional fees</th>
+                <td>{{property.legal_professional_fees}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Management fee</th>
+                <td>{{property.management_fee}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Mortgage interest</th>
+                <td>{{property.mortgage_interest}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Other interest</th>
+                <td>{{property.other_interest}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Repairs and Maintenance</th>
+                <td>{{property.repairs_maintenance}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Real Estate Taxes</th>
+                <td>{{property.real_estate_taxes}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Utilities</th>
+                <td>{{property.utilities}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Rental Miles ( Using personal Vehicle)</th>
+                <td>{{property.rental_miles}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Others (Pl Specify)</th>
+                <td>{{property.others}}</td>
+              </tr>
+               <tr>
+                <td colspan="4">&nbsp;</td>
+              
+              </tr>
+                
+               <tr>
+                <th colspan="2">Cost of Land</th>
+                <td>{{property.cost_land}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Cost of building</th>
+                <td>{{property.cost_building}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Date building was acquired/constructed</th>
+                <td>{{property.constructed_date | date:'MM/dd/yyyy'}}</td>
+              </tr>
+               <tr>
+                <th colspan="2">Date it was rented out</th>
+                <td>{{property.rentedout_date  | date:'MM/dd/yyyy'}}</td>
+              </tr>
+
+              <!--  <tr>
+                <th  colspan="3" class="text-nowrap" scope="row" style="color: red;">IMPROVEMENTS</th>
+              </tr>
+              <tr>
+                <th  colspan="3" class="text-nowrap" scope="row" style="color: red;">List out any major improvements/ Purchase made to the rental property in the year 2016/ Also list out for previous year's</th>
+              </tr>
+              <tr class="header">
+                <th class="text-nowrap" scope="row" colspan="2">Major Improvements</th>
+                <th class="text-nowrap" scope="row" >Amount</th>
+              </tr>
+               <tr>
+                <td colspan="2"><input type="text"   class="form-control"  /></td>
+                <td><input type="text"   class="form-control"  /></td>
+              </tr>
+               <tr>
+                <td colspan="2"><input type="text"   class="form-control"  /></td>
+                <td><input type="text"   class="form-control"  /></td>
+              </tr>
+               <tr>
+                <td colspan="2"><input type="text"   class="form-control"  /></td>
+                <td><input type="text"   class="form-control"  /></td>
+              </tr> -->
+            </tbody>
+          </table>
+         </div>
+ 

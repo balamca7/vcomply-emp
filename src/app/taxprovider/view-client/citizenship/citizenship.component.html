@@ -1,0 +1,528 @@
+<div class="col-sm-12">
+  
+	 <nb-card  size="normal">
+      <nb-card-header>CITIZENSHIP STATUS</nb-card-header>
+      <nb-card-body>
+       <!--  <pre>{{getCommonDetails | json}}</pre> -->
+       <div class="row">
+
+        <div class="col-sm-12 row ">
+
+          <div class="col-sm-9 form-group input-group-sm">
+            <label for="input-password" class="label">Are you a green Card holder or US Citizen</label>
+          </div>
+          <div class="col-sm-3 form-group input-group-sm">
+            {{getCommonDetails.greenCard_holder}}
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle center">TRAVEL HISTORY</div>
+     
+      <div class="col-sm-12  headTitle center">
+          <div class="row">
+          
+          <div class="col-sm-4">
+            Name
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+         </div> 
+
+      <div class="row">
+        <div class="col-sm-12 form-group" style="color: red;padding-top:5px;">Please indicate the number of days physically present in USA during  {{today-4}}, {{today-3}}, {{today-2}} & {{today-1}}</div>
+        <div class="col-sm-12 row ">
+          
+          
+          <div class="col-sm-4 form-group">
+            <label >TAX PAYER - {{getCommonDetails.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           <label >{{getCommonDetails.year_1?.no_of_days==""?'-':getCommonDetails.year_1?.no_of_days}}</label>
+          </div>
+          <div class="col-sm-2 form-group center">
+          
+           <label >{{getCommonDetails.year_2?.no_of_days==""?'-':getCommonDetails.year_2?.no_of_days}}</label>
+          </div>
+          <div class="col-sm-2 form-group center">
+         
+           <label >{{getCommonDetails.year_3?.no_of_days==""?'-':getCommonDetails.year_3?.no_of_days}}</label>
+          </div>
+          <div class="col-sm-2 form-group center">
+          
+           <label >{{getCommonDetails.year_4?.no_of_days==""?'-':getCommonDetails.year_4?.no_of_days}}</label>
+          </div>
+        </div>
+        
+     
+        <div class="col-sm-12 row" >
+          
+         
+          <div class="col-sm-4 form-group">
+            <label >Spouse - {{getCommonDetails.spouse?.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+
+           <label >{{getCommonDetails.spouse?.year_1?.no_of_days==""?'-':getCommonDetails.spouse?.year_1?.no_of_days}}</label>
+           
+          </div>
+          <div class="col-sm-2 form-group center"><label >{{getCommonDetails.spouse?.year_2?.no_of_days==""?'-':getCommonDetails.spouse?.year_2?.no_of_days}}</label>
+          
+          </div>
+          <div class="col-sm-2 form-group center">
+            <label >{{getCommonDetails.spouse?.year_3?.no_of_days==""?'-':getCommonDetails.spouse?.year_3?.no_of_days}}</label>
+         
+          </div>
+          <div class="col-sm-2 form-group center">
+           <label > {{getCommonDetails.spouse?.year_4?.no_of_days==""?'-':getCommonDetails.spouse?.year_4?.no_of_days}}</label>
+          
+          </div>
+        </div>
+
+         <div class="col-sm-12 row" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+          
+          
+          <div class="col-sm-4 form-group">
+            <label >Dependent : {{i+1}} - {{dependents.name}}</label>
+          </div>
+          <div class="col-sm-2 form-group">
+
+             <label > {{dependents.year_1?.no_of_days==""?'-':dependents.year_1?.no_of_days}}</label>
+          </div>
+          <div class="col-sm-2 form-group center">
+           <label > {{dependents.year_2?.no_of_days==""?'-':dependents.year_2?.no_of_days}}</label>
+         
+          </div>
+          <div class="col-sm-2 form-group center">
+            <label > {{dependents.year_3?.no_of_days==""?'-':dependents.year_3?.no_of_days}}</label>
+          
+          </div>
+          <div class="col-sm-2 form-group center">
+             <label >{{dependents.year_4?.no_of_days==""?'-':dependents.year_4?.no_of_days}}</label>
+         
+          </div>
+        </div>
+ <div class="col-sm-12 form-group" style="color: red;padding-top:5px;">Please indicate Visa type, number and date of issue</div>
+        <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Taxpayer - {{getCommonDetails.name}}</div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+            <label >Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.aadharcard}}
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.visa}}
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           	{{getCommonDetails.visaType}}
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+          <label > Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.issuedDate}}
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.passport_no}}
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.expiry_date}}
+          </div>
+        </div>
+        <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Spouse - {{getCommonDetails.spouse?.name}}</div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+           <label > Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.aadharcard}}
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.visa}}
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.visaType}}
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+           <label >Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.issuedDate}}
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.passport_no}}
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.expiry_date}}
+          </div>
+        </div>
+        <div class="col-sm-12 row" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+      <div class="col-sm-12 headTitle" style="margin-bottom: 5px;">Dependent : {{i+1}}- {{dependents.name}}</div>
+
+       <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+            <label >Aadhar Card</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.aadharcard}}
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Current Visa</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.visa}}
+          </div>
+          <div class="col-sm-2 form-group">
+           <label > Type</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.visaType}}
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+          
+          <div class="col-sm-2 form-group">
+          <label > Date issued</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.issuedDate}}
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Passport Number</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.passport_no}}
+          </div>
+          <div class="col-sm-2 form-group">
+            <label >Expiry Date</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.expiry_date}}
+          </div>
+        </div>
+
+        
+      </div>
+
+           <div class="col-sm-12 headTitle center" >FEDERAL</div>
+     
+      <div class="col-sm-12  headTitle center">
+          <div class="row">
+          
+          <div class="col-sm-4">
+           
+          </div>
+          <div class="col-sm-2">
+            {{today-1}}
+          </div>
+          <div class="col-sm-2">
+            {{today-2}}
+          </div>
+          <div class="col-sm-2">
+            {{today-3}}
+          </div>
+          <div class="col-sm-2">
+            {{today-4}}
+          </div>
+        </div>
+        </div>
+        <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Taxpayer  - {{getCommonDetails.name}}</div>
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+ 			{{getCommonDetails.year_1?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.year_2?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.year_3?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.year_4?.entry_date}}
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.year_1?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+             {{getCommonDetails.year_2?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+             {{getCommonDetails.year_3?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.year_4?.exit_date}}
+          </div>
+        </div>
+
+         <div class="col-sm-12 headTitle form-group"  style="margin-bottom: 5px;">Spouse - {{getCommonDetails.spouse?.name}}</div>
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+			{{getCommonDetails.spouse?.year_1?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.year_2?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+           {{getCommonDetails.spouse?.year_3?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+           {{getCommonDetails.spouse?.year_4?.entry_date}}
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+           {{getCommonDetails.spouse?.year_1?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.year_2?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{getCommonDetails.spouse?.year_3?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+           	{{getCommonDetails.spouse?.year_4?.exit_date}}
+          </div>
+        </div>
+        <div class="col-sm-12 form-group" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+         <div class="col-sm-12 headTitle form-group"  style="margin-bottom: 5px;">Dependent : {{i+1}} - {{dependents.name}} </div>
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+           <label >Date of entry into USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.year_1?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.year_2?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.year_3?.entry_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+           	{{dependents.year_4?.entry_date}}
+          </div>
+        </div>
+
+        <div class="col-sm-12 row">
+        
+          <div class="col-sm-4 form-group">
+          <label > Date of exit from USA</label>
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.year_1?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.year_2?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+            {{dependents.year_3?.exit_date}}
+          </div>
+          <div class="col-sm-2 form-group">
+           	{{dependents.year_4?.exit_date}}
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-12 form-group" style="color: red;padding-top:5px;">In case you travelled two or more states in US for the year 2016, Please provide your entry & exit dates between the states.</div>
+
+
+        <div class="col-sm-12 headTitle center" >State</div>
+        <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Taxpayer  - {{getCommonDetails.name}}</div>
+
+        <div class="table-responsive">
+ 
+  
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              
+          
+             
+               <tr *ngFor="let itemrow of getCommonDetails.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+               
+        </tr>  
+            </tbody>
+          </table>
+         
+        </div>
+
+ <div class="col-sm-12 headTitle"  style="margin-bottom: 5px;">Spouse  - {{getCommonDetails.spouse?.name}}</div>
+
+        <div class="table-responsive">
+ 
+  
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+              
+              </tr>
+            </thead>
+            <tbody>
+              
+            
+             
+               <tr *ngFor="let itemrow of getCommonDetails.spouse?.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+                 
+        </tr>  
+            </tbody>
+          </table>
+          
+        </div>
+
+<div class="col-sm-12 form-group" *ngFor="let dependents of getCommonDetails.dependents; let i=index">
+         <div class="col-sm-12 headTitle form-group"  style="margin-bottom: 5px;">Dependent : {{i+1}} - {{dependents.name}} </div>
+        <div class="table-responsive">
+ 
+   <form  name="sf"  #sf="ngForm" (submit)="addDepandantState(depandantInfo, dependents.stateEntrydetails)" novalidate>
+          <table class="table table-bordered table-striped">
+            <thead>
+               <tr >
+                <th>Sl.No</th>
+                <th>STATE</th>
+                <th>ENTRY DATE </th>
+                <th>EXIT DATE </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+             
+               <tr *ngFor="let itemrow of dependents.stateEntrydetails; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{itemrow.state?.name}}</td>
+                <td>{{itemrow.entry_date}}</td>
+                <td>{{itemrow.exit_date}}</td>
+                 
+        </tr>  
+            </tbody>
+          </table>
+           </form>
+        </div>
+</div>
+
+
+
+      
+
+
+      
+   
+      	 <div class="col-sm-12 form-group headTitle">Documents</div>
+    <div class="col-sm-12 ">
+          
+      <div class="table-responsive">
+           <table class="table table-bordered table-striped">
+            <tr>
+              <th>Sl.No</th>
+              <th>File Name</th>
+              <th colspan="1"> Action</th>
+            </tr>
+        <tr *ngFor="let fileList of getCommonDetails.fileList; let i=index;" >
+                <td>{{i+1}}</td>
+                <td> {{fileList.filename}}</td>
+               
+                  <td>
+                    <a href="{{fileList.filepath}}"  class="btn btn-info btn-sm" target="_blank">
+                      <i class="fa fa-eye"></i></a>
+                    </td>
+                 
+                </tr>
+              </table> 
+            </div>
+          </div>
+ </div> 
+   </nb-card-body>
+</nb-card>
+  </div>
+
+ 

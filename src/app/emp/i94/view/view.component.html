@@ -1,0 +1,78 @@
+<div class="">
+ <nb-card>
+      <nb-card-header class="row"><span class="col-sm-6">Arrival Departure (I94)</span> <span class="col-sm-6 right"><a [routerLink]="['/emp/i94/add']" class="btn btn-sm btn-success" title="Add"><i class="ion-plus"></i> Add</a></span> </nb-card-header>
+      <nb-card-body>
+       
+        <div class=" view third-effect" *ngFor="let i94Info of I94Info; let i = index">
+      	 <div class="alert alert-danger"><h6 class="">Arrival Departure {{i+1}} : Record number - {{i94Info.record_number}}</h6></div>
+        <div class="row">
+          
+           <div class=" col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">Passport Number</label>
+           
+          </div>
+          <div class="col-sm-6 form-group input-group-sm">
+            <label class="label">{{i94Info.passport_number}}</label>
+          </div>
+        </div>
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Admit Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{i94Info.admit_date | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div>
+        <!--  <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Validity From Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{i94Info.validity_FD | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div>
+       <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Validity To Date</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+           <label class="label">{{i94Info.validity_TD | date: 'dd/MM/yyyy'}}</label>
+           </div>
+           </div> -->
+        <div class="col-sm-6 row ">
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">Country of Issue</label>
+        </div>
+          <div class="col-sm-6 form-group input-group-sm">
+          <label class="label">{{i94Info.issued_country}}</label>
+           </div>
+           </div>
+        </div>
+          <div class="mask">
+            <a [routerLink]="['/emp/i94/edit',i94Info.id]" class="btn btn-sm btn-primary" title="Edit"><i class="ion-edit"></i></a>
+            <a [routerLink]="['/emp/i94/delete',i94Info.id]" class="btn btn-sm btn-danger" title="Delete"><i class="ion-trash-a"></i></a>
+            
+<!-- 
+             <button (click)="editWorkpermit(i94Info.id)" class="btn btn-sm btn-primary" title="Edit"><i class="ion-edit"></i></button>
+            <button (click)="deleteWorkpermit(i94Info.id)" class="btn btn-sm btn-danger" title="Delete"><i class="ion-close-round"></i></button> -->
+          </div>
+
+        </div>
+
+        
+      </nb-card-body>
+     <!--  <nb-card-footer>      
+      </nb-card-footer> -->
+  </nb-card>
+</div>                           
+                                             
+                                            
+                                              
+                                              
+                                             
+                                            
+                                             
+                                             
+                                           
+                                           

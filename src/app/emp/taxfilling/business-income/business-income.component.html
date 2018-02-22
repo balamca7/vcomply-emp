@@ -1,0 +1,101 @@
+
+<div class="col-sm-12"  *ngIf="editMode == true">
+	 <nb-card  size="normal">
+      <nb-card-header>BUSINESS INCOME</nb-card-header>
+      <nb-card-body>
+
+      	<my-tabs>
+      <my-tab [tabTitle]="'Business List'">
+        <!-- {{propertyList | json}} -->
+        <table class="table table-striped table-bordered">
+      <thead>
+         <tr class="headTitle">
+        <th>Business #</th>
+        <th>Name of proprietor</th>
+         <th width="130px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of propertyList; let i=index;">
+          <td>Business {{ i+1 }}</td>
+         <td>{{ p.proprietor_name }}</td>
+          <td><button title="Edit" class="btn btn-sm btn-default" (click)="onEditProperty(p)"><i class="nb-edit"></i></button>&nbsp;<button title="Delete" class="btn btn-sm btn-danger" (click)="onRemoveProperty(p.id)"><i class="nb-trash"></i></button>&nbsp;<button title="View" class="btn btn-sm btn-info" (click)="onViewProperty(p)"><i class="fa fa-eye"></i></button></td>
+        </tr>
+        <tr *ngIf="propertyList.length==0">
+          <td colspan="3">Business not available.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="col-sm-12 row">
+ <button class="btn btn-default btn-sm" (click)="onAddProperty()"><!-- <i class="glyphicon glyphicon-question-sign"></i> --> Add Business</button>
+</div>
+      </my-tab>
+    </my-tabs>
+  
+     <ng-template let-property ="property" #propertyView>
+      <app-viewbusiness [property]="property" (onCloseBusinessTab)="onCloseBusinessTab()"></app-viewbusiness>
+    </ng-template>
+
+     <ng-template let-property ="property"  #property>
+      <app-business [property]="property" (saveProperty)="onPropertyFormSubmit($event)" ></app-business>
+    </ng-template> 
+
+   </nb-card-body>
+   <nb-card-footer>
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/sale-assets']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+   </nb-card-footer>
+</nb-card>
+  </div>
+
+ <!-- Non editable -->
+
+<div class="col-sm-12"  *ngIf="editMode == false">
+   <nb-card  size="normal">
+      <nb-card-header>BUSINESS INCOME</nb-card-header>
+      <nb-card-body>
+
+        <my-tabs>
+      <my-tab [tabTitle]="'Business List'">
+        <!-- {{propertyList | json}} -->
+        <table class="table table-striped table-bordered">
+      <thead>
+         <tr class="headTitle">
+        <th>Business #</th>
+        <th>Name of proprietor</th>
+         <th width="130px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of propertyList; let i=index;">
+          <td>Business {{ i+1 }}</td>
+         <td>{{ p.proprietor_name }}</td>
+          <td><button title="View" class="btn btn-sm btn-info" (click)="onViewProperty(p)"><i class="fa fa-eye"></i></button></td>
+        </tr>
+        <tr *ngIf="propertyList.length==0">
+          <td colspan="3">Business not available.</td>
+        </tr>
+      </tbody>
+    </table>
+  
+      </my-tab>
+    </my-tabs>
+  
+     <ng-template let-property ="property" #propertyView>
+      <app-viewbusiness [property]="property" ></app-viewbusiness>
+    </ng-template>
+
+   </nb-card-body>
+     <nb-card-footer *ngIf="editMode != false">
+         
+     <span class="pull-right">
+              <a [routerLink]="['/emp/taxfill/sale-assets']"  class="btn btn-sm btn-info "> Next</a>
+              </span>
+  
+        
+    </nb-card-footer>
+</nb-card>
+  </div>
+
+ 
